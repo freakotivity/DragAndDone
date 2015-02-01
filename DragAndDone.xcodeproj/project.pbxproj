@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F3110951A7E499C000222F3 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110941A7E499C000222F3 /* TaskView.swift */; };
+		1F3110971A7EB5A6000222F3 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110961A7EB5A6000222F3 /* Placeholder.swift */; };
 		C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */; };
 		C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177F1A7DCC33000CCE5C /* ViewController.swift */; };
 		C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04F17811A7DCC33000CCE5C /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		1F3110941A7E499C000222F3 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		1F3110961A7EB5A6000222F3 /* Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		C04F17781A7DCC33000CCE5C /* DragAndDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragAndDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04F177C1A7DCC33000CCE5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */,
 				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
 				1F3110941A7E499C000222F3 /* TaskView.swift */,
+				1F3110961A7EB5A6000222F3 /* Placeholder.swift */,
 				C04F17811A7DCC33000CCE5C /* Main.storyboard */,
 				C04F17841A7DCC33000CCE5C /* Images.xcassets */,
 				C04F17861A7DCC33000CCE5C /* LaunchScreen.xib */,
@@ -218,6 +221,7 @@
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */,
 				C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */,
+				1F3110971A7EB5A6000222F3 /* Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
