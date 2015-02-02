@@ -42,11 +42,11 @@ class ViewController: UIViewController {
             taskView.initialPosition = taskView.center
             self.view.addSubview(taskView)
             self.taskViews.append(taskView)
-            // WHATTE FORK  <-HAHA! DID YOU DO THIS?
         }
         
         self.placeholder.backgroundColor = UIColor.clearColor()
-        self.placeholder.center = CGPointMake(doneXPosition, self.view.frame.height - self.taskViewSize)
+        //        self.placeholder.center = CGPointMake(doneXPosition, self.view.frame.height - self.taskViewSize)
+        self.placeholder.center = CGPointMake(-500, -500)
         self.placeholder.bounds.size = CGSizeMake(taskViewSize, taskViewSize)
         self.view.addSubview(placeholder)
     }
@@ -90,18 +90,12 @@ class ViewController: UIViewController {
             {
                 if grabbedTaskView.center.x > (self.view.frame.size.width / 2)
                 {
-                    grabbedTaskView.done = true
                     self.moveTaskToDone(grabbedTaskView)
-                    self.hidePlaceholder(true)
                 } else {
-                    self.hidePlaceholder(false)
-                    grabbedTaskView.done = false
-                    UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-                        self.grabbedTaskView.center = self.grabbedTaskView.initialPosition
-                        }, completion: nil)
+                    self.moveTaskToNotDone(grabbedTaskView)
                 }
                 grabbedTaskView = nil
-                
+                self.hidePlaceholder()
             }
         }
     }
@@ -109,44 +103,68 @@ class ViewController: UIViewController {
     func showPlaceholder()
     {
         self.placeholder.hidden = false
+        self.placeholder.center = CGPointMake(doneXPosition, self.view.frame.height - self.taskViewSize)
+        self.placeholder.bounds.size = CGSizeMake(1.0, 1.0)
         
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             self.placeholder.bounds.size = CGSizeMake(self.taskViewSize, self.taskViewSize)
-//            self.placeholder.setNeedsDisplay()
+            //            self.placeholder.setNeedsDisplay()
             }, completion: nil)
         
-        for taskView in self.doneTaskViews
+        for taskView in self.taskViews
         {
-            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-                taskView.center.y -= self.taskViewSize
-                }, completion: nil)
-        }
-    }
-    
-    func hidePlaceholder(addedTask:Bool)
-    {
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-//            self.placeholder.setNeedsDisplay()
-            self.placeholder.bounds.size = CGSizeMake(1.0, 1.0)
-            }) { (completed) -> Void in
-                self.placeholder.hidden = true
-        }
-        if !addedTask
-        {
-            for taskView in self.doneTaskViews
+            if taskView.done
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-                    taskView.center.y += self.taskViewSize
+                    taskView.center.y -= self.taskViewSize
+                    
                     }, completion: nil)
             }
         }
     }
     
+    func hidePlaceholder()
+    {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+            //            self.placeholder.setNeedsDisplay()
+            self.placeholder.bounds.size = CGSizeMake(1.0, 1.0)
+            }) { (completed) -> Void in
+                self.placeholder.hidden = true
+        }
+        var doneCount = 1
+        for taskView in self.doneTaskViews
+        {
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+                    taskView.center.y = self.view.frame.height - (CGFloat(doneCount) * self.taskViewSize)
+                }, completion:nil)
+                doneCount++
+        }
+    }
+    
     func moveTaskToDone(task: TaskView)
     {
-        self.doneTaskViews.append(task)
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+        if (find(self.doneTaskViews, task) == nil)
+        {
+            self.doneTaskViews.insert(task, atIndex: 0)
+        }
+        task.done = true
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
+            }) {(completed) ->Void in
+        }
+        
+    }
+    
+    func moveTaskToNotDone(task: TaskView)
+    {
+        if let removeIndex = find(self.doneTaskViews, task)
+        {
+            self.doneTaskViews.removeAtIndex(removeIndex)
+        }
+
+        task.done = false
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+            task.center = task.initialPosition
             }, completion: nil)
         
     }

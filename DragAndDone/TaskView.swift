@@ -14,6 +14,7 @@ class TaskView: UIView {
     var donePosition:CGPoint!
     var done = false
     var initialIndex:Int!
+    var doneIndex:Int!
 
     override func drawRect(rect: CGRect) {
         let lineWidth:CGFloat = 5.0
