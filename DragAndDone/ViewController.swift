@@ -34,14 +34,17 @@ class ViewController: UIViewController {
         
         for i in 1...5
         {
-            let taskView = TaskView()
+            let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
             taskView.initialIndex = i
             taskView.backgroundColor = UIColor.clearColor()
-            taskView.frame = CGRectMake(0, 0, taskViewSize, taskViewSize)
-            taskView.center = CGPointMake(todoXPosition, self.view.frame.height - (CGFloat(i) * taskViewSize))
+            taskView.center = CGPointMake(todoXPosition, (CGFloat(i) * taskViewSize))
             taskView.initialPosition = taskView.center
+            taskView.textLabel.text = "TASK \(i)"
             self.view.addSubview(taskView)
             self.taskViews.append(taskView)
+            
+            let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
+            taskView.addGestureRecognizer(tap)
         }
         
         self.placeholder.backgroundColor = UIColor.clearColor()
@@ -111,6 +114,11 @@ class ViewController: UIViewController {
             //            self.placeholder.setNeedsDisplay()
             }, completion: nil)
         
+        self.shiftDoneTasksUp()
+    }
+    
+    func shiftDoneTasksUp()
+    {
         for taskView in self.taskViews
         {
             if taskView.done
@@ -143,6 +151,7 @@ class ViewController: UIViewController {
     
     func moveTaskToDone(task: TaskView)
     {
+        println("MOVE TO DONE")
         if (find(self.doneTaskViews, task) == nil)
         {
             self.doneTaskViews.insert(task, atIndex: 0)
@@ -152,11 +161,13 @@ class ViewController: UIViewController {
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
             }) {(completed) ->Void in
         }
+        self.collapseTodoTasks()
         
     }
     
     func moveTaskToNotDone(task: TaskView)
     {
+        println("MOVE TO NOT DONE")
         if let removeIndex = find(self.doneTaskViews, task)
         {
             self.doneTaskViews.removeAtIndex(removeIndex)
@@ -166,6 +177,35 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = task.initialPosition
             }, completion: nil)
-        
+     self.collapseTodoTasks()
+    }
+    
+    func collapseTodoTasks()
+    {
+        var i:Int = 0
+        var todoer:CGFloat = 1.0
+        for (i = self.taskViews.count - 1; i > -1; i--)
+        {
+            println("i \(i)")
+            if (!self.taskViews[i].done)
+            {
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+                    self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
+                    }, completion: nil)
+
+                todoer += 1.0
+            }
+        }
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer)
+    {
+        println("HANDLE TAP \(sender)")
+        let task = sender.view as TaskView
+        if !task.done
+        {
+        self.shiftDoneTasksUp()
+        self.moveTaskToDone(sender.view as TaskView)
+        }
     }
 }

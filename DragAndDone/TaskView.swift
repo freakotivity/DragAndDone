@@ -15,6 +15,7 @@ class TaskView: UIView {
     var done = false
     var initialIndex:Int!
     var doneIndex:Int!
+    var textLabel:UILabel!
 
     override func drawRect(rect: CGRect) {
         let lineWidth:CGFloat = 5.0
@@ -24,5 +25,21 @@ class TaskView: UIView {
         CGContextSetLineWidth(context, lineWidth)
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
         CGContextStrokePath(context)
+        
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        println("TASK VIEW INIT WITH FRAME")
+        self.textLabel = UILabel(frame: frame)
+        self.textLabel.backgroundColor = UIColor.clearColor()
+        self.textLabel.text = "YEAH"
+        self.textLabel.textAlignment = NSTextAlignment.Center
+        self.addSubview(self.textLabel)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
     }
 }
