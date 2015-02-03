@@ -37,9 +37,10 @@ class ViewController: UIViewController {
             let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
             taskView.initialIndex = i
             taskView.backgroundColor = UIColor.clearColor()
-            taskView.center = CGPointMake(todoXPosition, (CGFloat(i) * taskViewSize))
+            taskView.center = CGPointMake(todoXPosition, self.view.frame.height - (CGFloat(i) * taskViewSize))
             taskView.initialPosition = taskView.center
-            taskView.textLabel.text = "TASK \(i)"
+            taskView.textLabel.text = "\(i)"
+            taskView.image = UIImage(named: "\(i).jpg")
             self.view.addSubview(taskView)
             self.taskViews.append(taskView)
             
@@ -184,7 +185,8 @@ class ViewController: UIViewController {
     {
         var i:Int = 0
         var todoer:CGFloat = 1.0
-        for (i = self.taskViews.count - 1; i > -1; i--)
+            //        for (i = self.taskViews.count - 1; i > -1; i--)
+        for (i = 0; i < self.taskViews.count; i++)
         {
             println("i \(i)")
             if (!self.taskViews[i].done)
