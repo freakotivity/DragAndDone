@@ -19,20 +19,22 @@ class Placeholder: UIView {
         
         CGContextSetLineWidth(context, min(rect.size.width / 30, rect.size.height / 30))
         
-        for i in 0..<30
-        {
-            UIColor.grayColor().setStroke()
-            
-            CGContextAddArc(context, rect.size.width / 2, rect.size.height / 2, circleRadius, startAngle, startAngle + segmentAngle, 0)
-            
-            CGContextStrokePath(context)
-            startAngle += segmentAngle
-            UIColor.clearColor().setStroke()
-            CGContextAddArc(context, rect.size.width / 2, rect.size.height / 2, min(rect.size.width / 3, rect.size.height / 3), startAngle, startAngle + 0.1, 0)
-            startAngle += segmentAngle
-            CGContextStrokePath(context)
-        }
-        UIColor.grayColor().setStroke()
+        UIColor(red: 142/255.0, green: 68/255.0, blue: 173/255.0, alpha: 1.0).setFill()
+        CGContextFillEllipseInRect(context, rect)
+//        for i in 0..<30
+//        {
+//            UIColor.grayColor().setStroke()
+//            
+//            CGContextAddArc(context, rect.size.width / 2, rect.size.height / 2, circleRadius, startAngle, startAngle + segmentAngle, 0)
+//            
+//            CGContextStrokePath(context)
+//            startAngle += segmentAngle
+//            UIColor.clearColor().setStroke()
+//            CGContextAddArc(context, rect.size.width / 2, rect.size.height / 2, min(rect.size.width / 3, rect.size.height / 3), startAngle, startAngle + 0.1, 0)
+//            startAngle += segmentAngle
+//            CGContextStrokePath(context)
+//        }
+        UIColor.whiteColor().setStroke()
         CGContextMoveToPoint(context, rect.size.width / 2, rect.size.height / 3)
         CGContextAddLineToPoint(context, rect.size.width / 2, rect.size.height * 2 / 3)
         CGContextStrokePath(context)
