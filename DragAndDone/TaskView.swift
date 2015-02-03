@@ -50,4 +50,10 @@ class TaskView: UIView {
         super.init(coder: aDecoder)
         
     }
+
+    func convertImageToGrayScale()
+    {
+        println("DO SOME AWESOME STUFF TO THE IMAGE SO IT APPEARS BLACK N WHITE!!")
+    }
+
 }
