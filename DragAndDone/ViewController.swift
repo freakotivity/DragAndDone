@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
         let separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height * 0.7))
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
         separatorLine.center = self.view.center
         self.view.addSubview(separatorLine)
         
-        self.taskViewSize = self.view.frame.size.height / 6
+        self.taskViewSize = self.view.frame.size.height / 7
         todoXPosition = self.view.frame.width / 4.0
         doneXPosition = self.view.frame.width * 3 / 4.0
         
@@ -54,6 +55,8 @@ class ViewController: UIViewController {
         self.placeholder.center = CGPointMake(-500, -500)
         self.placeholder.bounds.size = CGSizeMake(taskViewSize, taskViewSize)
         self.view.addSubview(placeholder)
+        
+        self.navigationItem.title = "Daily Stuff"
     }
     
     override func didReceiveMemoryWarning() {
@@ -212,4 +215,6 @@ class ViewController: UIViewController {
         self.moveTaskToDone(sender.view as TaskView)
         }
     }
+    
+
 }

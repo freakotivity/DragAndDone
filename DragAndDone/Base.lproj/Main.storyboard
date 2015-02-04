@@ -21,7 +21,10 @@
                             <outletCollection property="gestureRecognizers" destination="oBs-V0-VJq" appends="YES" id="tBs-ii-fJh"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="dk0-7h-GYb"/>
+                    <navigationItem key="navigationItem" id="dk0-7h-GYb">
+                        <barButtonItem key="leftBarButtonItem" title="🍔" id="5KS-fb-YFT"/>
+                        <barButtonItem key="rightBarButtonItem" title="🌸" id="wEk-dL-Meg"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="oBs-V0-VJq">
@@ -40,6 +43,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TQ4-mQ-Fa4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <gestureRecognizers/>
+                        <color key="barTintColor" red="0.55686274509803924" green="0.26666666666666666" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
