@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             taskView.initialPosition = taskView.center
             taskView.textLabel.text = "\(i)"
             taskView.image = UIImage(named: "\(i).jpg")
+            
             self.view.addSubview(taskView)
             self.taskViews.append(taskView)
             

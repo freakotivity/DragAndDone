@@ -34,6 +34,7 @@ class TaskView: UIView {
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
         CGContextStrokePath(context)
         
+        
     }
     
     override init(frame: CGRect) {
