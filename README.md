@@ -32,3 +32,5 @@ Drag your achieved task to the done area. You keep track of the tasks that have 
 accomplished. Great! Now you stay motivated, stick to your routines and make them neat
 habits!
 ******************************************************************************************
+[1]http://new.helpguide.org/articles/add-adhd/adult-adhd-attention-deficit-disorder-self-help.htm#top
+[2]https://kiedit.ki.se/en/kind/kite-neurofeedback-and-working-memory-training
