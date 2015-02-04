@@ -17,10 +17,19 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var placeholder = Placeholder(frame: CGRectMake(0, 0, 1, 1))
     var todoXPosition:CGFloat!
     var doneXPosition:CGFloat!
+    var transitionAnimation:(() -> Void)!
+    var xMovement:CGFloat = 66.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
+        
+        self.transitionAnimation = {
+            for task in self.taskViews
+            {
+                task.center.x += self.xMovement
+            }
+        }
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -227,12 +236,17 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TransitionAnimator()
+        let anCon = TransitionAnimator()
+        self.xMovement = -26
+        anCon.animation = self.transitionAnimation
+        return anCon
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let anCon = TransitionAnimator()
         anCon.dismissing = true
+        self.xMovement = 26
+        anCon.animation = self.transitionAnimation
         return anCon
     }
     
