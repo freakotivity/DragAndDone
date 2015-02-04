@@ -12,7 +12,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         var dismissing:Bool = false
         
         func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-            //////println("ANIMATE TRANSITION")
+            println("ANIMATE TRANSITION")
             if dismissing
             {
                 let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)

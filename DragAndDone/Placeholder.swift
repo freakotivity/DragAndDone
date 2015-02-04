@@ -11,6 +11,7 @@ import UIKit
 class Placeholder: UIView {
     
     override func drawRect(rect: CGRect) {
+        println("PLACEHOLDER DRAW RECT")
         let context = UIGraphicsGetCurrentContext()
         let circleRadius = (min(rect.size.height / 2, rect.size.width / 2)) * 0.8 // Tweak the 0.8 to change the size of the placeholder!!
         
