@@ -28,6 +28,7 @@ Focus on Five recurring Tasks
 - choose a reminder alarm if you want to
 
 Drag and Done
+
 Drag your achieved task to the done area. You keep track of the tasks that have been
 accomplished. Great! Now you stay motivated, stick to your routines and make them neat
 habits!
