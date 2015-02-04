@@ -19,6 +19,7 @@ class TaskView: UIView {
     var image:UIImage?
     
     override func drawRect(rect: CGRect) {
+        println("drawrect")
         let lineWidth:CGFloat = 10.0
         let square = CGRectMake(0, 0, min(rect.size.width, rect.size.height), min(rect.size.width, rect.size.height))
         UIColor.blackColor().setStroke()
@@ -33,6 +34,7 @@ class TaskView: UIView {
         
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
         CGContextStrokePath(context)
+        
         
     }
     
@@ -80,4 +82,10 @@ class TaskView: UIView {
         super.init(coder: aDecoder)
         
     }
+
+    func convertImageToGrayScale()
+    {
+        println("DO SOME AWESOME STUFF TO THE IMAGE SO IT APPEARS BLACK N WHITE!!")
+    }
+
 }

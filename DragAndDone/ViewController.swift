@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var taskViews: [TaskView] = []
     var doneTaskViews: [TaskView] = []
     var grabbedTaskView:TaskView!
@@ -17,10 +17,21 @@ class ViewController: UIViewController {
     var placeholder = Placeholder(frame: CGRectMake(0, 0, 1, 1))
     var todoXPosition:CGFloat!
     var doneXPosition:CGFloat!
-    
+    var transitionAnimation:(() -> Void)!
+    var xMovement:CGFloat = 66.0
+    var showsEditor = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("YEAH")
+        
+        self.transitionAnimation = {
+            for task in self.taskViews
+            {
+                task.center.x += self.xMovement
+            }
+        }
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
         let separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height * 0.7))
@@ -28,7 +39,7 @@ class ViewController: UIViewController {
         separatorLine.center = self.view.center
         self.view.addSubview(separatorLine)
         
-        self.taskViewSize = self.view.frame.size.height / 6
+        self.taskViewSize = self.view.frame.size.height / 7
         todoXPosition = self.view.frame.width / 4.0
         doneXPosition = self.view.frame.width * 3 / 4.0
         
@@ -41,6 +52,7 @@ class ViewController: UIViewController {
             taskView.initialPosition = taskView.center
             taskView.textLabel.text = "\(i)"
             taskView.image = UIImage(named: "\(i).jpg")
+            
             self.view.addSubview(taskView)
             self.taskViews.append(taskView)
             
@@ -53,6 +65,8 @@ class ViewController: UIViewController {
         self.placeholder.center = CGPointMake(-500, -500)
         self.placeholder.bounds.size = CGSizeMake(taskViewSize, taskViewSize)
         self.view.addSubview(placeholder)
+        
+        self.navigationItem.title = "Daily Stuff"
     }
     
     override func didReceiveMemoryWarning() {
@@ -161,6 +175,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
             }) {(completed) ->Void in
+                task.convertImageToGrayScale()
         }
         self.collapseTodoTasks()
         
@@ -210,4 +225,53 @@ class ViewController: UIViewController {
         self.moveTaskToDone(sender.view as TaskView)
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showStats"
+        {
+            self.showsEditor = false
+            let stats = segue.destinationViewController as UIViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.transitioningDelegate = self
+        }
+        if segue.identifier == "showEditor"
+        {
+            self.showsEditor = true
+            let stats = segue.destinationViewController as UIViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.transitioningDelegate = self
+        }
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let anCon = TransitionAnimator()
+        anCon.showsEditor = self.showsEditor
+        anCon.animation = self.transitionAnimation
+        return anCon
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let anCon = TransitionAnimator()
+        anCon.showsEditor = self.showsEditor
+        anCon.dismissing = true
+        self.xMovement *= -1
+        anCon.animation = self.transitionAnimation
+        return anCon
+    }
+    
+    @IBAction func checkStats(sender: UIBarButtonItem) {
+        println("CHECK STATS")
+        self.xMovement = -26
+        self.performSegueWithIdentifier("showStats", sender: self)
+    }
+    
+    @IBAction func showEditor(sender: UIBarButtonItem) {
+        println("SHOW EDITOR")
+        self.xMovement = 26
+        self.performSegueWithIdentifier("showEditor", sender: self)
+    }
+    
+
 }
