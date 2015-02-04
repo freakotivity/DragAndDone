@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var todoXPosition:CGFloat!
     var doneXPosition:CGFloat!
     
+    @IBOutlet weak var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
