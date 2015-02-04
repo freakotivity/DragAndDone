@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var taskViews: [TaskView] = []
     var doneTaskViews: [TaskView] = []
     var grabbedTaskView:TaskView!
@@ -214,6 +214,36 @@ class ViewController: UIViewController {
         self.shiftDoneTasksUp()
         self.moveTaskToDone(sender.view as TaskView)
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showStats"
+        {
+            let stats = segue.destinationViewController as UIViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.transitioningDelegate = self
+        }
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return TransitionAnimator()
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let anCon = TransitionAnimator()
+        anCon.dismissing = true
+        return anCon
+    }
+    
+    @IBAction func checkStats(sender: UIBarButtonItem) {
+        println("CHECK STATS")
+        self.performSegueWithIdentifier("showStats", sender: self)
+    }
+    
+    @IBAction func showEditor(sender: UIBarButtonItem) {
+        println("SHOW EDITOR")
+        self.performSegueWithIdentifier("showEditor", sender: self)
     }
     
 
