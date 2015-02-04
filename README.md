@@ -6,7 +6,7 @@ Gabriel Kroll
 Ricardo Gonzales
  (Co-Creator - Developement)
 
-
+******************************************************************************************
 ADD - Productivity
 focusing on five tasks app
 
@@ -31,3 +31,4 @@ Drag and Done
 Drag your achieved task to the done area. You keep track of the tasks that have been
 accomplished. Great! Now you stay motivated, stick to your routines and make them neat
 habits!
+******************************************************************************************
