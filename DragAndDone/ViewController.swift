@@ -19,6 +19,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var doneXPosition:CGFloat!
     var transitionAnimation:(() -> Void)!
     var xMovement:CGFloat = 66.0
+    var showsEditor = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -228,6 +229,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showStats"
         {
+            self.showsEditor = false
+            let stats = segue.destinationViewController as UIViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.modalPresentationStyle = UIModalPresentationStyle.Custom
+            stats.transitioningDelegate = self
+        }
+        if segue.identifier == "showEditor"
+        {
+            self.showsEditor = true
             let stats = segue.destinationViewController as UIViewController
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             stats.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -237,26 +247,29 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let anCon = TransitionAnimator()
-        self.xMovement = -26
+        anCon.showsEditor = self.showsEditor
         anCon.animation = self.transitionAnimation
         return anCon
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let anCon = TransitionAnimator()
+        anCon.showsEditor = self.showsEditor
         anCon.dismissing = true
-        self.xMovement = 26
+        self.xMovement *= -1
         anCon.animation = self.transitionAnimation
         return anCon
     }
     
     @IBAction func checkStats(sender: UIBarButtonItem) {
         println("CHECK STATS")
+        self.xMovement = -26
         self.performSegueWithIdentifier("showStats", sender: self)
     }
     
     @IBAction func showEditor(sender: UIBarButtonItem) {
         println("SHOW EDITOR")
+        self.xMovement = 26
         self.performSegueWithIdentifier("showEditor", sender: self)
     }
     
