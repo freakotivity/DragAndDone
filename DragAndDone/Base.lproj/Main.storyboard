@@ -41,22 +41,10 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4d3-zc-vIa">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4d3-zc-vIa" secondAttribute="trailing" id="LQc-rm-WrN"/>
-                            <constraint firstItem="4d3-zc-vIa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NCG-ga-Kzd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4d3-zc-vIa" secondAttribute="bottom" id="cVV-Qc-pug"/>
-                            <constraint firstItem="4d3-zc-vIa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hec-bQ-sFc"/>
-                        </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="oBs-V0-VJq" appends="YES" id="tBs-ii-fJh"/>
+                            <outletCollection property="gestureRecognizers" destination="oBs-V0-VJq" appends="YES" id="tRJ-WE-LBD"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="dk0-7h-GYb">
@@ -72,7 +60,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backgroundView" destination="4d3-zc-vIa" id="I80-XT-GgB"/>
                         <segue destination="MBt-In-drn" kind="presentation" identifier="showEditor" id="quj-6k-eJZ"/>
                         <segue destination="iTy-z2-9cT" kind="presentation" identifier="showStats" id="u2a-vy-Xbq"/>
                     </connections>
@@ -80,7 +67,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="oBs-V0-VJq">
                     <connections>
-                        <action selector="handlePan:" destination="BYZ-38-t0r" id="FdQ-Gk-KB6"/>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="PqY-ih-FJD"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
