@@ -1,10 +1,10 @@
 FREAKOTIVITY ORGANISATION
 
 Gabriel Kroll
-Creator - Design and Concept
+ (Creator - Design and Concept)
 
 Ricardo Gonzales
-Co-Creator - Developement
+ (Co-Creator - Developement)
 
 
 ADD - Productivity
