@@ -4,7 +4,7 @@ Gabriel Kroll
  (Creator - Design and Concept)
 
 Ricardo Gonzales
- (Co-Creator - Developement)
+ (Co-Creator - iOS Developement)
 
 ******************************************************************************************
 ADD - Productivity
