@@ -114,7 +114,8 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="dk0-7h-GYb">
-                        <barButtonItem key="leftBarButtonItem" title="🍔" id="5KS-fb-YFT">
+                        <barButtonItem key="leftBarButtonItem" image="menu burger" id="5KS-fb-YFT">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="showEditor:" destination="BYZ-38-t0r" id="mp7-3q-dPd"/>
                             </connections>
@@ -190,4 +191,7 @@
             <point key="canvasLocation" x="369" y="-427"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu burger" width="23" height="18"/>
+    </resources>
 </document>
