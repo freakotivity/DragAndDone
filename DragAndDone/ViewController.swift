@@ -320,10 +320,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
         let bezPath = UIBezierPath()
         let checkFrame = CGRectInset(task.frame, 10, 10)
-        bezPath.moveToPoint(CGPointMake(checkFrame.size.width * 0.3, checkFrame.size.height * 0.7))
-        bezPath.addLineToPoint(CGPointMake(checkFrame.size.width * 0.3, checkFrame.size.height))
-        bezPath.addLineToPoint(CGPointMake(checkFrame.size.width, checkFrame.size.height * 0.3))
         
+//        bezierPath.moveToPoint(CGPointMake(8.5, 41.5))
+//        bezierPath.addCurveToPoint(CGPointMake(20.5, 88.5), controlPoint1: CGPointMake(20.5, 85.5), controlPoint2: CGPointMake(20.5, 87.5))
+//        bezierPath.addCurveToPoint(CGPointMake(91.5, 12.5), controlPoint1: CGPointMake(20.5, 89.5), controlPoint2: CGPointMake(31.5, 7.5))
+        
+        bezPath.moveToPoint(CGPointMake(checkFrame.size.width * 0.185, checkFrame.size.height * 0.415))
+        bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint2: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885))
+        
+        bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 1.0, checkFrame.size.height * 0.125), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.895), controlPoint2: CGPointMake(checkFrame.size.width * 0.415, checkFrame.size.height * 0.075))
         
         
         let bezLayer = CAShapeLayer()
