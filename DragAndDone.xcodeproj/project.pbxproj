@@ -16,8 +16,13 @@
 		1F3110A21A814787000222F3 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F31109D1A814787000222F3 /* 4.jpg */; };
 		1F3110A31A814787000222F3 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F31109E1A814787000222F3 /* 5.jpg */; };
 		1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */; };
-		1F913F361A82AD1D00C91205 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F913F351A82AD1D00C91205 /* TransitionAnimator.swift */; };
 		1F913F381A82AF7D00C91205 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F913F371A82AF7D00C91205 /* StatsViewController.swift */; };
+		1FDBE0C01A84033A00CE9E69 /* EditorTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */; };
+		1FDBE0C21A84098900CE9E69 /* StatsTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C11A84098900CE9E69 /* StatsTransitionAnimator.swift */; };
+		1FDBE0C41A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C31A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift */; };
+		1FDBE0C61A840CC000CE9E69 /* DNDTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */; };
+		1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */; };
+		1FDBE0CA1A8413F400CE9E69 /* CongratsPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */; };
 		1FFF04991A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */; };
 		1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04971A82CDA100A346E1 /* DNDTask.swift */; };
 		1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */; };
@@ -49,8 +54,13 @@
 		1F31109D1A814787000222F3 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		1F31109E1A814787000222F3 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 		1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
-		1F913F351A82AD1D00C91205 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		1F913F371A82AF7D00C91205 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorTransitionAnimator.swift; sourceTree = "<group>"; };
+		1FDBE0C11A84098900CE9E69 /* StatsTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsTransitionAnimator.swift; sourceTree = "<group>"; };
+		1FDBE0C31A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsTransitionAnimator.swift; sourceTree = "<group>"; };
+		1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTransitionAnimator.swift; sourceTree = "<group>"; };
+		1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
+		1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratsPresentationController.swift; sourceTree = "<group>"; };
 		1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorFoldersTableViewController.swift; sourceTree = "<group>"; };
 		1FFF04971A82CDA100A346E1 /* DNDTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTask.swift; sourceTree = "<group>"; };
 		1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTaskHandler.swift; sourceTree = "<group>"; };
@@ -107,7 +117,11 @@
 			children = (
 				C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */,
 				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
-				1F913F351A82AD1D00C91205 /* TransitionAnimator.swift */,
+				1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */,
+				1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */,
+				1FDBE0C11A84098900CE9E69 /* StatsTransitionAnimator.swift */,
+				1FDBE0C31A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift */,
+				1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */,
 				1F913F371A82AF7D00C91205 /* StatsViewController.swift */,
 				1F3110941A7E499C000222F3 /* TaskView.swift */,
 				1F3110961A7EB5A6000222F3 /* Placeholder.swift */,
@@ -115,6 +129,7 @@
 				1FFF04971A82CDA100A346E1 /* DNDTask.swift */,
 				1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */,
 				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
+				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
 				C04F17811A7DCC33000CCE5C /* Main.storyboard */,
 				C04F17841A7DCC33000CCE5C /* Images.xcassets */,
 				C04F17861A7DCC33000CCE5C /* LaunchScreen.xib */,
@@ -263,13 +278,18 @@
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */,
-				1F913F361A82AD1D00C91205 /* TransitionAnimator.swift in Sources */,
 				C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */,
+				1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */,
 				1F913F381A82AF7D00C91205 /* StatsViewController.swift in Sources */,
+				1FDBE0C41A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift in Sources */,
 				1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */,
+				1FDBE0C61A840CC000CE9E69 /* DNDTransitionAnimator.swift in Sources */,
 				1FFF04991A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift in Sources */,
 				1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */,
+				1FDBE0CA1A8413F400CE9E69 /* CongratsPresentationController.swift in Sources */,
+				1FDBE0C21A84098900CE9E69 /* StatsTransitionAnimator.swift in Sources */,
 				1F3110971A7EB5A6000222F3 /* Placeholder.swift in Sources */,
+				1FDBE0C01A84033A00CE9E69 /* EditorTransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

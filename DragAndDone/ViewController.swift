@@ -19,38 +19,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var doneXPosition:CGFloat!
     var showEditorAnimation:(() -> Void)!
     var showStatsAnimation:(() -> Void)!
-    var xMovement:CGFloat = 66.0
-    var showsEditor = true
     var separatorLine:UIView!
+    var transitionAnimator:DNDTransitionAnimator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
         
-        self.showEditorAnimation = {
-            for task in self.taskViews
-            {
-                if task.done
-                {
-                    task.center.x += (self.xMovement / 3)
-                } else {
-                    task.center.x += self.xMovement
-                }
-//                self.separatorLine.center.x += (self.xMovement / 7)
-            }
-        }
-        self.showStatsAnimation = {
-            for task in self.taskViews
-            {
-                if !task.done
-                {
-                    task.center.x += (self.xMovement / 3)
-                } else {
-                    task.center.x += self.xMovement
-                }
-            }
-//            self.separatorLine.center.x += (self.xMovement / 7)
-        }
+
+        
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -202,6 +179,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
         self.collapseTodoTasks()
         
+        if ((self.doneTaskViews.count == 3) || (self.doneTaskViews.count == 5))
+        {
+            self.performSegueWithIdentifier("congratulations", sender: self)
+        }
     }
     
     func moveTaskToNotDone(task: TaskView)
@@ -252,7 +233,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showStats"
         {
-            self.showsEditor = false
+            self.transitionAnimator = StatsTransitionAnimator()
             let stats = segue.destinationViewController as UIViewController
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             stats.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -260,49 +241,43 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
         if segue.identifier == "showEditor"
         {
-            self.showsEditor = true
+            self.transitionAnimator = EditorTransitionAnimator()
             let stats = segue.destinationViewController as UIViewController
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             stats.modalPresentationStyle = UIModalPresentationStyle.Custom
             stats.transitioningDelegate = self
         }
+        if segue.identifier == "congratulations"
+        {
+            self.transitionAnimator = CongratulationsTransitionAnimator()
+            let congrats = segue.destinationViewController as UIViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            congrats.modalPresentationStyle = UIModalPresentationStyle.Custom
+            congrats.transitioningDelegate = self
+        }
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let anCon = TransitionAnimator()
-        anCon.showsEditor = self.showsEditor
-        if self.showsEditor
-        {
-            anCon.animation = self.showEditorAnimation
-        } else {
-            anCon.animation = self.showStatsAnimation
-        }
-        return anCon
+
+        return self.transitionAnimator
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let anCon = TransitionAnimator()
-        anCon.showsEditor = self.showsEditor
-        anCon.dismissing = true
-        self.xMovement *= -1
-        if self.showsEditor
-        {
-            anCon.animation = self.showEditorAnimation
-        } else {
-            anCon.animation = self.showStatsAnimation
-        }
-        return anCon
+        self.transitionAnimator.dismissing = true
+        return self.transitionAnimator
+    }
+    
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return CongratsPresentationController(presentedViewController: presented, presentingViewController: presenting)
     }
     
     @IBAction func checkStats(sender: UIBarButtonItem) {
         println("CHECK STATS")
-        self.xMovement = -150
         self.performSegueWithIdentifier("showStats", sender: self)
     }
     
     @IBAction func showEditor(sender: UIBarButtonItem) {
         println("SHOW EDITOR")
-        self.xMovement = 150
         self.performSegueWithIdentifier("showEditor", sender: self)
     }
     

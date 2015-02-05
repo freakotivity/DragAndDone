@@ -131,6 +131,7 @@
                     <connections>
                         <segue destination="MBt-In-drn" kind="presentation" identifier="showEditor" id="quj-6k-eJZ"/>
                         <segue destination="iTy-z2-9cT" kind="presentation" identifier="showStats" id="u2a-vy-Xbq"/>
+                        <segue destination="S74-4N-K2I" kind="presentation" identifier="congratulations" id="a3s-pk-L6M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -141,6 +142,46 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1152" y="266"/>
+        </scene>
+        <!--Congratulations View Controller-->
+        <scene sceneID="NVQ-P7-cdA">
+            <objects>
+                <viewController id="S74-4N-K2I" customClass="CongratulationsViewController" customModule="DragAndDone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2mH-zl-XfL"/>
+                        <viewControllerLayoutGuide type="bottom" id="KL3-6O-XjV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cLE-4C-SeV">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONGRATULATIONS!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYt-s4-GWm">
+                                <rect key="frame" x="16" y="20" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You've completed 3 tasks!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-Be-8Ue">
+                                <rect key="frame" x="-1" y="117" width="202" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(or 5)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-6w-G9F">
+                                <rect key="frame" x="90" y="146" width="20" height="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vBu-iF-Mu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="1027"/>
         </scene>
         <!--Stats View Controller-->
         <scene sceneID="nvi-ZD-um4">
@@ -194,7 +235,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menu.png" width="46" height="36"/>
         <image name="menu burger navbar" width="23" height="18"/>
         <image name="statistics circle navbar" width="23" height="23"/>
     </resources>
