@@ -21,7 +21,12 @@ class DNDTaskHandler: NSObject {
     {
         println("ADD TASK \(task.name!)")
         let plist = self.plist()
-        var foldersArray = plist[folder] as NSMutableArray
+        
+        var foldersArray = NSMutableArray()
+        if plist[folder] != nil
+        {
+        foldersArray.addObjectsFromArray(plist[folder] as NSMutableArray)
+        }
         
         let taskDict = NSMutableDictionary()
         taskDict.setValue(task.name!, forKey: "Name")
