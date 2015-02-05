@@ -104,22 +104,24 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="oBs-V0-VJq" appends="YES" id="tRJ-WE-LBD"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="dk0-7h-GYb">
-                        <barButtonItem key="leftBarButtonItem" title="🍔" id="5KS-fb-YFT">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="5KS-fb-YFT">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="showEditor:" destination="BYZ-38-t0r" id="mp7-3q-dPd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="🌸i" id="wEk-dL-Meg">
+                        <barButtonItem key="rightBarButtonItem" title="🌸" id="wEk-dL-Meg">
                             <connections>
                                 <action selector="checkStats:" destination="BYZ-38-t0r" id="8vw-FW-eHj"/>
                             </connections>
@@ -190,4 +192,7 @@
             <point key="canvasLocation" x="369" y="-427"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu.png" width="46" height="36"/>
+    </resources>
 </document>
