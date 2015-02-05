@@ -5,7 +5,11 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>79A244B8-AFC2-4952-8408-60FA4F1EDDE8</string>
+=======
+	<string>B8676C6C-1328-473D-8C8E-EB01F9A20C29</string>
+>>>>>>> Freakobranch
 	<key>IDESourceControlProjectName</key>
 	<string>DragAndDone</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
