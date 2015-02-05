@@ -17,24 +17,44 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var placeholder = Placeholder(frame: CGRectMake(0, 0, 1, 1))
     var todoXPosition:CGFloat!
     var doneXPosition:CGFloat!
-    var transitionAnimation:(() -> Void)!
+    var showEditorAnimation:(() -> Void)!
+    var showStatsAnimation:(() -> Void)!
     var xMovement:CGFloat = 66.0
     var showsEditor = true
+    var separatorLine:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
         
-        self.transitionAnimation = {
+        self.showEditorAnimation = {
             for task in self.taskViews
             {
-                task.center.x += self.xMovement
+                if task.done
+                {
+                    task.center.x += (self.xMovement / 3)
+                } else {
+                    task.center.x += self.xMovement
+                }
+//                self.separatorLine.center.x += (self.xMovement / 7)
             }
+        }
+        self.showStatsAnimation = {
+            for task in self.taskViews
+            {
+                if !task.done
+                {
+                    task.center.x += (self.xMovement / 3)
+                } else {
+                    task.center.x += self.xMovement
+                }
+            }
+//            self.separatorLine.center.x += (self.xMovement / 7)
         }
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
-        let separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height * 0.7))
+        separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height * 0.7))
         separatorLine.backgroundColor = UIColor.blackColor()
         separatorLine.center = self.view.center
         self.view.addSubview(separatorLine)
@@ -250,7 +270,12 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let anCon = TransitionAnimator()
         anCon.showsEditor = self.showsEditor
-        anCon.animation = self.transitionAnimation
+        if self.showsEditor
+        {
+            anCon.animation = self.showEditorAnimation
+        } else {
+            anCon.animation = self.showStatsAnimation
+        }
         return anCon
     }
     
@@ -259,19 +284,24 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         anCon.showsEditor = self.showsEditor
         anCon.dismissing = true
         self.xMovement *= -1
-        anCon.animation = self.transitionAnimation
+        if self.showsEditor
+        {
+            anCon.animation = self.showEditorAnimation
+        } else {
+            anCon.animation = self.showStatsAnimation
+        }
         return anCon
     }
     
     @IBAction func checkStats(sender: UIBarButtonItem) {
         println("CHECK STATS")
-        self.xMovement = -26
+        self.xMovement = -150
         self.performSegueWithIdentifier("showStats", sender: self)
     }
     
     @IBAction func showEditor(sender: UIBarButtonItem) {
         println("SHOW EDITOR")
-        self.xMovement = 26
+        self.xMovement = 150
         self.performSegueWithIdentifier("showEditor", sender: self)
     }
     
