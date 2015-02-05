@@ -197,6 +197,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
             }) {(completed) ->Void in
+                self.checkTask(task)
                 task.convertImageToGrayScale()
         }
         self.collapseTodoTasks()
@@ -305,5 +306,49 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         self.performSegueWithIdentifier("showEditor", sender: self)
     }
     
+    func checkTask(task: TaskView)
+    {
+//        let bezierPath = UIBezierPath(catmullRomPoints: self.pointsArray, closed: false, alpha: 0.5)
+//        let bezier:CAShapeLayer = CAShapeLayer()
+//        bezier.path = bezierPath?.CGPath
+//        bezier.strokeColor = UIColor.yellowColor().CGColor
+//        bezier.fillColor = UIColor.clearColor().CGColor
+//        bezier.lineWidth = 30.0
+//        bezier.strokeStart = 0.0
+//        bezier.strokeEnd = 1.0
+//        self.scrollView.layer.addSublayer(bezier)
+
+        let bezPath = UIBezierPath()
+        let checkFrame = CGRectInset(task.frame, 10, 10)
+        bezPath.moveToPoint(CGPointMake(checkFrame.size.width * 0.3, checkFrame.size.height * 0.7))
+        bezPath.addLineToPoint(CGPointMake(checkFrame.size.width * 0.3, checkFrame.size.height))
+        bezPath.addLineToPoint(CGPointMake(checkFrame.size.width, checkFrame.size.height * 0.3))
+        
+        
+        
+        let bezLayer = CAShapeLayer()
+        bezLayer.path = bezPath.CGPath
+        bezLayer.strokeColor = UIColor.purpleColor().CGColor
+        bezLayer.fillColor = UIColor.clearColor().CGColor
+        bezLayer.lineWidth = 8.0
+        bezLayer.strokeStart = 0.0
+        bezLayer.strokeEnd = 0.0
+        task.layer.addSublayer(bezLayer)
+        
+        // Configure the animation
+        var drawAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        drawAnimation.repeatCount = 1.0
+        
+        // Animate from the full stroke being drawn to none of the stroke being drawn
+        drawAnimation.fromValue = NSNumber(double: 0.0)
+        drawAnimation.toValue = NSNumber(float: 5.0)
+        
+        drawAnimation.duration = 2
+        
+        drawAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        // Add the animation to the circle
+        bezLayer.addAnimation(drawAnimation, forKey: "check")
+    }
 
 }
