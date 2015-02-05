@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DNDEditorFoldersTableViewController: UITableViewController, UIViewControllerTransitioningDelegate {
+class DNDEditorFoldersTableViewController: UITableViewController, UIViewControllerTransitioningDelegate, NewTaskDelegate {
 
     let taskHandler = DNDTaskHandler()
     
@@ -21,12 +21,12 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        taskHandler.createFolder("Work")  // Make folder
+//        taskHandler.createFolder("Work")  // Make folder
         
-        let nuTask = DNDTask() // make task and put in folder
-        nuTask.name = "Mock Boss"
-        nuTask.imageName = "Mock.jpg"
-        taskHandler.addTask(nuTask, folder: "Work")
+//        let nuTask = DNDTask() // make task and put in folder
+//        nuTask.name = "Mock Boss"
+//        nuTask.imageName = "Mock.jpg"
+//        taskHandler.addTask(nuTask, folder: "Work")
 
     }
 
@@ -55,7 +55,10 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section
         {
-        case 0:
+        case taskHandler.folders().count:
+            let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as UITableViewCell
+            return cell
+        default:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
             
             // Configure the cell...
@@ -65,12 +68,7 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
             
             cell.textLabel?.text = tasks[indexPath.row]["Name"] as? String
             return cell
-        case taskHandler.folders().count:
-            let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as UITableViewCell
-            return cell
-        default: break
         }
-        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -111,10 +109,16 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addTask"
         {
-            let addTaskVC = segue.destinationViewController as UIViewController
+            let addTaskVC = segue.destinationViewController as NewTaskViewController
+            addTaskVC.delegate = self
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             addTaskVC.modalPresentationStyle = UIModalPresentationStyle.Custom
             addTaskVC.transitioningDelegate = self
         }
+    }
+    
+    func addTask(task: DNDTask) {
+        self.taskHandler.addTask(task, folder: "Work")
+        self.tableView.reloadData()
     }
 }

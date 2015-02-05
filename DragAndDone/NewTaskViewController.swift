@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol NewTaskDelegate {
+    func addTask(task: DNDTask)
+}
+
 class NewTaskViewController: UIViewController {
+    var delegate:NewTaskDelegate?
+    
+    let doStuff = ["Mock", "Brush", "Wash", "Sing", "Play", "Drink", "Eat", "Go", "Dance"]
+    let stuff = ["Teeth", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Snow"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +41,10 @@ class NewTaskViewController: UIViewController {
     */
 
     @IBAction func done() {
+        let nuTask = DNDTask()
+        nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
+        nuTask.imageName = "yeah"
+        self.delegate?.addTask(nuTask)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
