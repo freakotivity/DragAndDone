@@ -14,12 +14,6 @@
       "idiom" : "universal",
       "scale" : "3x",
       "filename" : "menu@3x.png"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "menu@0,5x.png",
-      "unassigned" : true,
-      "scale" : "1x"
     }
   ],
   "info" : {
