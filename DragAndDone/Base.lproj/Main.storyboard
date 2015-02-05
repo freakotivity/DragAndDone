@@ -115,22 +115,14 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="dk0-7h-GYb">
-<<<<<<< HEAD
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="5KS-fb-YFT">
-=======
                         <barButtonItem key="leftBarButtonItem" image="menu burger navbar" id="5KS-fb-YFT">
->>>>>>> Freakobranch
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="showEditor:" destination="BYZ-38-t0r" id="mp7-3q-dPd"/>
                             </connections>
                         </barButtonItem>
-<<<<<<< HEAD
-                        <barButtonItem key="rightBarButtonItem" title="🌸" id="wEk-dL-Meg">
-=======
                         <barButtonItem key="rightBarButtonItem" image="statistics circle navbar" id="wEk-dL-Meg">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
->>>>>>> Freakobranch
                             <connections>
                                 <action selector="checkStats:" destination="BYZ-38-t0r" id="8vw-FW-eHj"/>
                             </connections>
@@ -202,11 +194,8 @@
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
         <image name="menu.png" width="46" height="36"/>
-=======
         <image name="menu burger navbar" width="23" height="18"/>
         <image name="statistics circle navbar" width="23" height="23"/>
->>>>>>> Freakobranch
     </resources>
 </document>
