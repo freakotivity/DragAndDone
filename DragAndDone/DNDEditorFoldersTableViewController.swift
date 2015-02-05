@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DNDEditorFoldersTableViewController: UITableViewController {
+class DNDEditorFoldersTableViewController: UITableViewController, UIViewControllerTransitioningDelegate {
 
     let taskHandler = DNDTaskHandler()
     
@@ -40,28 +40,45 @@ class DNDEditorFoldersTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return taskHandler.folders().count
+        return taskHandler.folders().count + 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section < taskHandler.folders().count
+        {
         return taskHandler.tasksInFolder(taskHandler.folders()[section]).count
+        }
+        return 1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-        let folder = taskHandler.folders()[indexPath.section]
-        let tasks = taskHandler.tasksInFolder(folder) as NSArray
-        
-
-        cell.textLabel?.text = tasks[indexPath.row]["Name"] as? String
-        return cell
+        switch indexPath.section
+        {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+            
+            // Configure the cell...
+            let folder = taskHandler.folders()[indexPath.section]
+            let tasks = taskHandler.tasksInFolder(folder) as NSArray
+            
+            
+            cell.textLabel?.text = tasks[indexPath.row]["Name"] as? String
+            return cell
+        case taskHandler.folders().count:
+            let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as UITableViewCell
+            return cell
+        default: break
+        }
+        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section < taskHandler.folders().count
+        {
         return taskHandler.folders()[section]
+        }
+        return nil
     }
 
     
@@ -82,20 +99,22 @@ class DNDEditorFoldersTableViewController: UITableViewController {
 
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath: NSIndexPath)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("SECTION: \(indexPath.section) NUMBER OF SECTIONS \(tableView.numberOfSections())")
+        if indexPath.section < (tableView.numberOfSections() - 1)
+        {
+            println("DISMISS EDITOR!")
+                self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addTask"
+        {
+            let addTaskVC = segue.destinationViewController as UIViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            addTaskVC.modalPresentationStyle = UIModalPresentationStyle.Custom
+            addTaskVC.transitioningDelegate = self
+        }
     }
-    */
-
 }

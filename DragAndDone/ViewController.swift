@@ -87,6 +87,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
                 {
                     self.panOffset = CGPointMake(panPoint.x - taskView.center.x, panPoint.y - taskView.center.y)
                     grabbedTaskView = taskView
+                    grabbedTaskView.layer.zPosition = 1000
                     if !grabbedTaskView.done
                     {
                         self.showPlaceholder()
@@ -112,6 +113,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
                 } else {
                     self.moveTaskToNotDone(grabbedTaskView)
                 }
+                grabbedTaskView.layer.zPosition = 100
                 grabbedTaskView = nil
                 self.hidePlaceholder()
             }
