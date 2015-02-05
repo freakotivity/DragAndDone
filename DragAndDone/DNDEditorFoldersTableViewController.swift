@@ -21,6 +21,12 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+        
+        visualEffectView.frame = self.view.bounds
+        
+        self.tableView.backgroundView = visualEffectView
+        
 //        taskHandler.createFolder("Work")  // Make folder
         
 //        let nuTask = DNDTask() // make task and put in folder

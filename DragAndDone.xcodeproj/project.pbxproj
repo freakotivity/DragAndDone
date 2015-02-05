@@ -21,8 +21,6 @@
 		1FFF04991A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */; };
 		1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04971A82CDA100A346E1 /* DNDTask.swift */; };
 		1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */; };
-		C04842021A83957C00ADBE95 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C04842001A83957C00ADBE95 /* menu.png */; };
-		C04842031A83957C00ADBE95 /* menu@0,5x.png in Resources */ = {isa = PBXBuildFile; fileRef = C04842011A83957C00ADBE95 /* menu@0,5x.png */; };
 		C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */; };
 		C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177F1A7DCC33000CCE5C /* ViewController.swift */; };
 		C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04F17811A7DCC33000CCE5C /* Main.storyboard */; };
@@ -56,8 +54,6 @@
 		1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorFoldersTableViewController.swift; sourceTree = "<group>"; };
 		1FFF04971A82CDA100A346E1 /* DNDTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTask.swift; sourceTree = "<group>"; };
 		1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTaskHandler.swift; sourceTree = "<group>"; };
-		C04842001A83957C00ADBE95 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = ../../Design/iOSApps/DragAndDone/exports/menu.png; sourceTree = "<group>"; };
-		C04842011A83957C00ADBE95 /* menu@0,5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@0,5x.png"; path = "../../Design/iOSApps/DragAndDone/exports/menu@0,5x.png"; sourceTree = "<group>"; };
 		C04F17781A7DCC33000CCE5C /* DragAndDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragAndDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04F177C1A7DCC33000CCE5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,8 +126,6 @@
 		C04F177B1A7DCC33000CCE5C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C04842001A83957C00ADBE95 /* menu.png */,
-				C04842011A83957C00ADBE95 /* menu@0,5x.png */,
 				1F31109A1A814787000222F3 /* 1.jpg */,
 				1F31109B1A814787000222F3 /* 2.jpg */,
 				1F31109C1A814787000222F3 /* 3.jpg */,
@@ -241,13 +235,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F3110A21A814787000222F3 /* 4.jpg in Resources */,
-				C04842031A83957C00ADBE95 /* menu@0,5x.png in Resources */,
 				1F3110A01A814787000222F3 /* 2.jpg in Resources */,
 				C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */,
 				1F3110A31A814787000222F3 /* 5.jpg in Resources */,
 				C04F17881A7DCC33000CCE5C /* LaunchScreen.xib in Resources */,
 				1F3110991A8140A2000222F3 /* my.png in Resources */,
-				C04842021A83957C00ADBE95 /* menu.png in Resources */,
 				C04F17851A7DCC33000CCE5C /* Images.xcassets in Resources */,
 				1F3110A11A814787000222F3 /* 3.jpg in Resources */,
 				1F31109F1A814787000222F3 /* 1.jpg in Resources */,
