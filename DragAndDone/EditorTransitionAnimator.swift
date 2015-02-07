@@ -19,7 +19,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             let duration = self.transitionDuration(transitionContext)
             
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                //                self.animation()
+                
                     fromVC!.view.frame.origin.x = -containerView.bounds.size.width * 2 / 3
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
@@ -38,6 +38,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+
                     toVc!.view.frame.origin.x = 0
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)

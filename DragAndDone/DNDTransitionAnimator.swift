@@ -10,7 +10,6 @@ import UIKit
 
 class DNDTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     var dismissing:Bool = false
-
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
     }
