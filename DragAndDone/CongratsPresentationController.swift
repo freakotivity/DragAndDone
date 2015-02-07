@@ -10,7 +10,7 @@ import UIKit
 
 class CongratsPresentationController: UIPresentationController {
     lazy var dimmingView :UIView = {
-        let fx = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let fx = UIBlurEffect(style: UIBlurEffectStyle.Light)
         let fxView = UIVisualEffectView(effect: fx)
         fxView.frame = self.containerView!.bounds
         fxView.alpha = 1.0

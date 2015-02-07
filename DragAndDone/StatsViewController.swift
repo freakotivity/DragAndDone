@@ -9,10 +9,17 @@
 import UIKit
 
 class StatsViewController: UIViewController {
-
+    lazy var dimmingView :UIView = {
+        let fx = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let fxView = UIVisualEffectView(effect: fx)
+        fxView.frame = self.view.bounds
+        fxView.alpha = 1.0
+        return fxView
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.addSubview(dimmingView)
         // Do any additional setup after loading the view.
         println("STATS VIEW CONTROLLER DID LOAD")
     }

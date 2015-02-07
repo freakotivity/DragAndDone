@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Gabriel Kroll. All rights reserved.
 //
 
+//         UIColor(red: 142/255.0, green: 68/255.0, blue: 173/255.0, alpha: 1.0)
+// 142 68 173
+
+
 import UIKit
 
 class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
@@ -20,7 +24,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var showEditorAnimation:(() -> Void)!
     var showStatsAnimation:(() -> Void)!
     var separatorLine:UIView!
+    
     var transitionAnimator:DNDTransitionAnimator!
+    var transitionPresentationController:UIPresentationController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +56,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
             taskView.initialPosition = taskView.center
             taskView.textLabel.text = "\(i)"
             taskView.image = UIImage(named: "\(i).jpg")
+//            [view.layer addObserver:self forKeyPath:@"position" options:0 context:NULL];
+
             
             self.view.addSubview(taskView)
             self.taskViews.append(taskView)
@@ -65,6 +74,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         
         self.navigationItem.title = "Daily Stuff"
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -231,6 +242,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.transitionAnimator = nil
+        self.transitionPresentationController = nil
+        
         if segue.identifier == "showStats"
         {
             self.transitionAnimator = StatsTransitionAnimator()
@@ -249,6 +263,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
         if segue.identifier == "congratulations"
         {
+            self.transitionPresentationController = CongratsPresentationController()
             self.transitionAnimator = CongratulationsTransitionAnimator()
             let congrats = segue.destinationViewController as UIViewController
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -268,7 +283,12 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     }
     
     func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return CongratsPresentationController(presentedViewController: presented, presentingViewController: presenting)
+        if self.transitionPresentationController != nil
+        {
+            self.transitionPresentationController = CongratsPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            return self.transitionPresentationController
+        }
+        return nil
     }
     
     @IBAction func checkStats(sender: UIBarButtonItem) {
