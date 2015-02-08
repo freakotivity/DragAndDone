@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gZ2-Pf-TQ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -104,7 +104,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC" customClass="PurpleBackgroundGradientView" customModule="DragAndDone" customModuleProvider="target">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -128,6 +128,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="MBt-In-drn" kind="presentation" identifier="showEditor" id="quj-6k-eJZ"/>
                         <segue destination="iTy-z2-9cT" kind="presentation" identifier="showStats" id="u2a-vy-Xbq"/>
@@ -141,7 +142,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1152" y="266"/>
+            <point key="canvasLocation" x="1159" y="276"/>
         </scene>
         <!--Congratulations View Controller-->
         <scene sceneID="NVQ-P7-cdA">
@@ -209,29 +210,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1800" y="261"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3sG-nD-AxU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gZ2-Pf-TQ7" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TQ4-mQ-Fa4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <gestureRecognizers/>
-                        <color key="barTintColor" red="0.55686274509803924" green="0.26666666666666666" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mdJ-U0-Ihf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pap-81-zkw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="440" y="-407"/>
         </scene>
     </scenes>
     <resources>

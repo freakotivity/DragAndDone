@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */; };
 		1F25BADB1A8692F4000D6B22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F25BADA1A8692F4000D6B22 /* Images.xcassets */; };
+		1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */; };
 		1F3110951A7E499C000222F3 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110941A7E499C000222F3 /* TaskView.swift */; };
 		1F3110971A7EB5A6000222F3 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110961A7EB5A6000222F3 /* Placeholder.swift */; };
 		1F3110991A8140A2000222F3 /* my.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3110981A8140A2000222F3 /* my.png */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleBackgroundGradientView.swift; sourceTree = "<group>"; };
 		1F25BADA1A8692F4000D6B22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1F3110941A7E499C000222F3 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		1F3110961A7EB5A6000222F3 /* Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		1F3110981A8140A2000222F3 /* my.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my.png; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */,
 				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
+				1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */,
 				1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */,
 				1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */,
 				1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */,
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */,
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */,

@@ -29,11 +29,25 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var transitionPresentationController:UIPresentationController!
     
     
+    var topBar = UIView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
         
-
+        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 51.0)
+        self.topBar.frame.origin = CGPointMake(0, 0)
+        self.topBar.backgroundColor = UIColor.wisteria()
+        self.view.addSubview(self.topBar)
+        
+        let hamburger = UIButton(frame: CGRectMake(8, 20, 22, 22))
+        hamburger.setImage(UIImage(named: "menu burger navbar"), forState: UIControlState.Normal)
+        self.topBar.addSubview(hamburger)
+        
+        let statsButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 30, 20, 22, 22))
+        statsButton.setImage(UIImage(named: "statistics circle navbar"), forState: UIControlState.Normal)
+        self.topBar.addSubview(statsButton)
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
