@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */; };
+		1F25BADB1A8692F4000D6B22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F25BADA1A8692F4000D6B22 /* Images.xcassets */; };
 		1F3110951A7E499C000222F3 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110941A7E499C000222F3 /* TaskView.swift */; };
 		1F3110971A7EB5A6000222F3 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110961A7EB5A6000222F3 /* Placeholder.swift */; };
 		1F3110991A8140A2000222F3 /* my.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3110981A8140A2000222F3 /* my.png */; };
@@ -32,7 +33,6 @@
 		C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04F17811A7DCC33000CCE5C /* Main.storyboard */; };
 		C04F17881A7DCC33000CCE5C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C04F17861A7DCC33000CCE5C /* LaunchScreen.xib */; };
 		C04F17941A7DCC33000CCE5C /* DragAndDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F17931A7DCC33000CCE5C /* DragAndDoneTests.swift */; };
-		C05D07B61A8501D800479829 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05D07B51A8501D800479829 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleBackgroundGradientView.swift; sourceTree = "<group>"; };
+		1F25BADA1A8692F4000D6B22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F3110941A7E499C000222F3 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		1F3110961A7EB5A6000222F3 /* Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		1F3110981A8140A2000222F3 /* my.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my.png; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		C04F178D1A7DCC33000CCE5C /* DragAndDoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DragAndDoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04F17921A7DCC33000CCE5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04F17931A7DCC33000CCE5C /* DragAndDoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDoneTests.swift; sourceTree = "<group>"; };
-		C05D07B51A8501D800479829 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../../.Trash/Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,7 @@
 				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
 				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
 				C04F17811A7DCC33000CCE5C /* Main.storyboard */,
-				C05D07B51A8501D800479829 /* Images.xcassets */,
+				1F25BADA1A8692F4000D6B22 /* Images.xcassets */,
 				C04F17861A7DCC33000CCE5C /* LaunchScreen.xib */,
 				C04F177B1A7DCC33000CCE5C /* Supporting Files */,
 			);
@@ -252,7 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C05D07B61A8501D800479829 /* Images.xcassets in Resources */,
+				1F25BADB1A8692F4000D6B22 /* Images.xcassets in Resources */,
 				1F3110A21A814787000222F3 /* 4.jpg in Resources */,
 				1F3110A01A814787000222F3 /* 2.jpg in Resources */,
 				C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */,
