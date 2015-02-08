@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< Updated upstream
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gZ2-Pf-TQ7">
+>>>>>>> Stashed changes
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -115,13 +119,13 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="dk0-7h-GYb">
-                        <barButtonItem key="leftBarButtonItem" image="menu burger navbar" id="5KS-fb-YFT">
+                        <barButtonItem key="leftBarButtonItem" image="menu button" id="5KS-fb-YFT">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="showEditor:" destination="BYZ-38-t0r" id="mp7-3q-dPd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="statistics circle navbar" id="wEk-dL-Meg">
+                        <barButtonItem key="rightBarButtonItem" image="statistics button" id="wEk-dL-Meg">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="checkStats:" destination="BYZ-38-t0r" id="8vw-FW-eHj"/>
@@ -213,7 +217,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menu burger navbar" width="23" height="18"/>
-        <image name="statistics circle navbar" width="23" height="23"/>
+        <image name="menu button" width="46" height="37"/>
+        <image name="statistics button" width="46" height="46"/>
     </resources>
 </document>
