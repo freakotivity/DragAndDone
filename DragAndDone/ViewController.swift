@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         super.viewDidLoad()
         println("YEAH")
         
-        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 151.0)
+        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 51.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
         self.topBar.backgroundColor = UIColor.wisteria()
         self.view.addSubview(self.topBar)
@@ -311,12 +311,21 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     @IBAction func checkStats(sender: UIBarButtonItem) {
         println("CHECK STATS")
+        self.hideLine()
         self.performSegueWithIdentifier("showStats", sender: self)
     }
     
     @IBAction func showEditor(sender: UIBarButtonItem) {
         println("SHOW EDITOR")
+        self.hideLine()
         self.performSegueWithIdentifier("showEditor", sender: self)
+    }
+    
+    func hideLine()
+    {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.separatorLine.alpha = 0.0
+        })
     }
     
     func checkTask(task: TaskView)

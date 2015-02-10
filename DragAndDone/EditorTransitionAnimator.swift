@@ -34,8 +34,11 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                     }
                 }
 
-                    fromVC!.view.frame.origin.x = -containerView.bounds.size.width * 2 / 3
+                    fromVC!.view.frame.origin.x = -containerView.bounds.size.width / 2
                 }, completion: { (completed) -> Void in
+                    UIView.animateWithDuration(0.5, animations: { () -> Void in
+                        (toVC as ViewController).separatorLine.alpha = 1.0
+                    })
                     transitionContext.completeTransition(true)
             })
             
@@ -47,7 +50,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             
             let containerView = transitionContext.containerView()
             var frame:CGRect!
-                frame = CGRectMake(-containerView.bounds.size.width * 2 / 3, topBarHeight, containerView.bounds.size.width * 2 / 3,containerView.bounds.size.height - topBarHeight)
+                frame = CGRectMake(-containerView.bounds.size.width / 2, topBarHeight, containerView.bounds.size.width / 2,containerView.bounds.size.height - topBarHeight)
             toVc?.view.frame = frame
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
@@ -57,9 +60,10 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 {
                     if tv.done
                     {
-                    tv.center.x = containerView.frame.size.width
+                    tv.frame.origin.x = containerView.frame.size.width
                     } else {
-                        tv.center.x = frame.size.width
+                        tv.center.x = (fromVc as ViewController).doneXPosition
+                        
                     }
                 }
                     toVc!.view.frame.origin.x = 0

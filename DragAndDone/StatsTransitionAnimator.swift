@@ -31,6 +31,9 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
                 }
                 fromVC!.view.frame.origin.x = containerView.bounds.size.width
                 }, completion: { (completed) -> Void in
+                    UIView.animateWithDuration(0.5, animations: { () -> Void in
+                        (toVC as ViewController).separatorLine.alpha = 1.0
+                    })
                     transitionContext.completeTransition(true)
             })
             
@@ -42,7 +45,7 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             
             let containerView = transitionContext.containerView()
             var frame:CGRect!
-            frame = CGRectMake(containerView.bounds.size.width, topBarHeight, containerView.bounds.size.width * 2 / 3,containerView.bounds.size.height - topBarHeight)
+            frame = CGRectMake(containerView.bounds.size.width, topBarHeight, containerView.bounds.size.width / 2,containerView.bounds.size.height - topBarHeight)
             toVc?.view.frame = frame
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
@@ -51,12 +54,12 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
                 {
                     if tv.done
                     {
-                        tv.center.x = fromVc!.view.frame.size.width - frame.size.width
+                        tv.center.x = (fromVc as ViewController).todoXPosition
                     } else {
-                        tv.center.x = 0.0
+                        tv.frame.origin.x = -tv.frame.size.width
                     }
                 }
-                toVc!.view.frame.origin.x = containerView.bounds.size.width / 3
+                toVc!.view.frame.origin.x = containerView.bounds.size.width / 2
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
             })
