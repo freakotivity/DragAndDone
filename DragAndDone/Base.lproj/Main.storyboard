@@ -195,7 +195,7 @@
                     <view key="view" contentMode="scaleToFill" id="H6y-pI-htK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.31372549020000001" blue="0.47450980390000003" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ASk-dV-9bp" appends="YES" id="p6g-2z-ysc"/>
