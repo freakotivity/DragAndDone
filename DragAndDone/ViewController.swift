@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         super.viewDidLoad()
         println("YEAH")
         
-        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 51.0)
+        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 151.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
         self.topBar.backgroundColor = UIColor.wisteria()
         self.view.addSubview(self.topBar)
