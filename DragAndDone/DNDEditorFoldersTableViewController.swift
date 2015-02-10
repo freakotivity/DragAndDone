@@ -25,7 +25,7 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
         
         visualEffectView.frame = self.view.bounds
         
-        self.tableView.backgroundView = visualEffectView
+//        self.tableView.backgroundView = visualEffectView
         
 //        taskHandler.createFolder("Work")  // Make folder
         

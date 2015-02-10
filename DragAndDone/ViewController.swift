@@ -43,6 +43,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         
         let hamburger = UIButton(frame: CGRectMake(8, 20, 22, 22))
         hamburger.setImage(UIImage(named: "menu burger navbar"), forState: UIControlState.Normal)
+        hamburger.addTarget(self, action: "showEditor:", forControlEvents: UIControlEvents.TouchUpInside)
         self.topBar.addSubview(hamburger)
         
         let statsButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 30, 20, 22, 22))
@@ -270,6 +271,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         if segue.identifier == "showEditor"
         {
             self.transitionAnimator = EditorTransitionAnimator()
+            (self.transitionAnimator as EditorTransitionAnimator).taskViews = self.taskViews
             let stats = segue.destinationViewController as UIViewController
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             stats.modalPresentationStyle = UIModalPresentationStyle.Custom

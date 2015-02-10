@@ -9,6 +9,9 @@
 import UIKit
 
 class EditorTransitionAnimator: DNDTransitionAnimator {
+    
+    var taskViews = Array<TaskView>()
+    
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         println("ANIMATE TRANSITION")
         if dismissing
@@ -19,7 +22,16 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             let duration = self.transitionDuration(transitionContext)
             
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                
+                for tv in self.taskViews
+                {
+                    if tv.done
+                    {
+                        tv.center.x -= 60.0
+                    } else {
+                        tv.center.x -= 160.0
+                    }
+                }
+
                     fromVC!.view.frame.origin.x = -containerView.bounds.size.width * 2 / 3
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
@@ -39,6 +51,15 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             let duration = self.transitionDuration(transitionContext)
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
 
+                for tv in self.taskViews
+                {
+                    if tv.done
+                    {
+                    tv.center.x += 60.0
+                    } else {
+                        tv.center.x += 160.0
+                    }
+                }
                     toVc!.view.frame.origin.x = 0
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
