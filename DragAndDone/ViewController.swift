@@ -48,6 +48,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         
         let statsButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 30, 20, 22, 22))
         statsButton.setImage(UIImage(named: "statistics circle navbar"), forState: UIControlState.Normal)
+        statsButton.addTarget(self, action: "checkStats:", forControlEvents: UIControlEvents.TouchUpInside)
         self.topBar.addSubview(statsButton)
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
@@ -263,6 +264,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         if segue.identifier == "showStats"
         {
             self.transitionAnimator = StatsTransitionAnimator()
+            (self.transitionAnimator as StatsTransitionAnimator).taskViews = self.taskViews
             let stats = segue.destinationViewController as UIViewController
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             stats.modalPresentationStyle = UIModalPresentationStyle.Custom

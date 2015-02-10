@@ -7,6 +7,8 @@
 //
 
 import UIKit
+let topBarHeight:CGFloat = 51.0
+
 
 class EditorTransitionAnimator: DNDTransitionAnimator {
     
@@ -26,9 +28,9 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 {
                     if tv.done
                     {
-                        tv.center.x -= 60.0
+                        tv.center.x = (toVC as ViewController).doneXPosition
                     } else {
-                        tv.center.x -= 160.0
+                        tv.center.x = (toVC as ViewController).todoXPosition
                     }
                 }
 
@@ -45,7 +47,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             
             let containerView = transitionContext.containerView()
             var frame:CGRect!
-                frame = CGRectMake(-containerView.bounds.size.width * 2 / 3, 66, containerView.bounds.size.width * 2 / 3,containerView.bounds.size.height - 66)
+                frame = CGRectMake(-containerView.bounds.size.width * 2 / 3, topBarHeight, containerView.bounds.size.width * 2 / 3,containerView.bounds.size.height - topBarHeight)
             toVc?.view.frame = frame
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
@@ -55,9 +57,9 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 {
                     if tv.done
                     {
-                    tv.center.x += 60.0
+                    tv.center.x = containerView.frame.size.width
                     } else {
-                        tv.center.x += 160.0
+                        tv.center.x = frame.size.width
                     }
                 }
                     toVc!.view.frame.origin.x = 0

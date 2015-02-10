@@ -9,6 +9,7 @@
 import UIKit
 
 class StatsTransitionAnimator: DNDTransitionAnimator {
+    var taskViews = Array<TaskView>()
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         println("ANIMATE TRANSITION")
         if dismissing
@@ -19,7 +20,15 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             let duration = self.transitionDuration(transitionContext)
             
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                //                self.animation()
+                for tv in self.taskViews
+                {
+                    if tv.done
+                    {
+                        tv.center.x = (toVC as ViewController).doneXPosition
+                    } else {
+                        tv.center.x = (toVC as ViewController).todoXPosition
+                    }
+                }
                 fromVC!.view.frame.origin.x = containerView.bounds.size.width
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
@@ -33,11 +42,20 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             
             let containerView = transitionContext.containerView()
             var frame:CGRect!
-            frame = CGRectMake(containerView.bounds.size.width, 66, containerView.bounds.size.width * 2 / 3,containerView.bounds.size.height - 66)
+            frame = CGRectMake(containerView.bounds.size.width, topBarHeight, containerView.bounds.size.width * 2 / 3,containerView.bounds.size.height - topBarHeight)
             toVc?.view.frame = frame
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                for tv in self.taskViews
+                {
+                    if tv.done
+                    {
+                        tv.center.x = fromVc!.view.frame.size.width - frame.size.width
+                    } else {
+                        tv.center.x = 0.0
+                    }
+                }
                 toVc!.view.frame.origin.x = containerView.bounds.size.width / 3
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
