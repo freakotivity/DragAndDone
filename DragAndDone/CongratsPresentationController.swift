@@ -67,4 +67,5 @@ class CongratsPresentationController: UIPresentationController {
         //        frame = CGRectInset(frame, 50.0, 50.0)
         
         return frame
-    }}
+    }
+}

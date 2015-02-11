@@ -272,6 +272,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
         if segue.identifier == "showEditor"
         {
+            self.transitionPresentationController = EditorPresentationController()
             self.transitionAnimator = EditorTransitionAnimator()
             (self.transitionAnimator as EditorTransitionAnimator).taskViews = self.taskViews
             let stats = segue.destinationViewController as UIViewController
@@ -303,7 +304,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
         if self.transitionPresentationController != nil
         {
-            self.transitionPresentationController = CongratsPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            if self.transitionPresentationController.isKindOfClass(CongratsPresentationController.self)
+            {
+                self.transitionPresentationController = CongratsPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            }
+            if self.transitionPresentationController.isKindOfClass(EditorPresentationController.self)
+            {
+                self.transitionPresentationController = EditorPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            }
+            
             return self.transitionPresentationController
         }
         return nil

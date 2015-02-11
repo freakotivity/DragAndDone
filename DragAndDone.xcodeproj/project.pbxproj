@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */; };
+		1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */; };
+		1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */; };
 		1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */; };
 		1F25BADB1A8692F4000D6B22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F25BADA1A8692F4000D6B22 /* Images.xcassets */; };
 		1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */; };
@@ -47,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorViewController.swift; sourceTree = "<group>"; };
+		1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorEdge.swift; sourceTree = "<group>"; };
+		1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
 		1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleBackgroundGradientView.swift; sourceTree = "<group>"; };
 		1F25BADA1A8692F4000D6B22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -98,6 +104,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0FB07D1A8B808200CAA5C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F913F371A82AF7D00C91205 /* StatsViewController.swift */,
+				1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */,
+				1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */,
+				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
+				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
+				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1F0FB07E1A8B809F00CAA5C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		1F0FB07F1A8B80A600CAA5C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F3110941A7E499C000222F3 /* TaskView.swift */,
+				1F3110961A7EB5A6000222F3 /* Placeholder.swift */,
+				1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */,
+				1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1F0FB0801A8B80BC00CAA5C6 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */,
+				1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */,
+				1FDBE0C11A84098900CE9E69 /* StatsTransitionAnimator.swift */,
+				1FDBE0C31A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift */,
+				1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */,
+				1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */,
+			);
+			name = Animators;
+			sourceTree = "<group>";
+		};
+		1F0FB0811A8B80C400CAA5C6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF04971A82CDA100A346E1 /* DNDTask.swift */,
+				1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		C04F176F1A7DCC33000CCE5C = {
 			isa = PBXGroup;
 			children = (
@@ -120,22 +180,11 @@
 			isa = PBXGroup;
 			children = (
 				C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */,
-				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
-				1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */,
-				1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */,
-				1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */,
-				1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */,
-				1FDBE0C11A84098900CE9E69 /* StatsTransitionAnimator.swift */,
-				1FDBE0C31A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift */,
-				1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */,
-				1F913F371A82AF7D00C91205 /* StatsViewController.swift */,
-				1F3110941A7E499C000222F3 /* TaskView.swift */,
-				1F3110961A7EB5A6000222F3 /* Placeholder.swift */,
-				1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */,
-				1FFF04971A82CDA100A346E1 /* DNDTask.swift */,
-				1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */,
-				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
-				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
+				1F0FB07D1A8B808200CAA5C6 /* View Controllers */,
+				1F0FB07E1A8B809F00CAA5C6 /* Extensions */,
+				1F0FB07F1A8B80A600CAA5C6 /* Views */,
+				1F0FB0801A8B80BC00CAA5C6 /* Animators */,
+				1F0FB0811A8B80C400CAA5C6 /* Classes */,
 				C04F17811A7DCC33000CCE5C /* Main.storyboard */,
 				1F25BADA1A8692F4000D6B22 /* Images.xcassets */,
 				C04F17861A7DCC33000CCE5C /* LaunchScreen.xib */,
@@ -285,12 +334,15 @@
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */,
+				1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */,
 				C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */,
 				1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */,
 				1F913F381A82AF7D00C91205 /* StatsViewController.swift in Sources */,
+				1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */,
 				1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */,
 				1FDBE0C41A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift in Sources */,
 				1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */,
+				1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */,
 				1FDBE0C61A840CC000CE9E69 /* DNDTransitionAnimator.swift in Sources */,
 				1FFF04991A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift in Sources */,
 				1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */,
