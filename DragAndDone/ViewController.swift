@@ -37,17 +37,17 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         super.viewDidLoad()
         println("YEAH")
         
-        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 51.0)
+        self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 64.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
         self.topBar.backgroundColor = UIColor.wisteria()
         self.view.addSubview(self.topBar)
         
-        let hamburger = UIButton(frame: CGRectMake(8, 20, 22, 22))
+        let hamburger = UIButton(frame: CGRectMake(8, 30, 22, 22))
         hamburger.setImage(UIImage(named: "menu burger navbar"), forState: UIControlState.Normal)
         hamburger.addTarget(self, action: "showEditor:", forControlEvents: UIControlEvents.TouchUpInside)
         self.topBar.addSubview(hamburger)
         
-        let statsButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 30, 20, 22, 22))
+        let statsButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 30, 30, 22, 22))
         statsButton.setImage(UIImage(named: "statistics circle navbar"), forState: UIControlState.Normal)
         statsButton.addTarget(self, action: "checkStats:", forControlEvents: UIControlEvents.TouchUpInside)
         self.topBar.addSubview(statsButton)
