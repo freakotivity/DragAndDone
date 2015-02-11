@@ -9,8 +9,8 @@
 import UIKit
 
 class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let doStuff = ["Mock", "Brush", "Wash", "Sing", "Play", "Drink", "Eat", "Go", "Dance"]
-    let stuff = ["Teeth", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Snow"]
+    let doStuff = ["Sniff", "Worship"]
+    let stuff = ["Satan", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Glue"]
     var selectedFolder:Int?
     let taskHandler = DNDTaskHandler()
     
