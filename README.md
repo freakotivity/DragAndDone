@@ -3,7 +3,7 @@ FREAKOTIVITY ORGANISATION
 Gabriel Kroll
  (Creator - Design and Concept)
 
-Ricardo Gonzales
+Ricardo Gonzalez
  (Co-Creator - iOS Developement)
 
 ******************************************************************************************
