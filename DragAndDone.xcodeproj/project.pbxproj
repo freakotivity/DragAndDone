@@ -10,6 +10,7 @@
 		1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */; };
 		1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */; };
 		1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */; };
+		1F0FB0851A8B84E600CAA5C6 /* tempTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */; };
 		1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */; };
 		1F25BADB1A8692F4000D6B22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F25BADA1A8692F4000D6B22 /* Images.xcassets */; };
 		1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */; };
@@ -53,6 +54,7 @@
 		1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorViewController.swift; sourceTree = "<group>"; };
 		1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorEdge.swift; sourceTree = "<group>"; };
 		1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
+		1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tempTableViewController.swift; sourceTree = "<group>"; };
 		1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleBackgroundGradientView.swift; sourceTree = "<group>"; };
 		1F25BADA1A8692F4000D6B22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
 				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
 				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
+				1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			files = (
 				1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */,
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
+				1F0FB0851A8B84E600CAA5C6 /* tempTableViewController.swift in Sources */,
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */,
 				1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */,

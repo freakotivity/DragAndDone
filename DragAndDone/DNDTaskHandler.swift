@@ -19,7 +19,7 @@ class DNDTaskHandler: NSObject {
     
     func addTask(task: DNDTask, folder: String)
     {
-        println("ADD TASK \(task.name!)")
+//        println("ADD TASK \(task.name!)")
         let plist = self.plist()
         
         var foldersArray = NSMutableArray()
@@ -45,7 +45,7 @@ class DNDTaskHandler: NSObject {
     
     func plistLocation() -> NSString
     {
-        println(docDir().stringByAppendingPathComponent("tasks.plist"))
+//        println(docDir().stringByAppendingPathComponent("tasks.plist"))
         return docDir().stringByAppendingPathComponent("tasks.plist")
     }
     
@@ -71,5 +71,14 @@ class DNDTaskHandler: NSObject {
     func tasksInFolder(folder:String) ->NSArray
     {
         return self.plist()[folder] as NSArray
+    }
+    
+    func moveTaskFromIndex(fromIndex:Int, toIndex:Int, inFolder:String)
+    {
+        var plist = self.plist()
+        var tasks = self.tasksInFolder(inFolder) as Array
+        tasks.insert(tasks.removeAtIndex(fromIndex), atIndex: toIndex)
+        plist.setObject(tasks, forKey: inFolder)
+        plist.writeToFile(self.plistLocation(), atomically: true)
     }
 }

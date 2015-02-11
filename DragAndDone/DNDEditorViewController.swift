@@ -17,13 +17,16 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var foldersTableView: UITableView!
     @IBOutlet weak var currentFolderLabel: UILabel!
     @IBOutlet weak var tasksTableView: UITableView!
+    @IBOutlet weak var addTaskButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        selectedFolder = 3
+        self.tasksTableView.setEditing(true, animated: false)
+        self.foldersTableView.backgroundView = EditorEdge()
+        self.checkIfAddTaskButtonShouldBeEnabled()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -37,7 +40,10 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if tableView == self.tasksTableView
         {
-            return 5
+            if self.selectedFolder != nil
+            {
+                return taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count
+            }
         }
         return 0
     }
@@ -70,16 +76,9 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.textLabel?.text = ""
             if let selFol = self.selectedFolder
             {
-                if (indexPath.row + 1) > (taskHandler.tasksInFolder(taskHandler.folders()[selFol]).count)
-                {
-                    if indexPath.row == 4
-                    {
-                        cell.textLabel?.text = "Add task"
-                    }
-                } else {
-                    let task = taskHandler.tasksInFolder(taskHandler.folders()[selFol])[indexPath.row] as NSDictionary
-                    cell.textLabel?.text = task["Name"] as? String
-                }
+                
+                let task = taskHandler.tasksInFolder(taskHandler.folders()[selFol])[indexPath.row] as NSDictionary
+                cell.textLabel?.text = task["Name"] as? String
             }
             
         }
@@ -93,23 +92,19 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             self.currentFolderLabel.text = taskHandler.folders()[indexPath.row]
             self.selectedFolder = indexPath.row
             tableView.reloadData()
+            self.tasksTableView.setEditing(false, animated: false)
+            self.tasksTableView.setEditing(true, animated: false)
             self.tasksTableView.reloadData()
+            
         }
         if tableView == self.tasksTableView
         {
             println("SELECTED TASK")
             let cell = self.tasksTableView.cellForRowAtIndexPath(indexPath)
-            if cell?.textLabel?.text == "Add task"
-            {
-                println("ADD TASK!")
-                let nuTask = DNDTask()
-                nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
-                nuTask.imageName = "yeah"
-                nuTask.doneImageName = "yeha"
-                taskHandler.addTask(nuTask, folder: taskHandler.folders()[self.selectedFolder!])
-                self.tasksTableView.reloadData()
-            }
+            
         }
+        self.checkIfAddTaskButtonShouldBeEnabled()
+        
     }
     
     @IBAction func addFolder() {
@@ -137,5 +132,56 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     func tappedDimmingView()
     {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    
+    // Override to support conditional rearranging of the table view.
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the item to be re-orderable.
+        println("CAN MOVE AT INDEXPATH \(indexPath)")
+        if tableView == self.tasksTableView
+        {
+            if indexPath.row + 1 <= self.taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count
+            {
+                println("YEP")
+                return true
+            }
+        }
+        println("NOPE")
+        return false
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        println("MOVE FROM \(sourceIndexPath) TO \(destinationIndexPath)")
+        self.taskHandler.moveTaskFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row, inFolder: self.taskHandler.folders()[self.selectedFolder!])
+    }
+    
+    
+    @IBAction func addTask() {
+        println("ADD TASK!")
+        let nuTask = DNDTask()
+        nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
+        nuTask.imageName = "yeah"
+        nuTask.doneImageName = "yeha"
+        taskHandler.addTask(nuTask, folder: taskHandler.folders()[self.selectedFolder!])
+        self.tasksTableView.reloadData()
+        self.checkIfAddTaskButtonShouldBeEnabled()
+    }
+    
+    func checkIfAddTaskButtonShouldBeEnabled()
+    {
+        if self.selectedFolder == nil
+        {
+            self.addTaskButton.enabled = false
+        } else {
+            if taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count >= 5
+            {
+                self.addTaskButton.enabled = false
+            } else {
+                self.addTaskButton.enabled = true
+            }
+        }
     }
 }
