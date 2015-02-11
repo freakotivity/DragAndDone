@@ -12,7 +12,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class ViewController: UIViewController, UIViewControllerTransitioningDelegate, DNDEditorDelegate {
     var taskViews: [TaskView] = []
     var doneTaskViews: [TaskView] = []
     var grabbedTaskView:TaskView!
@@ -30,6 +30,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     
     var topBar = UIView()
+    let taskHandler = DNDTaskHandler()
     
     
     override func viewDidLoad() {
@@ -272,6 +273,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
         if segue.identifier == "showEditor"
         {
+            let editorVC = segue.destinationViewController as DNDEditorViewController
+            editorVC.delegate = self
             self.transitionPresentationController = EditorPresentationController()
             self.transitionAnimator = EditorTransitionAnimator()
             (self.transitionAnimator as EditorTransitionAnimator).taskViews = self.taskViews
@@ -385,6 +388,12 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         
         // Add the animation to the circle
         bezLayer.addAnimation(drawAnimation, forKey: "check")
+    }
+    
+    func pickedFolder(folder: String) {
+        println("PICKED FOLDER \(folder)")
+        let color = self.taskHandler.colorForFolder(folder)
+        self.topBar.backgroundColor = color
     }
 
 }

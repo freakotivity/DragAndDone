@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol DNDEditorDelegate {
+    func pickedFolder(folder: String)
+}
+
 class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var delegate:DNDEditorDelegate?
     let doStuff = ["Sniff", "Worship"]
     let stuff = ["Satan", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Glue"]
     var selectedFolder:Int?
@@ -57,6 +62,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             cell = tableView.dequeueReusableCellWithIdentifier("FolderCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel?.text = taskHandler.folders()[indexPath.row]
+            cell.textLabel?.textColor = taskHandler.colorForFolder(taskHandler.folders()[indexPath.row])
             
             if indexPath.row == selectedFolder
             {
@@ -95,6 +101,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tasksTableView.setEditing(false, animated: false)
             self.tasksTableView.setEditing(true, animated: false)
             self.tasksTableView.reloadData()
+            delegate?.pickedFolder(taskHandler.folders()[indexPath.row])
             
         }
         if tableView == self.tasksTableView

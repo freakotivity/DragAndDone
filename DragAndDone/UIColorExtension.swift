@@ -12,5 +12,44 @@ extension UIColor {
     class func wisteria() -> UIColor {
         return UIColor(red: 0x8E/255.0, green: 0x44/255.0, blue: 0xAD/255.0, alpha: 1.0)
     }
-    
+    class func belizeHole() -> UIColor {
+        return UIColor(red: 0x29/255.0, green: 0x80/255.0, blue: 0xB9/255.0, alpha: 1.0)
+    }
+    class func nephritis() -> UIColor {
+        return UIColor(red: 0x27/255.0, green: 0xAE/255.0, blue: 0x60/255.0, alpha: 1.0)
+    }
+    class func greenSea() -> UIColor {
+        return UIColor(red: 0x16/255.0, green: 0xA0/255.0, blue: 0x85/255.0, alpha: 1.0)
+    }
+    class func sunFlower() -> UIColor {
+        return UIColor(red: 0xF1/255.0, green: 0xC4/255.0, blue: 0x0F/255.0, alpha: 1.0)
+    }
+    class func carrot() -> UIColor {
+        return UIColor(red: 0xE6/255.0, green: 0x7E/255.0, blue: 0x22/255.0, alpha: 1.0)
+    }
+    class func alizarin() -> UIColor {
+        return UIColor(red: 0xE7/255.0, green: 0x4C/255.0, blue: 0x3C/255.0, alpha: 1.0)
+    }
+    class func colorFromString(colorString: String) -> UIColor
+    {
+        switch colorString
+        {
+        case "wisteria":
+            return UIColor.wisteria()
+        case "belizeHole":
+            return UIColor.belizeHole()
+        case "nephritis":
+            return UIColor.nephritis()
+        case "greenSea":
+            return UIColor.greenSea()
+        case "sunFlower":
+            return UIColor.sunFlower()
+        case "carrot":
+            return UIColor.carrot()
+        case "alizarin":
+            return UIColor.alizarin()
+        default:
+            return UIColor.blackColor()
+        }
+    }
 }
