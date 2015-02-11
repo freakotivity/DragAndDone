@@ -132,6 +132,15 @@
                                     <action selector="addFolder" destination="rTZ-k0-nCt" eventType="touchUpInside" id="Eju-wL-gRC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQq-a3-6nd">
+                                <rect key="frame" x="268" y="499" width="64" height="30"/>
+                                <state key="normal" title="Add Task">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTask" destination="rTZ-k0-nCt" eventType="touchUpInside" id="WhJ-82-NxU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,6 +149,8 @@
                             <constraint firstItem="6Xi-yW-TF9" firstAttribute="top" secondItem="AsR-O6-Qid" secondAttribute="top" constant="7" id="BYr-7Y-Rbh"/>
                             <constraint firstAttribute="trailing" secondItem="q7i-7r-LdF" secondAttribute="trailing" id="Egn-7N-yHK"/>
                             <constraint firstItem="K6h-3t-4xc" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leadingMargin" id="KQI-dV-77H"/>
+                            <constraint firstAttribute="centerX" secondItem="xQq-a3-6nd" secondAttribute="centerX" id="SDR-4g-wQZ"/>
+                            <constraint firstItem="xQq-a3-6nd" firstAttribute="top" secondItem="z1M-po-yqK" secondAttribute="bottom" constant="8" id="Sd4-6K-rEF"/>
                             <constraint firstItem="z1M-po-yqK" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leading" id="dz4-tX-Wwf"/>
                             <constraint firstItem="CbO-gE-uNu" firstAttribute="top" secondItem="q7i-7r-LdF" secondAttribute="bottom" constant="8" id="evI-FZ-tC5"/>
                             <constraint firstItem="K6h-3t-4xc" firstAttribute="top" secondItem="btK-RP-j0t" secondAttribute="bottom" constant="8" id="exH-Wy-nNN"/>
@@ -153,6 +164,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addTaskButton" destination="xQq-a3-6nd" id="QZH-dC-rcY"/>
                         <outlet property="currentFolderLabel" destination="CbO-gE-uNu" id="sm4-fV-5Ja"/>
                         <outlet property="foldersTableView" destination="q7i-7r-LdF" id="tVX-Z3-age"/>
                         <outlet property="tasksTableView" destination="z1M-po-yqK" id="22D-DG-DUL"/>

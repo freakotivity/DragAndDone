@@ -9,6 +9,22 @@
 import UIKit
 
 class EditorEdge: UIView {
+    
+    override init()
+    {
+        super.init()
+        self.backgroundColor = UIColor.clearColor()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.clearColor()
+    }
 
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
