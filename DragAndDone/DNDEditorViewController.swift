@@ -12,7 +12,7 @@ protocol DNDEditorDelegate {
     func pickedFolder(folder: String)
 }
 
-class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
     var delegate:DNDEditorDelegate?
     let doStuff = ["Sniff", "Worship"]
     let stuff = ["Satan", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Glue"]
@@ -23,13 +23,14 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var currentFolderLabel: UILabel!
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var toggleEditoButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.tasksTableView.setEditing(true, animated: false)
+        //        self.tasksTableView.setEditing(true, animated: false)
         self.foldersTableView.backgroundView = EditorEdge()
         self.checkIfAddTaskButtonShouldBeEnabled()
     }
@@ -98,8 +99,6 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             self.currentFolderLabel.text = taskHandler.folders()[indexPath.row]
             self.selectedFolder = indexPath.row
             tableView.reloadData()
-            self.tasksTableView.setEditing(false, animated: false)
-            self.tasksTableView.setEditing(true, animated: false)
             self.tasksTableView.reloadData()
             delegate?.pickedFolder(taskHandler.folders()[indexPath.row])
             
@@ -131,7 +130,6 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         nuFolderAlert.addAction(cancelAction)
         nuFolderAlert.addAction(addFolderAction)
         self.presentViewController(nuFolderAlert, animated: true) { () -> Void in
-            println("yeah")
         }
         
     }
@@ -168,12 +166,16 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func addTask() {
         println("ADD TASK!")
-        let nuTask = DNDTask()
-        nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
-        nuTask.imageName = "yeah"
-        nuTask.doneImageName = "yeha"
-        taskHandler.addTask(nuTask, folder: taskHandler.folders()[self.selectedFolder!])
-        self.tasksTableView.reloadData()
+
+        self.performSegueWithIdentifier("addTask", sender: self)
+        
+        
+//        let nuTask = DNDTask()
+//        nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
+//        nuTask.imageName = "yeah"
+//        nuTask.doneImageName = "yeha"
+//        taskHandler.addTask(nuTask, folder: taskHandler.folders()[self.selectedFolder!])
+//        self.tasksTableView.reloadData()
         self.checkIfAddTaskButtonShouldBeEnabled()
     }
     
@@ -182,7 +184,14 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         if self.selectedFolder == nil
         {
             self.addTaskButton.enabled = false
+//            self.toggleEditoButton.enabled = false
         } else {
+//            if taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count > 0
+//            {
+//                self.toggleEditoButton.enabled = true
+//            } else {
+//                self.toggleEditoButton.enabled = false
+//            }
             if taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count >= 5
             {
                 self.addTaskButton.enabled = false
@@ -190,5 +199,37 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.addTaskButton.enabled = true
             }
         }
+    }
+    @IBAction func toggleEditMode(sender: AnyObject) {
+        if self.tasksTableView.editing
+        {
+            self.tasksTableView.setEditing(false, animated: true)
+            self.foldersTableView.setEditing(false, animated: true)
+            self.toggleEditoButton.setTitle("Edit", forState: UIControlState.Normal)
+        } else {
+            self.tasksTableView.setEditing(true, animated: true)
+            self.foldersTableView.setEditing(true, animated: true)
+            self.toggleEditoButton.setTitle("Done", forState: UIControlState.Normal)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addTask"
+        {
+            let addTaskVC = segue.destinationViewController as AddTaskViewController
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            addTaskVC.modalPresentationStyle = UIModalPresentationStyle.Custom
+            addTaskVC.transitioningDelegate = self
+        }
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AddTaskAnimator()
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let taskAnim = AddTaskAnimator()
+        taskAnim.dismissing = true
+        return taskAnim
     }
 }
