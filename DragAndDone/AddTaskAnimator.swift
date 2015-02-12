@@ -1,19 +1,14 @@
 //
-//  EditorTransitionAnimator.swift
+//  AddTaskAnimator.swift
 //  DragAndDone
 //
-//  Created by Ricardo Gonzalez on 2015-02-05.
+//  Created by Ricardo Gonzalez on 2015-02-12.
 //  Copyright (c) 2015 Gabriel Kroll. All rights reserved.
 //
 
 import UIKit
-let topBarHeight:CGFloat = 51.0
 
-
-class EditorTransitionAnimator: DNDTransitionAnimator {
-    
-    var taskViews = Array<TaskView>()
-    
+class AddTaskAnimator: DNDTransitionAnimator {
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         println("ANIMATE TRANSITION")
         if dismissing
@@ -24,21 +19,9 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             let duration = self.transitionDuration(transitionContext)
             
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                for tv in self.taskViews
-                {
-                    if tv.done
-                    {
-                        tv.center.x = (toVC as ViewController).doneXPosition
-                    } else {
-                        tv.center.x = (toVC as ViewController).todoXPosition
-                    }
-                }
-                
-                fromVC!.view.frame.origin.x = -containerView.bounds.size.width / 2
+                //                self.animation()
+                fromVC!.view.alpha = 0.0
                 }, completion: { (completed) -> Void in
-                    UIView.animateWithDuration(0.5, animations: { () -> Void in
-                        (toVC as ViewController).separatorLine.alpha = 1.0
-                    })
                     transitionContext.completeTransition(true)
             })
             
@@ -50,23 +33,15 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             
             let containerView = transitionContext.containerView()
             var frame:CGRect!
-            frame = CGRectMake(-containerView.bounds.size.width / 2, topBarHeight, containerView.bounds.size.width / 2,containerView.bounds.size.height - topBarHeight)
+//            frame = CGRectMake(0, 20, 300, 400)
+            frame = CGRectMake(5, 5, containerView.frame.size.width - 10, containerView.frame.size.height - 271)
             toVc?.view.frame = frame
+            toVc?.view.center.x = containerView.center.x
+            toVc?.view.alpha = 0.0
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                
-                for tv in self.taskViews
-                {
-                    if tv.done
-                    {
-                        tv.frame.origin.x = containerView.frame.size.width
-                    } else {
-                        tv.center.x = (fromVc as ViewController).doneXPosition
-                        
-                    }
-                }
-                toVc!.view.frame.origin.x = 0
+                toVc!.view.alpha = 1.0
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
             })
@@ -79,4 +54,5 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
     override func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         return 0.5
     }
+
 }

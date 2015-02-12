@@ -26,6 +26,11 @@ class DNDTaskHandler: NSObject {
         plist.writeToFile(plistLocation(), atomically: true)
     }
     
+    func addTaskInCurrentFolder(task: DNDTask)
+    {
+        
+    }
+    
     func addTask(task: DNDTask, folder: String)
     {
 //        println("ADD TASK \(task.name!)")
@@ -60,7 +65,7 @@ class DNDTaskHandler: NSObject {
     
     func plistLocation() -> NSString
     {
-//        println(docDir().stringByAppendingPathComponent("tasks.plist"))
+        println(docDir().stringByAppendingPathComponent("tasks.plist"))
         return docDir().stringByAppendingPathComponent("tasks.plist")
     }
     
@@ -110,4 +115,5 @@ class DNDTaskHandler: NSObject {
         let colorString = foldersDict["color"] as String
         return UIColor.colorFromString(colorString)
     }
+    
 }

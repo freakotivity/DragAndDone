@@ -30,6 +30,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     
     
     var topBar = UIView()
+    var topBarTitleLabel = UILabel()
     let taskHandler = DNDTaskHandler()
     
     
@@ -51,6 +52,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         statsButton.setImage(UIImage(named: "statistics circle navbar"), forState: UIControlState.Normal)
         statsButton.addTarget(self, action: "checkStats:", forControlEvents: UIControlEvents.TouchUpInside)
         self.topBar.addSubview(statsButton)
+        
+        self.topBarTitleLabel.center = self.topBar.center
+        self.topBarTitleLabel.textColor = UIColor.whiteColor()
+        self.topBar.addSubview(self.topBarTitleLabel)
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
@@ -394,6 +399,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         println("PICKED FOLDER \(folder)")
         let color = self.taskHandler.colorForFolder(folder)
         self.topBar.backgroundColor = color
+        self.topBarTitleLabel.text = folder
+        self.topBarTitleLabel.sizeToFit()
+        self.topBarTitleLabel.center = self.topBar.center
     }
 
 }
