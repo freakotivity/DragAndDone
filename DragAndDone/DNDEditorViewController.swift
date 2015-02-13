@@ -4,19 +4,21 @@
 //
 //  Created by Ricardo Gonzalez on 2015-02-11.
 //  Copyright (c) 2015 Gabriel Kroll. All rights reserved.
-//
+// 19
 
 import UIKit
 
 protocol DNDEditorDelegate {
-    func pickedFolder(folder: String)
+    func editorPickedFolder(folder: String)
+    func editorWillDismiss()
+    func editorReorderTask(from:Int, to:Int)
+    func editorAddedTask()
 }
 
-class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
+class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, DNDAddTaskDelegate {
     var delegate:DNDEditorDelegate?
     let doStuff = ["Sniff", "Worship"]
     let stuff = ["Satan", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Glue"]
-    var selectedFolder:Int?
     let taskHandler = DNDTaskHandler()
     
     @IBOutlet weak var foldersTableView: UITableView!
@@ -46,9 +48,13 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if tableView == self.tasksTableView
         {
-            if self.selectedFolder != nil
+
+            if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
             {
-                return taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count
+                if let tasks = taskHandler.tasksInFolder(selectedFolder) as NSArray?
+                {
+                    return tasks.count
+                }
             }
         }
         return 0
@@ -65,7 +71,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.textLabel?.text = taskHandler.folders()[indexPath.row]
             cell.textLabel?.textColor = taskHandler.colorForFolder(taskHandler.folders()[indexPath.row])
             
-            if indexPath.row == selectedFolder
+            if (taskHandler.folders()[indexPath.row] as String == NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?)
             {
                 cell.backgroundView = UIView()
                 cell.accessoryType = UITableViewCellAccessoryType.None
@@ -81,11 +87,11 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel?.text = ""
-            if let selFol = self.selectedFolder
+            
+            if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
             {
-                
-                let task = taskHandler.tasksInFolder(taskHandler.folders()[selFol])[indexPath.row] as NSDictionary
-                cell.textLabel?.text = task["Name"] as? String
+                let task = taskHandler.tasksInFolder(selectedFolder)[indexPath.row] as DNDTask
+                    cell.textLabel?.text = task.name
             }
             
         }
@@ -96,11 +102,12 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == self.foldersTableView
         {
+            NSUserDefaults.standardUserDefaults().setObject(taskHandler.folders()[indexPath.row], forKey: "currentFolder")
+            NSUserDefaults.standardUserDefaults().synchronize()
             self.currentFolderLabel.text = taskHandler.folders()[indexPath.row]
-            self.selectedFolder = indexPath.row
             tableView.reloadData()
             self.tasksTableView.reloadData()
-            delegate?.pickedFolder(taskHandler.folders()[indexPath.row])
+            delegate?.editorPickedFolder(taskHandler.folders()[indexPath.row])
             
         }
         if tableView == self.tasksTableView
@@ -136,6 +143,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tappedDimmingView()
     {
+        delegate?.editorWillDismiss()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -148,10 +156,13 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         println("CAN MOVE AT INDEXPATH \(indexPath)")
         if tableView == self.tasksTableView
         {
-            if indexPath.row + 1 <= self.taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count
+            if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
+            {
+            if indexPath.row + 1 <= self.taskHandler.tasksInFolder(selectedFolder).count
             {
                 println("YEP")
                 return true
+            }
             }
         }
         println("NOPE")
@@ -160,44 +171,44 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         println("MOVE FROM \(sourceIndexPath) TO \(destinationIndexPath)")
-        self.taskHandler.moveTaskFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row, inFolder: self.taskHandler.folders()[self.selectedFolder!])
+        if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
+        {
+        self.taskHandler.moveTaskFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row, inFolder: selectedFolder)
+        }
+        delegate?.editorReorderTask(sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
     
     @IBAction func addTask() {
         println("ADD TASK!")
-
+        
         self.performSegueWithIdentifier("addTask", sender: self)
         
         
-//        let nuTask = DNDTask()
-//        nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
-//        nuTask.imageName = "yeah"
-//        nuTask.doneImageName = "yeha"
-//        taskHandler.addTask(nuTask, folder: taskHandler.folders()[self.selectedFolder!])
-//        self.tasksTableView.reloadData()
+        //        let nuTask = DNDTask()
+        //        nuTask.name = self.doStuff[Int(arc4random_uniform(UInt32(self.doStuff.count)))] + " " + self.stuff[Int(arc4random_uniform(UInt32(self.stuff.count)))]
+        //        nuTask.imageName = "yeah"
+        //        nuTask.doneImageName = "yeha"
+        //        taskHandler.addTask(nuTask, folder: taskHandler.folders()[self.selectedFolder!])
+        //        self.tasksTableView.reloadData()
         self.checkIfAddTaskButtonShouldBeEnabled()
     }
     
     func checkIfAddTaskButtonShouldBeEnabled()
     {
-        if self.selectedFolder == nil
+        if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
         {
-            self.addTaskButton.enabled = false
-//            self.toggleEditoButton.enabled = false
-        } else {
-//            if taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count > 0
-//            {
-//                self.toggleEditoButton.enabled = true
-//            } else {
-//                self.toggleEditoButton.enabled = false
-//            }
-            if taskHandler.tasksInFolder(taskHandler.folders()[self.selectedFolder!]).count >= 5
+            if let tasks = taskHandler.tasksInFolder(selectedFolder) as NSArray?
             {
-                self.addTaskButton.enabled = false
-            } else {
-                self.addTaskButton.enabled = true
+                if tasks.count >= 5
+                {
+                    self.addTaskButton.enabled = false
+                } else {
+                    self.addTaskButton.enabled = true
+                }
             }
+        } else {
+            self.addTaskButton.enabled = false
         }
     }
     @IBAction func toggleEditMode(sender: AnyObject) {
@@ -217,6 +228,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == "addTask"
         {
             let addTaskVC = segue.destinationViewController as AddTaskViewController
+            addTaskVC.delegate = self
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             addTaskVC.modalPresentationStyle = UIModalPresentationStyle.Custom
             addTaskVC.transitioningDelegate = self
@@ -231,5 +243,13 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         let taskAnim = AddTaskAnimator()
         taskAnim.dismissing = true
         return taskAnim
+    }
+    
+    
+    
+    func didAddTask() {
+        self.checkIfAddTaskButtonShouldBeEnabled()
+        self.tasksTableView.reloadData()
+        self.delegate?.editorAddedTask()
     }
 }

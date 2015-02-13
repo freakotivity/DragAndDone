@@ -12,4 +12,5 @@ class DNDTask: NSObject {
     var name:String?
     var imageName:String?
     var doneImageName:String?
+    var done = false
 }

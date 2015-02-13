@@ -69,10 +69,11 @@ class DNDEditorFoldersTableViewController: UITableViewController, UIViewControll
             
             // Configure the cell...
             let folder = taskHandler.folders()[indexPath.section]
-            let tasks = taskHandler.tasksInFolder(folder) as NSArray
-            
+            if let tasks = taskHandler.tasksInFolder(folder) as NSArray?
+            {
             
             cell.textLabel?.text = tasks[indexPath.row]["Name"] as? String
+            }
             return cell
         }
     }

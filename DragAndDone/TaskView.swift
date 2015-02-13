@@ -10,13 +10,10 @@ import UIKit
 
 @IBDesignable
 class TaskView: UIView {
-    var initialPosition:CGPoint!
-    var donePosition:CGPoint!
-    var done = false
-    var initialIndex:Int!
-    var doneIndex:Int!
     var textLabel:UILabel!
     var image:UIImage?
+    var task:DNDTask?
+    
     
     override func drawRect(rect: CGRect) {
         println("drawrect")
@@ -39,31 +36,31 @@ class TaskView: UIView {
     }
     
 //    func convertImageToGrayScale(image: UIImage) -> UIImage {
-//    
+//
 //    // Create image rectangle with current image width/height
 //    let imageRect = CGRectMake(0, 0, image.size.width, image.size.height)
-//    
+//
 //    // Grayscale color space
 //    let colorSpace = CGColorSpaceCreateDeviceGray()
-//    
+//
 //    // Create bitmap content with current image size and grayscale colorspace
 //    let context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, kCGImageAlphaNone)
-//    
+//
 //    // Draw image into current context, with specified rectangle
 //    // using previously defined context (with grayscale colorspace)
 //    CGContextDrawImage(context, imageRect, image.CGImage)
-//    
+//
 //    // Create bitmap image info from pixel data in current context
 //    let imageRef = CGBitmapContextCreateImage(context)
-//    
+//
 //    // Create a new UIImage object
 //        let newImage : UIImage = imageWithCGImage(imageRef)
-//    
+//
 //    // Release colorspace, context and bitmap information
 //    CGColorSpaceRelease(colorSpace);
 //    CGContextRelease(context);
 //    CFRelease(imageRef);
-//    
+//
 //    // Return the new grayscale image
 //    return newImage
 //    }

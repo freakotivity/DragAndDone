@@ -22,7 +22,7 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 for tv in self.taskViews
                 {
-                    if tv.done
+                    if tv.task!.done
                     {
                         tv.center.x = (toVC as ViewController).doneXPosition
                     } else {
@@ -52,7 +52,7 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 for tv in self.taskViews
                 {
-                    if tv.done
+                    if tv.task!.done
                     {
                         tv.center.x = (fromVc as ViewController).todoXPosition
                     } else {

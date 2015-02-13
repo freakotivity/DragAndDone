@@ -33,6 +33,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     var topBarTitleLabel = UILabel()
     let taskHandler = DNDTaskHandler()
     
+    var showsEditor = false
+    var showsStats = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +55,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         statsButton.addTarget(self, action: "checkStats:", forControlEvents: UIControlEvents.TouchUpInside)
         self.topBar.addSubview(statsButton)
         
-        self.topBarTitleLabel.center = self.topBar.center
+        self.topBarTitleLabel.center.x = self.topBar.center.x
+        self.topBarTitleLabel.center.y = 32 // Y position for title label
         self.topBarTitleLabel.textColor = UIColor.whiteColor()
+//        self.topBarTitleLabel.font = 
         self.topBar.addSubview(self.topBarTitleLabel)
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
@@ -69,24 +73,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         todoXPosition = self.view.frame.width / 4.0
         doneXPosition = self.view.frame.width * 3 / 4.0
         
-        for i in 1...5
-        {
-            let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
-            taskView.initialIndex = i
-            taskView.backgroundColor = UIColor.clearColor()
-            taskView.center = CGPointMake(todoXPosition, self.view.frame.height - (CGFloat(i) * taskViewSize))
-            taskView.initialPosition = taskView.center
-            taskView.textLabel.text = "\(i)"
-            taskView.image = UIImage(named: "\(i).jpg")
-//            [view.layer addObserver:self forKeyPath:@"position" options:0 context:NULL];
-
-            
-            self.view.addSubview(taskView)
-            self.taskViews.append(taskView)
-            
-            let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
-            taskView.addGestureRecognizer(tap)
-        }
+        self.loadCurrentFolder()
         
         self.placeholder.backgroundColor = UIColor.clearColor()
         //        self.placeholder.center = CGPointMake(doneXPosition, self.view.frame.height - self.taskViewSize)
@@ -118,7 +105,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                     self.panOffset = CGPointMake(panPoint.x - taskView.center.x, panPoint.y - taskView.center.y)
                     grabbedTaskView = taskView
                     grabbedTaskView.layer.zPosition = 1000
-                    if !grabbedTaskView.done
+                    if !grabbedTaskView.task!.done
                     {
                         self.showPlaceholder()
                     }
@@ -168,7 +155,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     {
         for taskView in self.taskViews
         {
-            if taskView.done
+            if taskView.task!.done
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
                     taskView.center.y -= self.taskViewSize
@@ -203,7 +190,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         {
             self.doneTaskViews.insert(task, atIndex: 0)
         }
-        task.done = true
+        task.task?.done = true
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
             }) {(completed) ->Void in
@@ -226,9 +213,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
             self.doneTaskViews.removeAtIndex(removeIndex)
         }
 
-        task.done = false
+        task.task?.done = false
+        task.center.x = todoXPosition
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-            task.center = task.initialPosition
             }, completion: nil)
      self.collapseTodoTasks()
     }
@@ -237,14 +224,16 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     {
         var i:Int = 0
         var todoer:CGFloat = 1.0
-            //        for (i = self.taskViews.count - 1; i > -1; i--)
-        for (i = 0; i < self.taskViews.count; i++)
+                    for (i = self.taskViews.count - 1; i > -1; i--)
+//        for (i = 0; i < self.taskViews.count; i++)
         {
             println("i \(i)")
-            if (!self.taskViews[i].done)
+            if (!self.taskViews[i].task!.done)
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+//                    self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
                     self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
+
                     }, completion: nil)
 
                 todoer += 1.0
@@ -256,7 +245,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     {
         println("HANDLE TAP \(sender)")
         let task = sender.view as TaskView
-        if !task.done
+        if !task.task!.done
         {
         self.shiftDoneTasksUp()
         self.moveTaskToDone(sender.view as TaskView)
@@ -278,6 +267,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         }
         if segue.identifier == "showEditor"
         {
+            self.showsEditor = true
             let editorVC = segue.destinationViewController as DNDEditorViewController
             editorVC.delegate = self
             self.transitionPresentationController = EditorPresentationController()
@@ -340,7 +330,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     
     func hideLine()
     {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.separatorLine.alpha = 0.0
         })
     }
@@ -395,13 +385,75 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         bezLayer.addAnimation(drawAnimation, forKey: "check")
     }
     
-    func pickedFolder(folder: String) {
+    func editorPickedFolder(folder: String) {
         println("PICKED FOLDER \(folder)")
+        NSUserDefaults.standardUserDefaults().setObject(folder, forKey: "currentFolder")
+        NSUserDefaults.standardUserDefaults().synchronize()
         let color = self.taskHandler.colorForFolder(folder)
         self.topBar.backgroundColor = color
         self.topBarTitleLabel.text = folder
         self.topBarTitleLabel.sizeToFit()
-        self.topBarTitleLabel.center = self.topBar.center
+        self.topBarTitleLabel.center.x = self.topBar.center.x
+        self.loadCurrentFolder()
     }
-
+    
+    func loadCurrentFolder()
+    {
+        println("LOAD CURRENT FOLDER")
+        self.clearTaskViews()
+        self.taskViews.removeAll()
+        
+        if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            let tasks = taskHandler.tasksInFolder(folder)
+            for (index, task) in enumerate(tasks)
+            {
+                println("TASK \(task) DONE \(task.done)")
+                let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
+                taskView.task = task
+                taskView.backgroundColor = UIColor.clearColor()
+                //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
+                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
+                taskView.center.x = self.showsEditor ? self.doneXPosition : self.todoXPosition
+                taskView.image = UIImage(named: taskView.task!.imageName!)
+                taskView.textLabel.text = taskView.task!.name!
+                
+                
+                self.view.addSubview(taskView)
+                self.taskViews.append(taskView)
+                
+                let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
+                taskView.addGestureRecognizer(tap)
+            }
+            if showsEditor
+            {
+                (self.transitionAnimator as EditorTransitionAnimator).taskViews = self.taskViews
+            }
+            
+        }
+    }
+    
+    func clearTaskViews()
+    {
+        for view in self.view.subviews
+        {
+            if view is TaskView
+            {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
+    func editorWillDismiss() {
+        self.showsEditor = false
+    }
+    
+    func editorReorderTask(from: Int, to: Int) {
+        self.taskViews.insert(self.taskViews.removeAtIndex(from), atIndex: to)
+        self.collapseTodoTasks()
+    }
+    
+    func editorAddedTask() {
+        self.loadCurrentFolder()
+    }
 }

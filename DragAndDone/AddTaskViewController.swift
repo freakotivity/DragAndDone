@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol DNDAddTaskDelegate {
+    func didAddTask()
+}
+
 class AddTaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var taskNameTextField: UITextField!
     let taskHandler = DNDTaskHandler()
+    var delegate:DNDAddTaskDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +31,13 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func addTask() {
         println("ADD TASK")
-        
+        let nuTask = DNDTask()
+        nuTask.name = self.taskNameTextField.text
+        nuTask.imageName = "yeah"
+        nuTask.doneImageName = "yeha"
+        taskHandler.addTaskInCurrentFolder(nuTask)
+        delegate?.didAddTask()
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 
     @IBAction func cancel() {

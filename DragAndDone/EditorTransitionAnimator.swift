@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let topBarHeight:CGFloat = 51.0
+let topBarHeight:CGFloat = 64.0
 
 
 class EditorTransitionAnimator: DNDTransitionAnimator {
@@ -26,7 +26,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 for tv in self.taskViews
                 {
-                    if tv.done
+                    if tv.task!.done
                     {
                         tv.center.x = (toVC as ViewController).doneXPosition
                     } else {
@@ -58,7 +58,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 
                 for tv in self.taskViews
                 {
-                    if tv.done
+                    if tv.task!.done
                     {
                         tv.frame.origin.x = containerView.frame.size.width
                     } else {

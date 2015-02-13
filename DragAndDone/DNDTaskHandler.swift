@@ -28,7 +28,10 @@ class DNDTaskHandler: NSObject {
     
     func addTaskInCurrentFolder(task: DNDTask)
     {
-        
+        if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            self.addTask(task, folder: folder)
+        }
     }
     
     func addTask(task: DNDTask, folder: String)
@@ -48,6 +51,7 @@ class DNDTaskHandler: NSObject {
         }
         
         let taskDict = NSMutableDictionary()
+        taskDict.setValue(task.done, forKey: "Done")
         taskDict.setValue(task.name!, forKey: "Name")
         taskDict.setValue(task.imageName!, forKey: "Imagename")
 //        taskDict.setValue(task.doneImageName, forKey: "Doneimagename")
@@ -65,7 +69,7 @@ class DNDTaskHandler: NSObject {
     
     func plistLocation() -> NSString
     {
-        println(docDir().stringByAppendingPathComponent("tasks.plist"))
+//        println(docDir().stringByAppendingPathComponent("tasks.plist"))
         return docDir().stringByAppendingPathComponent("tasks.plist")
     }
     
@@ -88,24 +92,55 @@ class DNDTaskHandler: NSObject {
         return plist.allKeys as Array<String>
     }
     
-    func tasksInFolder(folder:String) ->NSArray
+    func tasksInFolder(folder:String) ->Array<DNDTask>
     {
-        if let tasks = (self.plist()[folder] as NSDictionary)["tasks"] as? NSArray
+        // RETURNS ONLY AN ARRAY OF THE NAMES OF THE TASKS, NOT THE ACTUAL TASKS! FIX!
+//        println("FOLDER \(folder)")
+        var taskArray = Array<DNDTask>()
+        var plist = self.plist() as NSDictionary
+        if let folder = plist[folder] as? NSDictionary
         {
-            return tasks
+//            println("FOLDER CONTENT: \(folder)")
+            if let tasks = folder["tasks"] as? NSArray
+            {
+//                println("TASKS ARRAY \(tasks)")
+                
+                for task in tasks
+                {
+                    let nuTask = DNDTask()
+                    nuTask.done = task["Done"] as Bool
+                    nuTask.name = task["Name"] as? String
+                    nuTask.imageName = task["Imagename"] as? String
+                    taskArray.append(nuTask)
+                }
+            }
         }
-        return NSArray()
+        return taskArray
     }
     
     func moveTaskFromIndex(fromIndex:Int, toIndex:Int, inFolder:String)
     {
+        println("MOVE TASK FROM INDEX \(fromIndex) TO INDEX \(toIndex) IN FOLDER \(inFolder)")
         var plist = self.plist()
+        println("PLIST FÖRE \(plist)")
         var foldersDict = plist[inFolder] as NSMutableDictionary
-        var tasks = self.tasksInFolder(inFolder) as Array
+        var tasks = foldersDict["tasks"] as Array<AnyObject>
+        
+        println("TASKS ARRAY \(tasks)")
+        
+        if tasks.count > 0
+        {
         tasks.insert(tasks.removeAtIndex(fromIndex), atIndex: toIndex)
         foldersDict.setObject(tasks, forKey: "tasks")
         plist.setObject(foldersDict, forKey: inFolder)
-        plist.writeToFile(self.plistLocation(), atomically: true)
+        if plist.writeToFile(self.plistLocation(), atomically: true)
+        {
+            println("SUCCESS")
+        } else {
+            println("FAIL")
+            }
+        }
+        println("PLIST EFTER \(plist)")
     }
     
     func colorForFolder(folder: String) -> UIColor
