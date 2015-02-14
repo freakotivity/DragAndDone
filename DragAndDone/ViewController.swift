@@ -415,8 +415,21 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
                 taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
                 taskView.center.x = self.showsEditor ? self.doneXPosition : self.todoXPosition
-                taskView.image = UIImage(named: taskView.task!.imageName!)
-                taskView.textLabel.text = taskView.task!.name!
+                println("TASKVIEW IMAGE: \(taskView.task!.imageName!)")
+                
+                
+                taskView.image = UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(taskView.task!.imageName!))
+                
+                let taskNameArray = split(taskView.task!.name!) {$0 == " "}
+                println("TASKNAME ARRAY \(taskNameArray)")
+                var firsts = ""
+                for word in taskNameArray
+                {
+                    println("WORD SUBSTRING \(word.substringToIndex(advance(word.startIndex, 1)).capitalizedString)")
+                    firsts += word.substringToIndex(advance(word.startIndex, 1)).capitalizedString
+                }
+                
+                taskView.textLabel.text = firsts
                 
                 
                 self.view.addSubview(taskView)

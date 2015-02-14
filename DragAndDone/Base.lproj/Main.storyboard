@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VVq-l3-KkT">
-                                <rect key="frame" x="16" y="312" width="268" height="30"/>
+                                <rect key="frame" x="16" y="207" width="268" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -60,7 +59,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru0-f0-gmb">
-                                <rect key="frame" x="16" y="350" width="48" height="30"/>
+                                <rect key="frame" x="16" y="245" width="48" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -68,8 +67,27 @@
                                     <action selector="cancel" destination="NnK-UL-d45" eventType="touchUpInside" id="EK6-IW-AvI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Task" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7c-PD-uYA">
+                                <rect key="frame" x="115" y="20" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLz-ZD-NMA">
+                                <rect key="frame" x="75" y="49" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="sNi-uY-vae"/>
+                                    <constraint firstAttribute="width" constant="150" id="zrz-pM-Gs1"/>
+                                </constraints>
+                                <state key="normal" image="cam.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePicture" destination="NnK-UL-d45" eventType="touchUpInside" id="MsV-OX-QOz"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqz-on-qhG">
-                                <rect key="frame" x="254" y="350" width="30" height="30"/>
+                                <rect key="frame" x="254" y="245" width="30" height="30"/>
                                 <state key="normal" title="Add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -77,38 +95,26 @@
                                     <action selector="addTask" destination="NnK-UL-d45" eventType="touchUpInside" id="7K6-RK-YpH"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cam.png" translatesAutoresizingMaskIntoConstraints="NO" id="F3Q-HT-Fj0">
-                                <rect key="frame" x="75" y="125" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="F3Q-HT-Fj0" secondAttribute="height" multiplier="1:1" id="ns1-xR-TWq"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Task" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7c-PD-uYA">
-                                <rect key="frame" x="115" y="20" width="71" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
-                            <constraint firstItem="Ru0-f0-gmb" firstAttribute="top" secondItem="VVq-l3-KkT" secondAttribute="bottom" constant="8" id="4bz-aZ-afT"/>
+                            <constraint firstItem="Ru0-f0-gmb" firstAttribute="top" secondItem="VVq-l3-KkT" secondAttribute="bottom" constant="8" id="1k3-DY-UQK"/>
                             <constraint firstAttribute="centerX" secondItem="L7c-PD-uYA" secondAttribute="centerX" id="B6Q-1p-9zb"/>
-                            <constraint firstItem="Ru0-f0-gmb" firstAttribute="leading" secondItem="9w6-Kb-463" secondAttribute="leadingMargin" id="Hah-nd-YOv"/>
-                            <constraint firstItem="HM2-K7-YOP" firstAttribute="top" secondItem="Ru0-f0-gmb" secondAttribute="bottom" constant="20" id="Xf0-2h-SHg"/>
-                            <constraint firstAttribute="centerX" secondItem="F3Q-HT-Fj0" secondAttribute="centerX" id="flC-ak-rLy"/>
-                            <constraint firstItem="VVq-l3-KkT" firstAttribute="leading" secondItem="9w6-Kb-463" secondAttribute="leadingMargin" id="iVR-uv-kcg"/>
-                            <constraint firstAttribute="centerY" secondItem="F3Q-HT-Fj0" secondAttribute="centerY" id="jS2-T8-7Oq"/>
-                            <constraint firstItem="VVq-l3-KkT" firstAttribute="trailing" secondItem="9w6-Kb-463" secondAttribute="trailingMargin" id="kzp-Dt-FTl"/>
-                            <constraint firstItem="HM2-K7-YOP" firstAttribute="top" secondItem="pqz-on-qhG" secondAttribute="bottom" constant="20" id="lNm-xX-M8v"/>
+                            <constraint firstItem="Ru0-f0-gmb" firstAttribute="leading" secondItem="9w6-Kb-463" secondAttribute="leadingMargin" id="CWr-0E-x0e"/>
+                            <constraint firstItem="VVq-l3-KkT" firstAttribute="top" secondItem="GLz-ZD-NMA" secondAttribute="bottom" constant="8" id="D5a-Bd-XLa"/>
+                            <constraint firstItem="pqz-on-qhG" firstAttribute="top" secondItem="VVq-l3-KkT" secondAttribute="bottom" constant="8" id="Eej-Le-a4k"/>
+                            <constraint firstItem="VVq-l3-KkT" firstAttribute="trailing" secondItem="9w6-Kb-463" secondAttribute="trailingMargin" id="NXI-u0-aZj"/>
+                            <constraint firstItem="pqz-on-qhG" firstAttribute="trailing" secondItem="9w6-Kb-463" secondAttribute="trailingMargin" id="exw-SP-JGM"/>
+                            <constraint firstItem="GLz-ZD-NMA" firstAttribute="top" secondItem="L7c-PD-uYA" secondAttribute="bottom" constant="8" id="mJl-xb-NgK"/>
                             <constraint firstItem="L7c-PD-uYA" firstAttribute="top" secondItem="7tz-Ce-gEu" secondAttribute="bottom" id="pOz-zl-MHp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="F3Q-HT-Fj0" secondAttribute="trailing" constant="59" id="saV-yv-g17"/>
-                            <constraint firstItem="pqz-on-qhG" firstAttribute="trailing" secondItem="9w6-Kb-463" secondAttribute="trailingMargin" id="vld-kq-f5w"/>
+                            <constraint firstItem="VVq-l3-KkT" firstAttribute="leading" secondItem="9w6-Kb-463" secondAttribute="leadingMargin" id="qcn-bp-1kQ"/>
+                            <constraint firstAttribute="centerX" secondItem="GLz-ZD-NMA" secondAttribute="centerX" id="xH2-oF-c2K"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="400"/>
                     <connections>
+                        <outlet property="takePictureButton" destination="GLz-ZD-NMA" id="sJR-9S-Vcn"/>
                         <outlet property="taskNameTextField" destination="VVq-l3-KkT" id="YFd-pZ-E5N"/>
                     </connections>
                 </viewController>
