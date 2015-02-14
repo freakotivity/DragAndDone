@@ -11,6 +11,12 @@
 		1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */; };
 		1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */; };
 		1F0FB0851A8B84E600CAA5C6 /* tempTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */; };
+		1F1D63651A8FF6AF009A7C41 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1D63641A8FF6AF009A7C41 /* NotificationCenter.framework */; };
+		1F1D636A1A8FF6AF009A7C41 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D63691A8FF6AF009A7C41 /* TodayViewController.swift */; };
+		1F1D636C1A8FF6AF009A7C41 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1D636B1A8FF6AF009A7C41 /* MainInterface.storyboard */; };
+		1F1D636F1A8FF6AF009A7C41 /* DragAndDoneWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1F1D63621A8FF6AF009A7C41 /* DragAndDoneWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1F1D63751A8FFDBF009A7C41 /* ADDProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D63741A8FFDBF009A7C41 /* ADDProgressCircle.swift */; };
+		1F1D63761A8FFDBF009A7C41 /* ADDProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D63741A8FFDBF009A7C41 /* ADDProgressCircle.swift */; };
 		1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */; };
 		1F25BADB1A8692F4000D6B22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F25BADA1A8692F4000D6B22 /* Images.xcassets */; };
 		1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */; };
@@ -44,6 +50,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F1D636D1A8FF6AF009A7C41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C04F17701A7DCC33000CCE5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F1D63611A8FF6AF009A7C41;
+			remoteInfo = DragAndDoneWidget;
+		};
 		C04F178E1A7DCC33000CCE5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C04F17701A7DCC33000CCE5C /* Project object */;
@@ -53,11 +66,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1F1D63731A8FF6AF009A7C41 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1F1D636F1A8FF6AF009A7C41 /* DragAndDoneWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorViewController.swift; sourceTree = "<group>"; };
 		1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorEdge.swift; sourceTree = "<group>"; };
 		1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
 		1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tempTableViewController.swift; sourceTree = "<group>"; };
+		1F1D63621A8FF6AF009A7C41 /* DragAndDoneWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DragAndDoneWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F1D63641A8FF6AF009A7C41 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		1F1D63681A8FF6AF009A7C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F1D63691A8FF6AF009A7C41 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		1F1D636B1A8FF6AF009A7C41 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		1F1D63741A8FFDBF009A7C41 /* ADDProgressCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADDProgressCircle.swift; sourceTree = "<group>"; };
 		1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleBackgroundGradientView.swift; sourceTree = "<group>"; };
 		1F25BADA1A8692F4000D6B22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -95,6 +128,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F1D635F1A8FF6AF009A7C41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1D63651A8FF6AF009A7C41 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C04F17751A7DCC33000CCE5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,6 +183,7 @@
 				1F3110961A7EB5A6000222F3 /* Placeholder.swift */,
 				1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */,
 				1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */,
+				1F1D63741A8FFDBF009A7C41 /* ADDProgressCircle.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -169,11 +211,39 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		1F1D63631A8FF6AF009A7C41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F1D63641A8FF6AF009A7C41 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F1D63661A8FF6AF009A7C41 /* DragAndDoneWidget */ = {
+			isa = PBXGroup;
+			children = (
+				1F1D63691A8FF6AF009A7C41 /* TodayViewController.swift */,
+				1F1D636B1A8FF6AF009A7C41 /* MainInterface.storyboard */,
+				1F1D63671A8FF6AF009A7C41 /* Supporting Files */,
+			);
+			path = DragAndDoneWidget;
+			sourceTree = "<group>";
+		};
+		1F1D63671A8FF6AF009A7C41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F1D63681A8FF6AF009A7C41 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C04F176F1A7DCC33000CCE5C = {
 			isa = PBXGroup;
 			children = (
 				C04F177A1A7DCC33000CCE5C /* DragAndDone */,
 				C04F17901A7DCC33000CCE5C /* DragAndDoneTests */,
+				1F1D63661A8FF6AF009A7C41 /* DragAndDoneWidget */,
+				1F1D63631A8FF6AF009A7C41 /* Frameworks */,
 				C04F17791A7DCC33000CCE5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -183,6 +253,7 @@
 			children = (
 				C04F17781A7DCC33000CCE5C /* DragAndDone.app */,
 				C04F178D1A7DCC33000CCE5C /* DragAndDoneTests.xctest */,
+				1F1D63621A8FF6AF009A7C41 /* DragAndDoneWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +310,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1F1D63611A8FF6AF009A7C41 /* DragAndDoneWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F1D63721A8FF6AF009A7C41 /* Build configuration list for PBXNativeTarget "DragAndDoneWidget" */;
+			buildPhases = (
+				1F1D635E1A8FF6AF009A7C41 /* Sources */,
+				1F1D635F1A8FF6AF009A7C41 /* Frameworks */,
+				1F1D63601A8FF6AF009A7C41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DragAndDoneWidget;
+			productName = DragAndDoneWidget;
+			productReference = 1F1D63621A8FF6AF009A7C41 /* DragAndDoneWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C04F17771A7DCC33000CCE5C /* DragAndDone */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C04F17971A7DCC33000CCE5C /* Build configuration list for PBXNativeTarget "DragAndDone" */;
@@ -246,10 +334,12 @@
 				C04F17741A7DCC33000CCE5C /* Sources */,
 				C04F17751A7DCC33000CCE5C /* Frameworks */,
 				C04F17761A7DCC33000CCE5C /* Resources */,
+				1F1D63731A8FF6AF009A7C41 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1F1D636E1A8FF6AF009A7C41 /* PBXTargetDependency */,
 			);
 			name = DragAndDone;
 			productName = DragAndDone;
@@ -283,6 +373,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Gabriel Kroll";
 				TargetAttributes = {
+					1F1D63611A8FF6AF009A7C41 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					C04F17771A7DCC33000CCE5C = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -307,11 +400,20 @@
 			targets = (
 				C04F17771A7DCC33000CCE5C /* DragAndDone */,
 				C04F178C1A7DCC33000CCE5C /* DragAndDoneTests */,
+				1F1D63611A8FF6AF009A7C41 /* DragAndDoneWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F1D63601A8FF6AF009A7C41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1D636C1A8FF6AF009A7C41 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C04F17761A7DCC33000CCE5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +441,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F1D635E1A8FF6AF009A7C41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1D63761A8FFDBF009A7C41 /* ADDProgressCircle.swift in Sources */,
+				1F1D636A1A8FF6AF009A7C41 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C04F17741A7DCC33000CCE5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,6 +464,7 @@
 				1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */,
 				1F913F381A82AF7D00C91205 /* StatsViewController.swift in Sources */,
 				1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */,
+				1F1D63751A8FFDBF009A7C41 /* ADDProgressCircle.swift in Sources */,
 				1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */,
 				1FDBE0C41A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift in Sources */,
 				1F28B87B1A8C7B8200C56559 /* AddTaskAnimator.swift in Sources */,
@@ -380,6 +492,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F1D636E1A8FF6AF009A7C41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F1D63611A8FF6AF009A7C41 /* DragAndDoneWidget */;
+			targetProxy = 1F1D636D1A8FF6AF009A7C41 /* PBXContainerItemProxy */;
+		};
 		C04F178F1A7DCC33000CCE5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C04F17771A7DCC33000CCE5C /* DragAndDone */;
@@ -407,6 +524,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F1D63701A8FF6AF009A7C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DragAndDoneWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1F1D63711A8FF6AF009A7C41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DragAndDoneWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C04F17951A7DCC33000CCE5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -490,6 +631,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DragAndDone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DragAndDone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -543,6 +686,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F1D63721A8FF6AF009A7C41 /* Build configuration list for PBXNativeTarget "DragAndDoneWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F1D63701A8FF6AF009A7C41 /* Debug */,
+				1F1D63711A8FF6AF009A7C41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C04F17731A7DCC33000CCE5C /* Build configuration list for PBXProject "DragAndDone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

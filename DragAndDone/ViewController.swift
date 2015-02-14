@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         separatorLine.center = self.view.center
         self.view.addSubview(separatorLine)
         
-        self.taskViewSize = self.view.frame.size.height / 7
+        self.taskViewSize = self.view.frame.size.height / 6
         todoXPosition = self.view.frame.width / 4.0
         doneXPosition = self.view.frame.width * 3 / 4.0
         
@@ -223,7 +223,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     func collapseTodoTasks()
     {
         var i:Int = 0
-        var todoer:CGFloat = 1.0
+        var todoer:CGFloat = 0.7
                     for (i = self.taskViews.count - 1; i > -1; i--)
 //        for (i = 0; i < self.taskViews.count; i++)
         {
@@ -413,7 +413,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 taskView.task = task
                 taskView.backgroundColor = UIColor.clearColor()
                 //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
-                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
+//                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
+                taskView.center.y = -taskViewSize
                 taskView.center.x = self.showsEditor ? self.doneXPosition : self.todoXPosition
                 println("TASKVIEW IMAGE: \(taskView.task!.imageName!)")
                 
@@ -438,6 +439,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
                 taskView.addGestureRecognizer(tap)
             }
+            self.collapseTodoTasks()
             if showsEditor
             {
                 (self.transitionAnimator as EditorTransitionAnimator).taskViews = self.taskViews

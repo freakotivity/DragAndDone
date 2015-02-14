@@ -17,7 +17,7 @@ class TaskView: UIView {
     
     override func drawRect(rect: CGRect) {
         println("drawrect uiimage:\(image)")
-        let lineWidth:CGFloat = 10.0
+        let lineWidth:CGFloat = min(rect.size.width, rect.size.height)/10
         let square = CGRectMake(0, 0, min(rect.size.width, rect.size.height), min(rect.size.width, rect.size.height))
         UIColor.blackColor().setStroke()
         let context = UIGraphicsGetCurrentContext()
