@@ -31,6 +31,8 @@
 		1F3110A11A814787000222F3 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F31109C1A814787000222F3 /* 3.jpg */; };
 		1F3110A21A814787000222F3 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F31109D1A814787000222F3 /* 4.jpg */; };
 		1F3110A31A814787000222F3 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F31109E1A814787000222F3 /* 5.jpg */; };
+		1F5B5F951A90AADF005C3990 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3110941A7E499C000222F3 /* TaskView.swift */; };
+		1F5B5F961A90AAEF005C3990 /* DNDTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04971A82CDA100A346E1 /* DNDTask.swift */; };
 		1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */; };
 		1F913F381A82AF7D00C91205 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F913F371A82AF7D00C91205 /* StatsViewController.swift */; };
 		1FDBE0C01A84033A00CE9E69 /* EditorTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0BF1A84033A00CE9E69 /* EditorTransitionAnimator.swift */; };
@@ -445,6 +447,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F5B5F951A90AADF005C3990 /* TaskView.swift in Sources */,
+				1F5B5F961A90AAEF005C3990 /* DNDTask.swift in Sources */,
 				1F1D63761A8FFDBF009A7C41 /* ADDProgressCircle.swift in Sources */,
 				1F1D636A1A8FF6AF009A7C41 /* TodayViewController.swift in Sources */,
 			);
@@ -693,6 +697,7 @@
 				1F1D63711A8FF6AF009A7C41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C04F17731A7DCC33000CCE5C /* Build configuration list for PBXProject "DragAndDone" */ = {
 			isa = XCConfigurationList;

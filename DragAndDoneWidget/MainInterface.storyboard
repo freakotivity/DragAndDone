@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,26 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forky Folder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiX-ID-pDh">
-                                <rect key="frame" x="16" y="20" width="100" height="21"/>
+                                <rect key="frame" x="0.0" y="8" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've achieved 2 of 5 today!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4w-TD-AWa">
-                                <rect key="frame" x="16" y="49" width="136" height="41"/>
+                                <rect key="frame" x="0.0" y="37" width="136" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="136" id="6qx-OI-gKh"/>
+                                    <constraint firstAttribute="width" constant="136" id="WEv-A0-z8F"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8YL-tK-5WM" customClass="ADDProgressCircle" customModule="DragAndDoneWidget" customModuleProvider="target">
-                                <rect key="frame" x="226" y="20" width="70" height="70"/>
+                                <rect key="frame" x="218" y="8" width="70" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="VRt-Cx-cr3"/>
-                                    <constraint firstAttribute="width" constant="70" id="bZN-O8-GWa"/>
+                                    <constraint firstAttribute="height" constant="70" id="0A2-oA-rp8"/>
+                                    <constraint firstAttribute="width" constant="70" id="UaM-A3-6fL"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="incompletedSegmentColor">
@@ -48,64 +49,54 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dti-81-odd" customClass="TaskView" customModule="DragAndDone">
-                                <rect key="frame" x="24" y="98" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" translatesAutoresizingMaskIntoConstraints="NO" id="dti-81-odd" customClass="TaskView" customModule="DragAndDone">
+                                <rect key="frame" x="8" y="86" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="244" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpK-ad-Ijd" customClass="TaskView" customModule="DragAndDone">
-                                <rect key="frame" x="80" y="98" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" translatesAutoresizingMaskIntoConstraints="NO" id="fZV-DH-l7O" customClass="TaskView" customModule="DragAndDone">
+                                <rect key="frame" x="64" y="86" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-L2-qsY" customClass="TaskView" customModule="DragAndDone">
-                                <rect key="frame" x="136" y="98" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" translatesAutoresizingMaskIntoConstraints="NO" id="1xi-an-SUs" customClass="TaskView" customModule="DragAndDone">
+                                <rect key="frame" x="120" y="86" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="247" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lC8-LL-qPI" customClass="TaskView" customModule="DragAndDone">
-                                <rect key="frame" x="192" y="98" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" translatesAutoresizingMaskIntoConstraints="NO" id="A16-Jy-zQB" customClass="TaskView" customModule="DragAndDone">
+                                <rect key="frame" x="176" y="86" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Wq-8u-AXq" customClass="TaskView" customModule="DragAndDone">
-                                <rect key="frame" x="248" y="98" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="246" translatesAutoresizingMaskIntoConstraints="NO" id="G0J-ML-0Pm" customClass="TaskView" customModule="DragAndDone">
+                                <rect key="frame" x="232" y="86" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="2x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-ju-l9b">
-                                <rect key="frame" x="39" y="154" width="19" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" fixedFrame="YES" text="2x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THn-lu-sXF">
-                                <rect key="frame" x="95" y="154" width="19" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8q-gl-2ab">
-                                <rect key="frame" x="151" y="154" width="19" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-bP-vbK">
-                                <rect key="frame" x="207" y="154" width="19" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="2x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWB-M6-EXn">
-                                <rect key="frame" x="263" y="154" width="19" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="OiX-ID-pDh" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="2Np-Yo-TYf"/>
-                            <constraint firstItem="OiX-ID-pDh" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="7dl-RF-TvL"/>
-                            <constraint firstItem="u4w-TD-AWa" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Ij2-6k-jHN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8YL-tK-5WM" secondAttribute="trailing" constant="8" id="l5j-Sc-cuX"/>
-                            <constraint firstItem="u4w-TD-AWa" firstAttribute="top" secondItem="OiX-ID-pDh" secondAttribute="bottom" constant="8" id="raq-Eu-Fm7"/>
-                            <constraint firstItem="8YL-tK-5WM" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="xIU-hp-JHK"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="G0J-ML-0Pm" secondAttribute="width" id="18Q-Jb-diG"/>
+                            <constraint firstItem="1xi-an-SUs" firstAttribute="top" secondItem="u4w-TD-AWa" secondAttribute="bottom" constant="8" id="1Qu-HZ-9nR"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="fZV-DH-l7O" secondAttribute="height" multiplier="1:1" id="42K-XS-8ye"/>
+                            <constraint firstItem="A16-Jy-zQB" firstAttribute="leading" secondItem="1xi-an-SUs" secondAttribute="trailing" constant="8" id="4Cx-fQ-avX"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="top" secondItem="u4w-TD-AWa" secondAttribute="bottom" constant="8" id="5jV-xc-WbV"/>
+                            <constraint firstItem="fZV-DH-l7O" firstAttribute="leading" secondItem="dti-81-odd" secondAttribute="trailing" constant="8" id="7ZD-VB-1Bq"/>
+                            <constraint firstItem="8YL-tK-5WM" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" constant="-16" id="9Y6-YB-OvY"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-8" id="ANl-Be-xBz"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="bottom" secondItem="fZV-DH-l7O" secondAttribute="bottom" id="AbZ-LK-Swl"/>
+                            <constraint firstItem="u4w-TD-AWa" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-16" id="Cuk-o2-3ol"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="G0J-ML-0Pm" secondAttribute="height" multiplier="1:1" id="CyT-vH-f6v"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="A16-Jy-zQB" secondAttribute="height" multiplier="1:1" id="Hga-7M-1jY"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="1xi-an-SUs" secondAttribute="height" multiplier="1:1" id="Hr5-1M-dNJ"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="1xi-an-SUs" secondAttribute="width" id="JYQ-de-T1C"/>
+                            <constraint firstItem="8YL-tK-5WM" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="N1y-JJ-oLH"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="fZV-DH-l7O" secondAttribute="width" id="Nho-2u-STQ"/>
+                            <constraint firstItem="1xi-an-SUs" firstAttribute="leading" secondItem="fZV-DH-l7O" secondAttribute="trailing" constant="8" id="VfC-WZ-Ugb"/>
+                            <constraint firstItem="OiX-ID-pDh" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="WBf-g1-1Ij"/>
+                            <constraint firstItem="OiX-ID-pDh" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-16" id="WqC-BU-NjO"/>
+                            <constraint firstItem="fZV-DH-l7O" firstAttribute="top" secondItem="u4w-TD-AWa" secondAttribute="bottom" constant="8" id="ZIG-Yz-EeA"/>
+                            <constraint firstItem="dti-81-odd" firstAttribute="width" secondItem="A16-Jy-zQB" secondAttribute="width" id="c7N-fd-OYv"/>
+                            <constraint firstItem="A16-Jy-zQB" firstAttribute="top" secondItem="u4w-TD-AWa" secondAttribute="bottom" constant="8" id="cxG-bl-zHp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="G0J-ML-0Pm" secondAttribute="trailing" constant="24" id="fZj-9W-5kM"/>
+                            <constraint firstItem="u4w-TD-AWa" firstAttribute="top" secondItem="OiX-ID-pDh" secondAttribute="bottom" constant="8" id="fe2-Nh-RWi"/>
+                            <constraint firstItem="G0J-ML-0Pm" firstAttribute="top" secondItem="u4w-TD-AWa" secondAttribute="bottom" constant="8" id="tUO-Wv-cC1"/>
+                            <constraint firstItem="G0J-ML-0Pm" firstAttribute="leading" secondItem="A16-Jy-zQB" secondAttribute="trailing" constant="8" id="trc-WN-2XF"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>

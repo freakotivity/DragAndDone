@@ -139,6 +139,11 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     
     func showPlaceholder()
     {
+        if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+        self.placeholder.color = self.taskHandler.colorForFolder(folder)
+            self.placeholder.setNeedsDisplay()
+        }
         self.placeholder.hidden = false
         self.placeholder.center = CGPointMake(doneXPosition, self.view.frame.height - self.taskViewSize)
         self.placeholder.bounds.size = CGSizeMake(1.0, 1.0)
@@ -190,6 +195,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         {
             self.doneTaskViews.insert(task, atIndex: 0)
         }
+        if task.task?.done == false
+        {
         task.task?.done = true
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
@@ -198,6 +205,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 task.convertImageToGrayScale()
         }
         self.collapseTodoTasks()
+        }
         
         if ((self.doneTaskViews.count == 3) || (self.doneTaskViews.count == 5))
         {
@@ -337,6 +345,12 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     
     func checkTask(task: TaskView)
     {
+        var checkColor:UIColor!
+        if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            checkColor = self.taskHandler.colorForFolder(folder)
+        }
+
 //        let bezierPath = UIBezierPath(catmullRomPoints: self.pointsArray, closed: false, alpha: 0.5)
 //        let bezier:CAShapeLayer = CAShapeLayer()
 //        bezier.path = bezierPath?.CGPath
@@ -362,7 +376,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         
         let bezLayer = CAShapeLayer()
         bezLayer.path = bezPath.CGPath
-        bezLayer.strokeColor = UIColor.purpleColor().CGColor
+//        bezLayer.strokeColor = UIColor.purpleColor().CGColor
+        bezLayer.strokeColor = checkColor.CGColor
         bezLayer.fillColor = UIColor.clearColor().CGColor
         bezLayer.lineWidth = 8.0
         bezLayer.strokeStart = 0.0
@@ -385,16 +400,22 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         bezLayer.addAnimation(drawAnimation, forKey: "check")
     }
     
-    func editorPickedFolder(folder: String) {
+    func editorPickedFolder(folder: String?) {
         println("PICKED FOLDER \(folder)")
         NSUserDefaults.standardUserDefaults().setObject(folder, forKey: "currentFolder")
         NSUserDefaults.standardUserDefaults().synchronize()
-        let color = self.taskHandler.colorForFolder(folder)
-        self.topBar.backgroundColor = color
+        if let fldr = folder
+        {
+            let color = self.taskHandler.colorForFolder(fldr)
+            self.topBar.backgroundColor = color
+        } else {
+            self.topBar.backgroundColor = UIColor.wisteria()
+        }
         self.topBarTitleLabel.text = folder
         self.topBarTitleLabel.sizeToFit()
         self.topBarTitleLabel.center.x = self.topBar.center.x
         self.loadCurrentFolder()
+        
     }
     
     func loadCurrentFolder()
@@ -421,6 +442,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 
                 taskView.image = UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(taskView.task!.imageName!))
                 
+                if taskView.image == nil
+                {
                 let taskNameArray = split(taskView.task!.name!) {$0 == " "}
                 println("TASKNAME ARRAY \(taskNameArray)")
                 var firsts = ""
@@ -431,7 +454,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 }
                 
                 taskView.textLabel.text = firsts
-                
+                } else {
+                    taskView.textLabel.text = ""
+                }
                 
                 self.view.addSubview(taskView)
                 self.taskViews.append(taskView)

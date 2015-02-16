@@ -9,6 +9,7 @@
 import UIKit
 
 class Placeholder: UIView {
+    var color = UIColor.blackColor()
     
     override func drawRect(rect: CGRect) {
         println("PLACEHOLDER DRAW RECT")
@@ -20,8 +21,8 @@ class Placeholder: UIView {
         
         let lineWidthFactor:CGFloat = 30.0 // Tweak this to alter line width!
         CGContextSetLineWidth(context, min(rect.size.width / lineWidthFactor, rect.size.height / lineWidthFactor))
-        
-        UIColor(red: 142/255.0, green: 68/255.0, blue: 173/255.0, alpha: 1.0).setFill()
+        self.color.setFill()
+//        UIColor(red: 142/255.0, green: 68/255.0, blue: 173/255.0, alpha: 1.0).setFill()
         CGContextFillEllipseInRect(context, rect)
         
 //        for i in 0..<30

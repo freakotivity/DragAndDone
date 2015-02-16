@@ -14,8 +14,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
-//        self.preferredContentSize = CGSizeMake(0, 400)
-//        for i in 0...40
+
+        //        for i in 0...40
 //        {
 //            let yPos:CGFloat = CGFloat(i) * 10
 //            let label = UILabel(frame: CGRectMake(0, yPos, self.view.frame.size.width, 10))

@@ -13,11 +13,16 @@ protocol DNDAddTaskDelegate {
 }
 
 class AddTaskViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    var task:DNDTask?
+    var taskIndex:Int?
     @IBOutlet weak var taskNameTextField: UITextField!
     let taskHandler = DNDTaskHandler()
     var delegate:DNDAddTaskDelegate?
     var image:UIImage?
+    var editTaskMode = false
 
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var takePictureButton: UIButton!
     
     
@@ -26,6 +31,15 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate, UIImagePicke
 
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardChanged:", name: UIKeyboardDidChangeFrameNotification, object: nil)
+        if editTaskMode
+        {
+            self.addButton.setTitle("Save", forState: UIControlState.Normal)
+            self.titleLabel.text = "Edit " + task!.name!
+            self.taskNameTextField.text = task!.name!
+            self.image = UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(self.task!.imageName!))
+            self.takePictureButton.setImage(UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(self.task!.imageName!)), forState: UIControlState.Normal)
+
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,7 +80,12 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         UIImagePNGRepresentation(saveImage).writeToFile(picPath, atomically: true)
         }
         
+        if editTaskMode
+        {
+        taskHandler.replaceTaskAtIndex(taskIndex!, withTask: nuTask)
+        } else {
         taskHandler.addTaskInCurrentFolder(nuTask)
+        }
         delegate?.didAddTask()
         self.dismissViewControllerAnimated(false, completion: nil)
     }

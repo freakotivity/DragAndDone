@@ -114,13 +114,15 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="400"/>
                     <connections>
+                        <outlet property="addButton" destination="pqz-on-qhG" id="b3S-Hs-3EC"/>
                         <outlet property="takePictureButton" destination="GLz-ZD-NMA" id="sJR-9S-Vcn"/>
                         <outlet property="taskNameTextField" destination="VVq-l3-KkT" id="YFd-pZ-E5N"/>
+                        <outlet property="titleLabel" destination="L7c-PD-uYA" id="Ncm-Mv-QhG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svC-vR-BAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-118" y="1122"/>
+            <point key="canvasLocation" x="523" y="1720"/>
         </scene>
         <!--Editor View Controller-->
         <scene sceneID="hkl-l0-1XI">
@@ -174,7 +176,7 @@
                                 </constraints>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" textLabel="Wrg-al-mlX" style="IBUITableViewCellStyleDefault" id="zI9-fm-cn9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="TaskCell" textLabel="Wrg-al-mlX" style="IBUITableViewCellStyleDefault" id="zI9-fm-cn9">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zI9-fm-cn9" id="CvC-hR-yAb">
@@ -264,6 +266,7 @@
                         <outlet property="tasksTableView" destination="z1M-po-yqK" id="22D-DG-DUL"/>
                         <outlet property="toggleEditoButton" destination="pxh-6c-WC1" id="Qx6-gi-LMM"/>
                         <segue destination="NnK-UL-d45" kind="presentation" identifier="addTask" id="JNM-Pn-zub"/>
+                        <segue destination="NnK-UL-d45" kind="presentation" identifier="editTask" id="sOH-24-xxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOP-0E-eXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -391,4 +394,7 @@
         <image name="menu button" width="46" height="37"/>
         <image name="statistics button" width="46" height="46"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sOH-24-xxb"/>
+    </inferredMetricsTieBreakers>
 </document>

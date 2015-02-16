@@ -26,11 +26,95 @@ class DNDTaskHandler: NSObject {
         plist.writeToFile(plistLocation(), atomically: true)
     }
     
+ 
+    
     func addTaskInCurrentFolder(task: DNDTask)
     {
         if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
         {
             self.addTask(task, folder: folder)
+        }
+    }
+    
+    func removeFolderAtIndex(index: Int)
+    {
+        let plist = self.plist()
+        plist.removeObjectForKey(plist.allKeys[index])
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("currentFolder")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        if plist.writeToFile(plistLocation(), atomically: true)
+        {
+            println("YEAH DELETED FOLDER SOMETHING!!")
+        } else {
+            println("NOOO DIDNT DELETE FOLDER SHIT")
+        }
+    }
+    
+    func removeTaskAtIndex(index: Int)
+    {
+        println("REPLACE TASK AT INDEX \(index)")
+        if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            println("FOLDER \(folder)")
+            let plist = self.plist()
+            
+            var foldersDictionary = NSMutableDictionary()
+            var foldersArray = NSMutableArray()
+            if plist[folder] != nil
+            {
+                foldersDictionary = plist[folder] as NSMutableDictionary
+                if let tasks = foldersDictionary["tasks"] as? NSMutableArray
+                {
+                    foldersArray.addObjectsFromArray(tasks)
+                }
+            }
+            
+            //        taskDict.setValue(task.doneImageName, forKey: "Doneimagename")
+            foldersArray.removeObjectAtIndex(index)
+            foldersDictionary.setObject(foldersArray, forKey: "tasks")
+            plist.setValue(foldersDictionary, forKey: folder)
+            if plist.writeToFile(plistLocation(), atomically: true)
+            {
+                println("YEAH REPLACED SOMETHING!!")
+            } else {
+                println("NOOO DIDNT REPLACE SHIT")
+            }
+        }    }
+    
+    func replaceTaskAtIndex(index: Int, withTask task:DNDTask)
+    {
+        println("REPLACE TASK AT INDEX \(index)")
+        if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            println("FOLDER \(folder)")
+        let plist = self.plist()
+        
+        var foldersDictionary = NSMutableDictionary()
+        var foldersArray = NSMutableArray()
+        if plist[folder] != nil
+        {
+            foldersDictionary = plist[folder] as NSMutableDictionary
+            if let tasks = foldersDictionary["tasks"] as? NSMutableArray
+            {
+                foldersArray.addObjectsFromArray(tasks)
+            }
+        }
+        
+        let taskDict = NSMutableDictionary()
+        taskDict.setValue(task.done, forKey: "Done")
+        taskDict.setValue(task.name!, forKey: "Name")
+        taskDict.setValue(task.imageName!, forKey: "Imagename")
+        //        taskDict.setValue(task.doneImageName, forKey: "Doneimagename")
+            foldersArray.removeObjectAtIndex(index)
+            foldersArray.insertObject(taskDict, atIndex: index)
+        foldersDictionary.setObject(foldersArray, forKey: "tasks")
+        plist.setValue(foldersDictionary, forKey: folder)
+        if plist.writeToFile(plistLocation(), atomically: true)
+        {
+            println("YEAH REPLACED SOMETHING!!")
+        } else {
+            println("NOOO DIDNT REPLACE SHIT")
+            }
         }
     }
     
@@ -69,7 +153,7 @@ class DNDTaskHandler: NSObject {
     
     func plistLocation() -> NSString
     {
-//        println(docDir().stringByAppendingPathComponent("tasks.plist"))
+        println(docDir().stringByAppendingPathComponent("tasks.plist"))
         return docDir().stringByAppendingPathComponent("tasks.plist")
     }
     
