@@ -13,13 +13,14 @@ class TaskView: UIView {
     var textLabel:UILabel!
     var image:UIImage?
     var task:DNDTask?
-    
+    var taskColor:UIColor!
     
     override func drawRect(rect: CGRect) {
         println("drawrect uiimage:\(image)")
         let lineWidth:CGFloat = min(rect.size.width, rect.size.height)/10
         let square = CGRectMake(0, 0, min(rect.size.width, rect.size.height), min(rect.size.width, rect.size.height))
-        UIColor.blackColor().setStroke()
+//        UIColor.blackColor().setStroke()
+        self.taskColor.setFill()
         let context = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(context, lineWidth)
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
@@ -30,8 +31,8 @@ class TaskView: UIView {
         }
         
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
-        CGContextStrokePath(context)
-        
+//        CGContextStrokePath(context)
+        CGContextFillPath(context)
         
     }
     
@@ -69,6 +70,8 @@ class TaskView: UIView {
         super.init(frame: frame)
         println("TASK VIEW INIT WITH FRAME")
         self.textLabel = UILabel(frame: frame)
+        self.textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25.0)
+        self.textLabel.textColor = UIColor.whiteColor()
         self.textLabel.backgroundColor = UIColor.clearColor()
         //        self.textLabel.text = "YEAH"
         self.textLabel.textAlignment = NSTextAlignment.Center

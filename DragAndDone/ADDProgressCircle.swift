@@ -64,8 +64,9 @@ class ADDProgressCircle: UIView {
     let wholeCircle:CGFloat = CGFloat(M_PI * 2)
 
     override func drawRect(rect: CGRect) {
+        
         let context = UIGraphicsGetCurrentContext()
-        var startAngle:CGFloat = -CGFloat(M_PI / 2)
+        var startAngle:CGFloat = -CGFloat(M_PI / 2) + 0.05
         let segmentAngle:CGFloat = (wholeCircle / CGFloat(numberOfSegments)) - 0.1
         
         CGContextSetLineWidth(context, min(rect.size.width / 20, rect.size.height / 20))

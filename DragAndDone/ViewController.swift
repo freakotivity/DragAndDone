@@ -39,10 +39,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
+        separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height))
+        separatorLine.backgroundColor = UIColor.blackColor()
+        separatorLine.center = self.view.center
+        self.view.addSubview(separatorLine)
         
         self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 64.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
         self.topBar.backgroundColor = UIColor.wisteria()
+
         self.view.addSubview(self.topBar)
         
         let hamburger = UIButton(frame: CGRectMake(8, 30, 22, 22))
@@ -56,18 +61,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         self.topBar.addSubview(statsButton)
         
         self.topBarTitleLabel.center.x = self.topBar.center.x
-        self.topBarTitleLabel.center.y = 32 // Y position for title label
+        self.topBarTitleLabel.center.y = 25 // Y position for title label
         self.topBarTitleLabel.textColor = UIColor.whiteColor()
-//        self.topBarTitleLabel.font = 
+        self.topBarTitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25.0)
         self.topBar.addSubview(self.topBarTitleLabel)
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
-        separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height * 0.7))
-        separatorLine.backgroundColor = UIColor.blackColor()
-        separatorLine.center = self.view.center
-        self.view.addSubview(separatorLine)
+
         
         self.taskViewSize = self.view.frame.size.height / 6
         todoXPosition = self.view.frame.width / 4.0
@@ -98,6 +100,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         
         if pan.state == UIGestureRecognizerState.Began
         {
+
             for taskView in self.taskViews
             {
                 if CGRectContainsPoint(taskView.frame, panPoint)
@@ -112,6 +115,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                     break
                 }
             }
+
         }
         if pan.state == UIGestureRecognizerState.Changed
         {
@@ -119,9 +123,11 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
             {
                 grabbedTaskView.center = CGPointMake(panPoint.x - self.panOffset.x, panPoint.y - self.panOffset.y)
             }
+
         }
         if pan.state == UIGestureRecognizerState.Ended
         {
+
             if grabbedTaskView != nil
             {
                 if grabbedTaskView.center.x > (self.view.frame.size.width / 2)
@@ -195,16 +201,17 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         {
             self.doneTaskViews.insert(task, atIndex: 0)
         }
-        if task.task?.done == false
-        {
-        task.task?.done = true
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
             task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
             }) {(completed) ->Void in
+                if task.task?.done == false
+                {
+                    task.task?.done = true
+                    self.collapseTodoTasks()
+
                 self.checkTask(task)
                 task.convertImageToGrayScale()
         }
-        self.collapseTodoTasks()
         }
         
         if ((self.doneTaskViews.count == 3) || (self.doneTaskViews.count == 5))
@@ -431,6 +438,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
             {
                 println("TASK \(task) DONE \(task.done)")
                 let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
+                taskView.taskColor = taskHandler.colorForFolder(folder)
                 taskView.task = task
                 taskView.backgroundColor = UIColor.clearColor()
                 //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
