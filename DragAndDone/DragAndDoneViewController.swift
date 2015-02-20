@@ -205,6 +205,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         if task.task?.done == false
         {
             task.task?.done = true
+            println("MOVE TASK: \(task.task)")
             self.taskHandler.taskIsDone(task.task!.taskID!)
             self.checkTask(task)
             task.convertImageToGrayScale()
@@ -399,8 +400,12 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         let bezLayer = CAShapeLayer()
         bezLayer.path = bezPath.CGPath
         //        bezLayer.strokeColor = UIColor.purpleColor().CGColor
-//        bezLayer.strokeColor = checkColor.CGColor
+        if task.image != nil
+        {
+        bezLayer.strokeColor = checkColor.CGColor
+        } else {
         bezLayer.strokeColor = UIColor.blackColor().CGColor
+        }
         bezLayer.fillColor = UIColor.clearColor().CGColor
         bezLayer.lineWidth = 8.0
         bezLayer.strokeStart = 0.0
@@ -455,7 +460,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             let tasks = taskHandler.tasksInFolder(folder)
             for (index, task) in enumerate(tasks)
             {
-                println("TASK \(task) DONE \(task.done)")
+                println("LOADING TASK \(task)")
                 
                 let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
                 taskView.taskColor = taskHandler.colorForFolder(folder)
@@ -477,6 +482,8 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 println("TASKVIEW IMAGE: \(taskView.task!.imageName!)")
                 
                 taskView.image = UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(taskView.task!.imageName!))
+                
+                println("TASKVIEW IMAGE UIIMAGE: \(taskView.image)")
                 
                 if taskView.image == nil
                 {

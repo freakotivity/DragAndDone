@@ -73,7 +73,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         nuTask.name = self.taskNameTextField.text
         nuTask.imageName = fileName
-        nuTask.doneImageName = "yeha"
+//        nuTask.doneImageName = "yeha"
         
         if let saveImage = self.image as UIImage?
         {
@@ -91,7 +91,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
 
     @IBAction func cancel() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

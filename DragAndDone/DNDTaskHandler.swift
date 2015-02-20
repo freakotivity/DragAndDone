@@ -319,16 +319,24 @@ class DNDTaskHandler: NSObject {
                     foldersArray.addObjectsFromArray(tasks)
                 }
             }
-            
+            println("FOLDERSARRAY: \(foldersArray)")
+            let oldTask = foldersArray.objectAtIndex(index) as Dictionary<String, AnyObject>
+            println("OLD TASK \(oldTask)")
             let taskDict = NSMutableDictionary()
             taskDict.setValue(task.done, forKey: "Done")
             taskDict.setValue(task.name!, forKey: "Name")
+            taskDict.setValue(oldTask["TaskID"], forKey: "TaskID")
             taskDict.setValue(task.imageName!, forKey: "Imagename")
             //        taskDict.setValue(task.doneImageName, forKey: "Doneimagename")
             foldersArray.removeObjectAtIndex(index)
+            
+            // TODO: REMOVE OLD IMAGE FILE!!!!!!!!!!!
+            
             foldersArray.insertObject(taskDict, atIndex: index)
             foldersDictionary.setObject(foldersArray, forKey: "tasks")
             plist.setValue(foldersDictionary, forKey: folder)
+            
+            println("NEW TASK \(taskDict)")
             if plist.writeToFile(plistLocation(), atomically: true)
             {
                 println("YEAH REPLACED SOMETHING!!")

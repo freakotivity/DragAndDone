@@ -25,15 +25,14 @@ class TaskView: UIView {
         CGContextSetLineWidth(context, lineWidth)
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
         CGContextClip(context)
-        if image != nil
-        {
-            image!.drawInRect(rect)
-        }
         
         CGContextAddEllipseInRect(context, CGRectInset(square, lineWidth, lineWidth))
 //        CGContextStrokePath(context)
         CGContextFillPath(context)
-        
+//        if image != nil
+//        {
+            image?.drawInRect(rect)
+//        }
     }
     
 //    func convertImageToGrayScale(image: UIImage) -> UIImage {
