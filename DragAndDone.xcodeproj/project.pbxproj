@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F06166A1A97981F000A470A /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616691A97981F000A470A /* SeparatorLine.swift */; };
 		1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */; };
 		1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */; };
 		1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F0616691A97981F000A470A /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorViewController.swift; sourceTree = "<group>"; };
 		1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorEdge.swift; sourceTree = "<group>"; };
 		1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */,
 				1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */,
 				1F1D63741A8FFDBF009A7C41 /* ADDProgressCircle.swift */,
+				1F0616691A97981F000A470A /* SeparatorLine.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* DragAndDoneViewController.swift in Sources */,
 				1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */,
+				1F06166A1A97981F000A470A /* SeparatorLine.swift in Sources */,
 				C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */,
 				1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */,
 				1F913F381A82AF7D00C91205 /* StatsViewController.swift in Sources */,

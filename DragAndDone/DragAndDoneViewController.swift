@@ -39,9 +39,9 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
-        separatorLine = UIView(frame: CGRectMake(0, 0, 1, self.view.frame.height))
-        separatorLine.backgroundColor = UIColor.blackColor()
+        separatorLine = SeparatorLine(frame: CGRectMake(0, 0, 1, self.view.frame.height))
         separatorLine.center = self.view.center
+        separatorLine.backgroundColor = UIColor.clearColor()
         self.view.addSubview(separatorLine)
         
         self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 64.0)
@@ -122,6 +122,20 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             if grabbedTaskView != nil
             {
                 grabbedTaskView.center = CGPointMake(panPoint.x - self.panOffset.x, panPoint.y - self.panOffset.y)
+            } else {
+                //                println("PAN TRANSLATION \(pan.translationInView(self.view).y)")
+                if pan.translationInView(self.view).y < -15
+                {
+                    println("LOAD PREVIOUS FOLDER")
+                    self.loadPreviousFolder()
+                    pan.setTranslation(CGPointZero, inView: self.view)
+                }
+                if pan.translationInView(self.view).y > 15
+                {
+                    println("LOAD NEXT FOLDER")
+                    self.loadNextFolder()
+                    pan.setTranslation(CGPointZero, inView: self.view)
+                }
             }
             
         }
@@ -185,13 +199,13 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 self.placeholder.hidden = true
         }
         var doneCount = 1
-//        for taskView in self.doneTaskViews
-//        {
-//            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-//                taskView.center.y = self.view.frame.height - (CGFloat(doneCount) * self.taskViewSize)
-//                }, completion:nil)
-//            doneCount++
-//        }
+        //        for taskView in self.doneTaskViews
+        //        {
+        //            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+        //                taskView.center.y = self.view.frame.height - (CGFloat(doneCount) * self.taskViewSize)
+        //                }, completion:nil)
+        //            doneCount++
+        //        }
         self.collapseTodoTasks()
     }
     
@@ -211,7 +225,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             task.convertImageToGrayScale()
         }
         self.collapseTodoTasks()
-
+        
         
         if ((self.doneTaskViews.count == 3) || (self.doneTaskViews.count == 5))
         {
@@ -258,17 +272,17 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         // DONE
         
         todoer = startFactor
-//        for (i = self.doneTaskViews.count - 1; i > -1; i--)
-                    for (i = 0; i < self.doneTaskViews.count; i++)
+        //        for (i = self.doneTaskViews.count - 1; i > -1; i--)
+        for (i = 0; i < self.doneTaskViews.count; i++)
         {
             println("i \(i)")
-                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-                    self.doneTaskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
-                    self.doneTaskViews[i].center.x = self.doneXPosition
-                    
-                    }, completion: nil)
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+                self.doneTaskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
+                self.doneTaskViews[i].center.x = self.doneXPosition
                 
-                todoer += 1.0
+                }, completion: nil)
+            
+            todoer += 1.0
         }
     }
     
@@ -402,9 +416,9 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         //        bezLayer.strokeColor = UIColor.purpleColor().CGColor
         if task.image != nil
         {
-        bezLayer.strokeColor = checkColor.CGColor
+            bezLayer.strokeColor = checkColor.CGColor
         } else {
-        bezLayer.strokeColor = UIColor.blackColor().CGColor
+            bezLayer.strokeColor = UIColor.blackColor().CGColor
         }
         bezLayer.fillColor = UIColor.clearColor().CGColor
         bezLayer.lineWidth = 8.0
@@ -445,12 +459,12 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         
         if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
         {
-                let color = self.taskHandler.colorForFolder(folder)
-                self.topBar.backgroundColor = color
+            let color = self.taskHandler.colorForFolder(folder)
+            self.topBar.backgroundColor = color
             self.topBarTitleLabel.text = folder
             self.topBarTitleLabel.sizeToFit()
             self.topBarTitleLabel.center.x = self.topBar.center.x
-
+            
             
             if self.taskHandler.shouldResetFolder(folder)
             {
@@ -508,7 +522,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 taskView.addGestureRecognizer(tap)
             }
             
-            // build the done tasks array 
+            // build the done tasks array
             if let doneTasks = self.taskHandler.doneTasks()
             {
                 println("WE GOT SOME DONE TASKS HERE: \(doneTasks)")
@@ -557,4 +571,39 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     func editorAddedTask() {
         self.loadCurrentFolder()
     }
+    
+    func loadNextFolder()
+    {
+        if let currentFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            if let currentFolderIndex = find(self.taskHandler.folders(), currentFolder)
+            {
+                if currentFolderIndex == (self.taskHandler.folders().count - 1)
+                {
+                    NSUserDefaults.standardUserDefaults().setObject(self.taskHandler.folders().first, forKey: "currentFolder")
+                } else {
+                    NSUserDefaults.standardUserDefaults().setObject(self.taskHandler.folders()[currentFolderIndex + 1], forKey: "currentFolder")
+                }
+                NSUserDefaults.standardUserDefaults().synchronize()
+                self.loadCurrentFolder()
+            }
+        }
+    }
+    
+    func loadPreviousFolder()
+    {
+        if let currentFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
+        {
+            if let currentFolderIndex = find(self.taskHandler.folders(), currentFolder)
+            {
+                if currentFolderIndex == 0
+                {
+                    NSUserDefaults.standardUserDefaults().setObject(self.taskHandler.folders().last, forKey: "currentFolder")
+                } else {
+                    NSUserDefaults.standardUserDefaults().setObject(self.taskHandler.folders()[currentFolderIndex - 1], forKey: "currentFolder")
+                }
+                NSUserDefaults.standardUserDefaults().synchronize()
+                self.loadCurrentFolder()
+            }
+        }    }
 }

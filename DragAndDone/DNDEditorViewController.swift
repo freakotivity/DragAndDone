@@ -187,6 +187,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.taskHandler.removeFolderAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
                 delegate?.editorPickedFolder(nil)
+                self.tasksTableView.reloadData()
             }
         }
     }
