@@ -124,13 +124,13 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 grabbedTaskView.center = CGPointMake(panPoint.x - self.panOffset.x, panPoint.y - self.panOffset.y)
             } else {
                 //                println("PAN TRANSLATION \(pan.translationInView(self.view).y)")
-                if pan.translationInView(self.view).y < -15
+                if pan.translationInView(self.view).y < -30
                 {
                     println("LOAD PREVIOUS FOLDER")
                     self.loadPreviousFolder()
                     pan.setTranslation(CGPointZero, inView: self.view)
                 }
-                if pan.translationInView(self.view).y > 15
+                if pan.translationInView(self.view).y > 30
                 {
                     println("LOAD NEXT FOLDER")
                     self.loadNextFolder()
@@ -259,7 +259,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             println("i \(i)")
             if (!self.taskViews[i].task!.done)
             {
-                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
                     //                    self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
                     self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
                     
@@ -276,7 +276,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         for (i = 0; i < self.doneTaskViews.count; i++)
         {
             println("i \(i)")
-            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
                 self.doneTaskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
                 self.doneTaskViews[i].center.x = self.doneXPosition
                 
@@ -452,8 +452,13 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     
     func loadCurrentFolder()
     {
+        self.loadCurrentFolder(true)
+    }
+    
+    func loadCurrentFolder(fromTop: Bool)
+    {
         println("LOAD CURRENT FOLDER")
-        self.clearTaskViews()
+        self.clearTaskViews(fromTop)
         self.taskViews.removeAll()
         self.doneTaskViews.removeAll()
         
@@ -482,7 +487,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 taskView.backgroundColor = UIColor.clearColor()
                 //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
                 //                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
-                taskView.center.y = -taskViewSize
+                taskView.center.y = fromTop ? -taskViewSize : self.view.frame.size.height + taskViewSize
                 if self.showsEditor {
                     taskView.center.x = self.doneXPosition
                 } else {
@@ -550,11 +555,26 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     
     func clearTaskViews()
     {
-        for view in self.view.subviews
+        self.clearTaskViews(true)
+    }
+    
+    func clearTaskViews(down: Bool)
+    {
+        for taskView in self.view.subviews
         {
-            if view is TaskView
+            if taskView is TaskView
             {
-                view.removeFromSuperview()
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
+                    (taskView as TaskView).center = down ? CGPointMake(self.view.center.x, 1000) : CGPointMake(self.view.center.x, -self.taskViewSize)
+                }, completion: { (completed) -> Void in
+                    taskView.removeFromSuperview()
+                })
+//                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
+//                    (taskView as TaskView).center.y = 1000 //self.view.frame.size.height + self.taskViewSize
+//                    }, completion:{() -> Void in
+//                        taskView.removeFromSuperview()
+//                    }
+//                )
             }
         }
     }
@@ -603,7 +623,8 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                     NSUserDefaults.standardUserDefaults().setObject(self.taskHandler.folders()[currentFolderIndex - 1], forKey: "currentFolder")
                 }
                 NSUserDefaults.standardUserDefaults().synchronize()
-                self.loadCurrentFolder()
+                self.loadCurrentFolder(false)
             }
-        }    }
+        }
+    }
 }

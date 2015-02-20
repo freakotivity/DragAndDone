@@ -20,11 +20,15 @@ class SeparatorLine: UIView {
         //        let oneColor = UIColor.greenSea()
         //        let otherColor = UIColor.nephritis()
         //        let otherColor = UIColor(white: 0.95, alpha: 1.0)
-        let oneColor = UIColor.lightGrayColor()
-        let otherColor = UIColor.lightGrayColor()
-        
-        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [oneColor.CGColor, otherColor.CGColor], [0, 1])
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, rect.size.height), 0)
+//        let oneColor = UIColor.lightGrayColor()
+//        let otherColor = UIColor.darkGrayColor()
+//        
+//        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [UIColor.lightGrayColor().CGColor, UIColor.darkGrayColor().CGColor, UIColor.lightGrayColor().CGColor], [0, 0.25, 0.5, 0.75, 1])
+//
+////        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [oneColor.CGColor, otherColor.CGColor, oneColor.CGColor], [0, 1])
+//        CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, rect.size.height), 0)
+        UIColor.lightGrayColor().setFill()
+        CGContextFillRect(context, rect)
     }
 
 }
