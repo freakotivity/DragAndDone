@@ -12,7 +12,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIViewControllerTransitioningDelegate, DNDEditorDelegate {
+class DragAndDoneViewController: UIViewController, UIViewControllerTransitioningDelegate, DNDEditorDelegate {
     var taskViews: [TaskView] = []
     var doneTaskViews: [TaskView] = []
     var grabbedTaskView:TaskView!
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 64.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
         self.topBar.backgroundColor = UIColor.wisteria()
-
+        
         self.view.addSubview(self.topBar)
         
         let hamburger = UIButton(frame: CGRectMake(8, 30, 22, 22))
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        
         
         self.taskViewSize = self.view.frame.size.height / 6
         todoXPosition = self.view.frame.width / 4.0
@@ -86,7 +86,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         self.navigationItem.title = "Daily Stuff"
     }
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,7 +100,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         
         if pan.state == UIGestureRecognizerState.Began
         {
-
+            
             for taskView in self.taskViews
             {
                 if CGRectContainsPoint(taskView.frame, panPoint)
@@ -115,7 +115,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                     break
                 }
             }
-
+            
         }
         if pan.state == UIGestureRecognizerState.Changed
         {
@@ -123,11 +123,11 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
             {
                 grabbedTaskView.center = CGPointMake(panPoint.x - self.panOffset.x, panPoint.y - self.panOffset.y)
             }
-
+            
         }
         if pan.state == UIGestureRecognizerState.Ended
         {
-
+            
             if grabbedTaskView != nil
             {
                 if grabbedTaskView.center.x > (self.view.frame.size.width / 2)
@@ -147,7 +147,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     {
         if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
         {
-        self.placeholder.color = self.taskHandler.colorForFolder(folder)
+            self.placeholder.color = self.taskHandler.colorForFolder(folder)
             self.placeholder.setNeedsDisplay()
         }
         self.placeholder.hidden = false
@@ -169,7 +169,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
             if taskView.task!.done
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-                    taskView.center.y -= self.taskViewSize
+                    taskView.center.y -= self.taskViewSize * 1.5
                     
                     }, completion: nil)
             }
@@ -185,13 +185,14 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 self.placeholder.hidden = true
         }
         var doneCount = 1
-        for taskView in self.doneTaskViews
-        {
-                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-                    taskView.center.y = self.view.frame.height - (CGFloat(doneCount) * self.taskViewSize)
-                }, completion:nil)
-                doneCount++
-        }
+//        for taskView in self.doneTaskViews
+//        {
+//            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+//                taskView.center.y = self.view.frame.height - (CGFloat(doneCount) * self.taskViewSize)
+//                }, completion:nil)
+//            doneCount++
+//        }
+        self.collapseTodoTasks()
     }
     
     func moveTaskToDone(task: TaskView)
@@ -201,18 +202,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         {
             self.doneTaskViews.insert(task, atIndex: 0)
         }
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-            task.center = CGPointMake(self.doneXPosition, self.view.frame.height - self.taskViewSize)
-            }) {(completed) ->Void in
-                if task.task?.done == false
-                {
-                    task.task?.done = true
-                    self.collapseTodoTasks()
+        if task.task?.done == false
+        {
+            task.task?.done = true
+            self.taskHandler.taskIsDone(task.task!.taskID!)
+            self.checkTask(task)
+            task.convertImageToGrayScale()
+        }
+        self.collapseTodoTasks()
 
-                self.checkTask(task)
-                task.convertImageToGrayScale()
-        }
-        }
         
         if ((self.doneTaskViews.count == 3) || (self.doneTaskViews.count == 5))
         {
@@ -227,32 +225,49 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         {
             self.doneTaskViews.removeAtIndex(removeIndex)
         }
-
+        self.taskHandler.taskIsNotDone(task.task!.taskID!)
         task.task?.done = false
         task.center.x = todoXPosition
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-            }, completion: nil)
-     self.collapseTodoTasks()
+        self.collapseTodoTasks()
     }
     
     func collapseTodoTasks()
     {
+        let startFactor:CGFloat = 0.7
         var i:Int = 0
-        var todoer:CGFloat = 0.7
-                    for (i = self.taskViews.count - 1; i > -1; i--)
-//        for (i = 0; i < self.taskViews.count; i++)
+        var todoer:CGFloat = startFactor
+        
+        // NOT DONE
+        for (i = self.taskViews.count - 1; i > -1; i--)
+            //        for (i = 0; i < self.taskViews.count; i++)
         {
             println("i \(i)")
             if (!self.taskViews[i].task!.done)
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
-//                    self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
+                    //                    self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
                     self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
-
+                    
                     }, completion: nil)
-
+                
                 todoer += 1.0
             }
+        }
+        
+        // DONE
+        
+        todoer = startFactor
+//        for (i = self.doneTaskViews.count - 1; i > -1; i--)
+                    for (i = 0; i < self.doneTaskViews.count; i++)
+        {
+            println("i \(i)")
+                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+                    self.doneTaskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
+                    self.doneTaskViews[i].center.x = self.doneXPosition
+                    
+                    }, completion: nil)
+                
+                todoer += 1.0
         }
     }
     
@@ -262,8 +277,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         let task = sender.view as TaskView
         if !task.task!.done
         {
-        self.shiftDoneTasksUp()
-        self.moveTaskToDone(sender.view as TaskView)
+            self.shiftDoneTasksUp()
+            self.moveTaskToDone(sender.view as TaskView)
         }
     }
     
@@ -305,7 +320,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
+        
         return self.transitionAnimator
     }
     
@@ -357,23 +372,23 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         {
             checkColor = self.taskHandler.colorForFolder(folder)
         }
-
-//        let bezierPath = UIBezierPath(catmullRomPoints: self.pointsArray, closed: false, alpha: 0.5)
-//        let bezier:CAShapeLayer = CAShapeLayer()
-//        bezier.path = bezierPath?.CGPath
-//        bezier.strokeColor = UIColor.yellowColor().CGColor
-//        bezier.fillColor = UIColor.clearColor().CGColor
-//        bezier.lineWidth = 30.0
-//        bezier.strokeStart = 0.0
-//        bezier.strokeEnd = 1.0
-//        self.scrollView.layer.addSublayer(bezier)
-
+        
+        //        let bezierPath = UIBezierPath(catmullRomPoints: self.pointsArray, closed: false, alpha: 0.5)
+        //        let bezier:CAShapeLayer = CAShapeLayer()
+        //        bezier.path = bezierPath?.CGPath
+        //        bezier.strokeColor = UIColor.yellowColor().CGColor
+        //        bezier.fillColor = UIColor.clearColor().CGColor
+        //        bezier.lineWidth = 30.0
+        //        bezier.strokeStart = 0.0
+        //        bezier.strokeEnd = 1.0
+        //        self.scrollView.layer.addSublayer(bezier)
+        
         let bezPath = UIBezierPath()
         let checkFrame = CGRectInset(task.frame, 10, 10)
         
-//        bezierPath.moveToPoint(CGPointMake(8.5, 41.5))
-//        bezierPath.addCurveToPoint(CGPointMake(20.5, 88.5), controlPoint1: CGPointMake(20.5, 85.5), controlPoint2: CGPointMake(20.5, 87.5))
-//        bezierPath.addCurveToPoint(CGPointMake(91.5, 12.5), controlPoint1: CGPointMake(20.5, 89.5), controlPoint2: CGPointMake(31.5, 7.5))
+        //        bezierPath.moveToPoint(CGPointMake(8.5, 41.5))
+        //        bezierPath.addCurveToPoint(CGPointMake(20.5, 88.5), controlPoint1: CGPointMake(20.5, 85.5), controlPoint2: CGPointMake(20.5, 87.5))
+        //        bezierPath.addCurveToPoint(CGPointMake(91.5, 12.5), controlPoint1: CGPointMake(20.5, 89.5), controlPoint2: CGPointMake(31.5, 7.5))
         
         bezPath.moveToPoint(CGPointMake(checkFrame.size.width * 0.185, checkFrame.size.height * 0.415))
         bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint2: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885))
@@ -383,8 +398,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         
         let bezLayer = CAShapeLayer()
         bezLayer.path = bezPath.CGPath
-//        bezLayer.strokeColor = UIColor.purpleColor().CGColor
-        bezLayer.strokeColor = checkColor.CGColor
+        //        bezLayer.strokeColor = UIColor.purpleColor().CGColor
+//        bezLayer.strokeColor = checkColor.CGColor
+        bezLayer.strokeColor = UIColor.blackColor().CGColor
         bezLayer.fillColor = UIColor.clearColor().CGColor
         bezLayer.lineWidth = 8.0
         bezLayer.strokeStart = 0.0
@@ -411,16 +427,6 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         println("PICKED FOLDER \(folder)")
         NSUserDefaults.standardUserDefaults().setObject(folder, forKey: "currentFolder")
         NSUserDefaults.standardUserDefaults().synchronize()
-        if let fldr = folder
-        {
-            let color = self.taskHandler.colorForFolder(fldr)
-            self.topBar.backgroundColor = color
-        } else {
-            self.topBar.backgroundColor = UIColor.wisteria()
-        }
-        self.topBarTitleLabel.text = folder
-        self.topBarTitleLabel.sizeToFit()
-        self.topBarTitleLabel.center.x = self.topBar.center.x
         self.loadCurrentFolder()
         
     }
@@ -430,38 +436,60 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
         println("LOAD CURRENT FOLDER")
         self.clearTaskViews()
         self.taskViews.removeAll()
+        self.doneTaskViews.removeAll()
         
         if let folder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as? String
         {
+                let color = self.taskHandler.colorForFolder(folder)
+                self.topBar.backgroundColor = color
+            self.topBarTitleLabel.text = folder
+            self.topBarTitleLabel.sizeToFit()
+            self.topBarTitleLabel.center.x = self.topBar.center.x
+
+            
+            if self.taskHandler.shouldResetFolder(folder)
+            {
+                self.taskHandler.resetFolder(folder)
+            }
+            
             let tasks = taskHandler.tasksInFolder(folder)
             for (index, task) in enumerate(tasks)
             {
                 println("TASK \(task) DONE \(task.done)")
+                
                 let taskView = TaskView(frame: CGRectMake(0, 0, taskViewSize, taskViewSize))
                 taskView.taskColor = taskHandler.colorForFolder(folder)
                 taskView.task = task
                 taskView.backgroundColor = UIColor.clearColor()
                 //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
-//                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
+                //                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
                 taskView.center.y = -taskViewSize
-                taskView.center.x = self.showsEditor ? self.doneXPosition : self.todoXPosition
+                if self.showsEditor {
+                    taskView.center.x = self.doneXPosition
+                } else {
+                    if task.done
+                    {
+                        taskView.center.x = self.doneXPosition
+                    } else {
+                        taskView.center.x = self.todoXPosition
+                    }
+                }
                 println("TASKVIEW IMAGE: \(taskView.task!.imageName!)")
-                
                 
                 taskView.image = UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(taskView.task!.imageName!))
                 
                 if taskView.image == nil
                 {
-                let taskNameArray = split(taskView.task!.name!) {$0 == " "}
-                println("TASKNAME ARRAY \(taskNameArray)")
-                var firsts = ""
-                for word in taskNameArray
-                {
-                    println("WORD SUBSTRING \(word.substringToIndex(advance(word.startIndex, 1)).capitalizedString)")
-                    firsts += word.substringToIndex(advance(word.startIndex, 1)).capitalizedString
-                }
-                
-                taskView.textLabel.text = firsts
+                    let taskNameArray = split(taskView.task!.name!) {$0 == " "}
+                    println("TASKNAME ARRAY \(taskNameArray)")
+                    var firsts = ""
+                    for word in taskNameArray
+                    {
+                        println("WORD SUBSTRING \(word.substringToIndex(advance(word.startIndex, 1)).capitalizedString)")
+                        firsts += word.substringToIndex(advance(word.startIndex, 1)).capitalizedString
+                    }
+                    
+                    taskView.textLabel.text = firsts
                 } else {
                     taskView.textLabel.text = ""
                 }
@@ -472,6 +500,24 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, D
                 let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
                 taskView.addGestureRecognizer(tap)
             }
+            
+            // build the done tasks array 
+            if let doneTasks = self.taskHandler.doneTasks()
+            {
+                println("WE GOT SOME DONE TASKS HERE: \(doneTasks)")
+                for doneTask in doneTasks
+                {
+                    for maybeDoneTask in self.taskViews
+                    {
+                        if maybeDoneTask.task?.taskID == doneTask
+                        {
+                            self.moveTaskToDone(maybeDoneTask)
+                        }
+                    }
+                }
+                
+            }
+            
             self.collapseTodoTasks()
             if showsEditor
             {

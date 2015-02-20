@@ -10,7 +10,6 @@
 		1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */; };
 		1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */; };
 		1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */; };
-		1F0FB0851A8B84E600CAA5C6 /* tempTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */; };
 		1F1D63651A8FF6AF009A7C41 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1D63641A8FF6AF009A7C41 /* NotificationCenter.framework */; };
 		1F1D636A1A8FF6AF009A7C41 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D63691A8FF6AF009A7C41 /* TodayViewController.swift */; };
 		1F1D636C1A8FF6AF009A7C41 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1D636B1A8FF6AF009A7C41 /* MainInterface.storyboard */; };
@@ -41,11 +40,14 @@
 		1FDBE0C61A840CC000CE9E69 /* DNDTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */; };
 		1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */; };
 		1FDBE0CA1A8413F400CE9E69 /* CongratsPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */; };
+		1FECC2F61A951E62002CA9C2 /* AddFolderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC2F51A951E62002CA9C2 /* AddFolderAnimator.swift */; };
+		1FECC2F81A951EE1002CA9C2 /* AddFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC2F71A951EE1002CA9C2 /* AddFolderViewController.swift */; };
+		1FECC2FA1A953009002CA9C2 /* DNDStatsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECC2F91A953009002CA9C2 /* DNDStatsHandler.swift */; };
 		1FFF04991A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */; };
 		1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04971A82CDA100A346E1 /* DNDTask.swift */; };
 		1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */; };
 		C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */; };
-		C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177F1A7DCC33000CCE5C /* ViewController.swift */; };
+		C04F17801A7DCC33000CCE5C /* DragAndDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177F1A7DCC33000CCE5C /* DragAndDoneViewController.swift */; };
 		C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04F17811A7DCC33000CCE5C /* Main.storyboard */; };
 		C04F17881A7DCC33000CCE5C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C04F17861A7DCC33000CCE5C /* LaunchScreen.xib */; };
 		C04F17941A7DCC33000CCE5C /* DragAndDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F17931A7DCC33000CCE5C /* DragAndDoneTests.swift */; };
@@ -86,7 +88,6 @@
 		1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorViewController.swift; sourceTree = "<group>"; };
 		1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorEdge.swift; sourceTree = "<group>"; };
 		1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
-		1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tempTableViewController.swift; sourceTree = "<group>"; };
 		1F1D63621A8FF6AF009A7C41 /* DragAndDoneWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DragAndDoneWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1D63641A8FF6AF009A7C41 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		1F1D63681A8FF6AF009A7C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,13 +116,16 @@
 		1FDBE0C51A840CC000CE9E69 /* DNDTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTransitionAnimator.swift; sourceTree = "<group>"; };
 		1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
 		1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratsPresentationController.swift; sourceTree = "<group>"; };
+		1FECC2F51A951E62002CA9C2 /* AddFolderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFolderAnimator.swift; sourceTree = "<group>"; };
+		1FECC2F71A951EE1002CA9C2 /* AddFolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFolderViewController.swift; sourceTree = "<group>"; };
+		1FECC2F91A953009002CA9C2 /* DNDStatsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDStatsHandler.swift; sourceTree = "<group>"; };
 		1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorFoldersTableViewController.swift; sourceTree = "<group>"; };
 		1FFF04971A82CDA100A346E1 /* DNDTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTask.swift; sourceTree = "<group>"; };
 		1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTaskHandler.swift; sourceTree = "<group>"; };
 		C04F17781A7DCC33000CCE5C /* DragAndDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragAndDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04F177C1A7DCC33000CCE5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C04F177F1A7DCC33000CCE5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C04F177F1A7DCC33000CCE5C /* DragAndDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDoneViewController.swift; sourceTree = "<group>"; };
 		C04F17821A7DCC33000CCE5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C04F17871A7DCC33000CCE5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C04F178D1A7DCC33000CCE5C /* DragAndDoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DragAndDoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,9 +167,9 @@
 				1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */,
 				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
 				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
-				C04F177F1A7DCC33000CCE5C /* ViewController.swift */,
-				1F0FB0841A8B84E600CAA5C6 /* tempTableViewController.swift */,
+				C04F177F1A7DCC33000CCE5C /* DragAndDoneViewController.swift */,
 				1F28B8761A8C784000C56559 /* AddTaskViewController.swift */,
+				1FECC2F71A951EE1002CA9C2 /* AddFolderViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -200,6 +204,7 @@
 				1FDBE0C91A8413F400CE9E69 /* CongratsPresentationController.swift */,
 				1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */,
 				1F28B87A1A8C7B8200C56559 /* AddTaskAnimator.swift */,
+				1FECC2F51A951E62002CA9C2 /* AddFolderAnimator.swift */,
 			);
 			name = Animators;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			children = (
 				1FFF04971A82CDA100A346E1 /* DNDTask.swift */,
 				1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */,
+				1FECC2F91A953009002CA9C2 /* DNDStatsHandler.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -460,9 +466,9 @@
 			files = (
 				1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */,
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
-				1F0FB0851A8B84E600CAA5C6 /* tempTableViewController.swift in Sources */,
+				1FECC2F61A951E62002CA9C2 /* AddFolderAnimator.swift in Sources */,
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
-				C04F17801A7DCC33000CCE5C /* ViewController.swift in Sources */,
+				C04F17801A7DCC33000CCE5C /* DragAndDoneViewController.swift in Sources */,
 				1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */,
 				C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */,
 				1FDBE0C81A84105C00CE9E69 /* CongratulationsViewController.swift in Sources */,
@@ -474,12 +480,14 @@
 				1F28B87B1A8C7B8200C56559 /* AddTaskAnimator.swift in Sources */,
 				1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */,
 				1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */,
+				1FECC2F81A951EE1002CA9C2 /* AddFolderViewController.swift in Sources */,
 				1FDBE0C61A840CC000CE9E69 /* DNDTransitionAnimator.swift in Sources */,
 				1FFF04991A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift in Sources */,
 				1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */,
 				1F28B8771A8C784000C56559 /* AddTaskViewController.swift in Sources */,
 				1FDBE0CA1A8413F400CE9E69 /* CongratsPresentationController.swift in Sources */,
 				1FDBE0C21A84098900CE9E69 /* StatsTransitionAnimator.swift in Sources */,
+				1FECC2FA1A953009002CA9C2 /* DNDStatsHandler.swift in Sources */,
 				1F3110971A7EB5A6000222F3 /* Placeholder.swift in Sources */,
 				1FDBE0C01A84033A00CE9E69 /* EditorTransitionAnimator.swift in Sources */,
 			);

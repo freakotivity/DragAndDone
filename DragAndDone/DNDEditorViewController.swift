@@ -15,11 +15,13 @@ protocol DNDEditorDelegate {
     func editorAddedTask()
 }
 
-class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, DNDAddTaskDelegate {
+class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, DNDAddTaskDelegate, DNDAddFolderDelegate {
     var delegate:DNDEditorDelegate?
     let doStuff = ["Sniff", "Worship"]
     let stuff = ["Satan", "Juice", "Disco", "Fubar", "Fork", "Salsa", "Rick Astley", "Freak", "Glue"]
     let taskHandler = DNDTaskHandler()
+    
+    var transitionAnimator: DNDTransitionAnimator!
     
     @IBOutlet weak var foldersTableView: UITableView!
     @IBOutlet weak var currentFolderLabel: UILabel!
@@ -132,27 +134,6 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func addFolder() {
-        let nuFolderAlert = UIAlertController(title: "New Folder", message: "Name:", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        nuFolderAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            println("yeah")
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        let addFolderAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action) -> Void in
-            let tf = nuFolderAlert.textFields?.first as UITextField
-            
-            self.taskHandler.createFolder(tf.text)
-            self.foldersTableView.reloadData()
-        }
-        nuFolderAlert.addAction(cancelAction)
-        nuFolderAlert.addAction(addFolderAction)
-        self.presentViewController(nuFolderAlert, animated: true) { () -> Void in
-        }
-        
-    }
-    
     func tappedDimmingView()
     {
         delegate?.editorWillDismiss()
@@ -262,9 +243,19 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Add Folder"
+        {
+            let addFolderVC = segue.destinationViewController as AddFolderViewController
+            self.transitionAnimator = AddFolderAnimator()
+            addFolderVC.delegate = self
+            self.modalPresentationStyle = UIModalPresentationStyle.Custom
+            addFolderVC.modalPresentationStyle = UIModalPresentationStyle.Custom
+            addFolderVC.transitioningDelegate = self
+        }
         if segue.identifier == "addTask"
         {
             let addTaskVC = segue.destinationViewController as AddTaskViewController
+            self.transitionAnimator = AddTaskAnimator()
             addTaskVC.delegate = self
             self.modalPresentationStyle = UIModalPresentationStyle.Custom
             addTaskVC.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -289,13 +280,12 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AddTaskAnimator()
+        return self.transitionAnimator
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let taskAnim = AddTaskAnimator()
-        taskAnim.dismissing = true
-        return taskAnim
+        self.transitionAnimator.dismissing = true
+        return self.transitionAnimator
     }
     
     
@@ -304,5 +294,9 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         self.checkIfAddTaskButtonShouldBeEnabled()
         self.tasksTableView.reloadData()
         self.delegate?.editorAddedTask()
+    }
+    
+    func didAddFolder() {
+        self.foldersTableView.reloadData()
     }
 }

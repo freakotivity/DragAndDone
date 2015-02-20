@@ -13,4 +13,5 @@ class DNDTask: NSObject {
     var imageName:String?
     var doneImageName:String?
     var done = false
+    var taskID:String?
 }

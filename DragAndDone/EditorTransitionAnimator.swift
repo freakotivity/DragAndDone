@@ -28,16 +28,16 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 {
                     if tv.task!.done
                     {
-                        tv.center.x = (toVC as ViewController).doneXPosition
+                        tv.center.x = (toVC as DragAndDoneViewController).doneXPosition
                     } else {
-                        tv.center.x = (toVC as ViewController).todoXPosition
+                        tv.center.x = (toVC as DragAndDoneViewController).todoXPosition
                     }
                 }
                 
                 fromVC!.view.frame.origin.x = -containerView.bounds.size.width / 2
                 }, completion: { (completed) -> Void in
                     UIView.animateWithDuration(0.5, animations: { () -> Void in
-                        (toVC as ViewController).separatorLine.alpha = 1.0
+                        (toVC as DragAndDoneViewController).separatorLine.alpha = 1.0
                     })
                     transitionContext.completeTransition(true)
             })
@@ -62,7 +62,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                     {
                         tv.frame.origin.x = containerView.frame.size.width
                     } else {
-                        tv.center.x = (fromVc as ViewController).doneXPosition
+                        tv.center.x = (fromVc as DragAndDoneViewController).doneXPosition
                         
                     }
                 }
