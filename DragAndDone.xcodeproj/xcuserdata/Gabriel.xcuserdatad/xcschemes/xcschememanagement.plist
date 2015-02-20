@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>DragAndDoneWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1F1D63611A8FF6AF009A7C41</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C04F17771A7DCC33000CCE5C</key>
 		<dict>
 			<key>primary</key>
