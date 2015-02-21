@@ -21,9 +21,9 @@ public class FreakoColors : NSObject {
         static var freakoDarkBlue: UIColor = UIColor(red: 0.227, green: 0.286, blue: 0.706, alpha: 1.000)
         static var freakoViolet: UIColor = UIColor(red: 0.533, green: 0.251, blue: 0.655, alpha: 1.000)
         static var freakoBlue: UIColor = UIColor(red: 0.169, green: 0.518, blue: 0.827, alpha: 1.000)
-        static var freakoOrange: UIColor = UIColor(red: 0.925, green: 0.424, blue: 0.063, alpha: 1.000)
-        static var freakoRed: UIColor = UIColor(red: 0.894, green: 0.122, blue: 0.086, alpha: 1.000)
-        static var freakoYellow: UIColor = UIColor(red: 0.929, green: 0.839, blue: 0.067, alpha: 1.000)
+        static var freakoOrange: UIColor = UIColor(red: 0.973, green: 0.580, blue: 0.024, alpha: 1.000)
+        static var freakoRed: UIColor = UIColor(red: 0.886, green: 0.231, blue: 0.149, alpha: 1.000)
+        static var freakoYellow: UIColor = UIColor(red: 0.953, green: 0.792, blue: 0.153, alpha: 1.000)
         static var freakoLighterGreen: UIColor = FreakoColors.freakoGreen.colorWithHighlight(0.2)
         static var freakoDarkerGreen: UIColor = FreakoColors.freakoGreen.colorWithShadow(0.2)
         static var freakoLighterDarkBlue: UIColor = FreakoColors.freakoDarkBlue.colorWithHighlight(0.2)
@@ -134,104 +134,6 @@ public class FreakoColors : NSObject {
         let vividYellowDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoYellow.setFill()
         vividYellowDiskPath.fill()
-    }
-
-    public class func drawDarkCyanLimeGreen2() {
-        //// Color Declarations
-        let color0 = UIColor(red: 0.102, green: 0.706, blue: 0.267, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Dark-Cyan-Lime-Green 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color0.setFill()
-        rectangle2Path.fill()
-    }
-
-    public class func drawDarkModerateBlue2() {
-        //// Color Declarations
-        let color = UIColor(red: 0.227, green: 0.286, blue: 0.706, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Dark-Moderate-Blue 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color.setFill()
-        rectangle2Path.fill()
-    }
-
-    public class func drawModerateVieolet2() {
-        //// Color Declarations
-        let color2 = UIColor(red: 0.533, green: 0.251, blue: 0.655, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Moderate-Vieolet 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color2.setFill()
-        rectangle2Path.fill()
-    }
-
-    public class func drawStrongBlue2() {
-        //// Color Declarations
-        let color3 = UIColor(red: 0.169, green: 0.518, blue: 0.827, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Strong-Blue 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color3.setFill()
-        rectangle2Path.fill()
-    }
-
-    public class func drawVividOrange2() {
-        //// Color Declarations
-        let color4 = UIColor(red: 0.925, green: 0.424, blue: 0.063, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Vivid-Orange 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color4.setFill()
-        rectangle2Path.fill()
-    }
-
-    public class func drawVividRed2() {
-        //// Color Declarations
-        let color5 = UIColor(red: 0.894, green: 0.122, blue: 0.086, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Vivid-Red 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color5.setFill()
-        rectangle2Path.fill()
-    }
-
-    public class func drawVividYellow2() {
-        //// Color Declarations
-        let color6 = UIColor(red: 0.929, green: 0.839, blue: 0.067, alpha: 1.000)
-
-        //// Page-1
-        //// Flat-UI-Color-Palette-by-@freakotivity
-        //// Flat-UI-Color-Palette
-        //// Vivid-Yellow 2
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(rect: CGRectMake(0, 0, 160, 134))
-        color6.setFill()
-        rectangle2Path.fill()
     }
 
     //// Generated Images
