@@ -48,6 +48,7 @@
 		1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04971A82CDA100A346E1 /* DNDTask.swift */; };
 		1FFF049B1A82CDA100A346E1 /* DNDTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */; };
 		C036B68D1A97F2550009CBA5 /* FreakoColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036B68C1A97F2550009CBA5 /* FreakoColors.swift */; };
+		C036B6911A9809210009CBA5 /* FreakoColorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036B6901A9809210009CBA5 /* FreakoColorTest.swift */; };
 		C04F177E1A7DCC33000CCE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */; };
 		C04F17801A7DCC33000CCE5C /* DragAndDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F177F1A7DCC33000CCE5C /* DragAndDoneViewController.swift */; };
 		C04F17831A7DCC33000CCE5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04F17811A7DCC33000CCE5C /* Main.storyboard */; };
@@ -126,6 +127,7 @@
 		1FFF04971A82CDA100A346E1 /* DNDTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTask.swift; sourceTree = "<group>"; };
 		1FFF04981A82CDA100A346E1 /* DNDTaskHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDTaskHandler.swift; sourceTree = "<group>"; };
 		C036B68C1A97F2550009CBA5 /* FreakoColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreakoColors.swift; path = ../FreakoColors.swift; sourceTree = "<group>"; };
+		C036B6901A9809210009CBA5 /* FreakoColorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreakoColorTest.swift; sourceTree = "<group>"; };
 		C04F17781A7DCC33000CCE5C /* DragAndDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragAndDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04F177C1A7DCC33000CCE5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04F177D1A7DCC33000CCE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		1F0FB07E1A8B809F00CAA5C6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C036B6901A9809210009CBA5 /* FreakoColorTest.swift */,
 				C036B68C1A97F2550009CBA5 /* FreakoColors.swift */,
 				1F25BAE01A87F137000D6B22 /* UIColorExtension.swift */,
 			);
@@ -484,6 +487,7 @@
 				1F1D63751A8FFDBF009A7C41 /* ADDProgressCircle.swift in Sources */,
 				1F25BAD91A854A09000D6B22 /* PurpleBackgroundGradientView.swift in Sources */,
 				1FDBE0C41A8409BC00CE9E69 /* CongratulationsTransitionAnimator.swift in Sources */,
+				C036B6911A9809210009CBA5 /* FreakoColorTest.swift in Sources */,
 				1F28B87B1A8C7B8200C56559 /* AddTaskAnimator.swift in Sources */,
 				C036B68D1A97F2550009CBA5 /* FreakoColors.swift in Sources */,
 				1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */,
