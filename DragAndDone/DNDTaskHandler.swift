@@ -130,6 +130,7 @@ class DNDTaskHandler: NSObject {
         
         foldersDict.setObject(dateString, forKey:"LastReset")
         foldersDict.setObject(tasksArray, forKey: "tasks")
+        foldersDict.setObject([], forKey: "doneTasks")
         plist.setObject(foldersDict, forKey: folder)
         
         println("PLIST RESET \(plist)")

@@ -124,13 +124,13 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 grabbedTaskView.center = CGPointMake(panPoint.x - self.panOffset.x, panPoint.y - self.panOffset.y)
             } else {
                 //                println("PAN TRANSLATION \(pan.translationInView(self.view).y)")
-                if pan.translationInView(self.view).y < -30
+                if pan.translationInView(self.view).y < -50
                 {
                     println("LOAD PREVIOUS FOLDER")
                     self.loadPreviousFolder()
                     pan.setTranslation(CGPointZero, inView: self.view)
                 }
-                if pan.translationInView(self.view).y > 30
+                if pan.translationInView(self.view).y > 50
                 {
                     println("LOAD NEXT FOLDER")
                     self.loadNextFolder()
