@@ -116,7 +116,7 @@ class DNDTaskHandler: NSObject {
         var plist = self.plist()
         var foldersDict = plist[folder] as NSMutableDictionary
         
-        println("FOLDERSDICT \(foldersDict)")
+//        println("FOLDERSDICT \(foldersDict)")
         
         let tasksArray = foldersDict["tasks"] as NSMutableArray
         for task in tasksArray
@@ -133,7 +133,7 @@ class DNDTaskHandler: NSObject {
         foldersDict.setObject([], forKey: "doneTasks")
         plist.setObject(foldersDict, forKey: folder)
         
-        println("PLIST RESET \(plist)")
+//        println("PLIST RESET \(plist)")
         
         if plist.writeToFile(plistLocation(), atomically: true)
         {
