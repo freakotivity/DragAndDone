@@ -11,10 +11,9 @@ import Foundation
 import UIKit
 
 class FreakoColorTest : UIView {
+    
     override func drawRect(rect: CGRect) {
-        
         FreakoColors.drawDarkCyanLimeGreen()
-        
     }
 }
 
