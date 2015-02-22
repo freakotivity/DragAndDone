@@ -316,10 +316,12 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     {
         if self.topBar.frame.origin.y == 0
         {
+            UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
             UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
                 self.topBar.frame.origin.y -= self.topBar.frame.size.height
                 }, completion: nil)
         } else {
+            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
             UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
                 self.topBar.frame.origin.y += self.topBar.frame.size.height
                 }, completion: nil)
