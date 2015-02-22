@@ -19,7 +19,7 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(dimmingView)
+        //self.view.addSubview(dimmingView)
         // Do any additional setup after loading the view.
         println("STATS VIEW CONTROLLER DID LOAD")
     }

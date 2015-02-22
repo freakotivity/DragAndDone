@@ -456,7 +456,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPG-pn-171" customClass="ADDProgressCircle" customModule="DragAndDone" customModuleProvider="target">
-                                <rect key="frame" x="117" y="28" width="150" height="150"/>
+                                <rect key="frame" x="16" y="28" width="150" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2W-mM-MzI" customClass="ADDProgressCircle" customModule="DragAndDone" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="120" height="120"/>
@@ -518,7 +518,6 @@
                         <action selector="handleTap:" destination="iTy-z2-9cT" id="bXe-1U-gW4"/>
                     </connections>
                 </tapGestureRecognizer>
-                <customObject id="EAH-pc-8Q7"/>
             </objects>
             <point key="canvasLocation" x="1800" y="261"/>
         </scene>
