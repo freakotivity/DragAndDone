@@ -51,12 +51,12 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if tableView == self.tasksTableView
         {
-
+            
             if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
             {
                 if let tasks = taskHandler.tasksInFolder(selectedFolder) as NSArray?
                 {
-                    return tasks.count
+                    return 5
                 }
             }
         }
@@ -93,9 +93,22 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             
             if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
             {
-                let task = taskHandler.tasksInFolder(selectedFolder)[indexPath.row] as DNDTask
-                    cell.textLabel?.text = task.name
+                if indexPath.row < taskHandler.tasksInFolder(selectedFolder).count
+                {
+                    let task = taskHandler.tasksInFolder(selectedFolder)[indexPath.row] as DNDTask
+                    
+                            cell.textLabel?.text = task.name
+                    cell.accessoryType = UITableViewCellAccessoryType.DetailButton
+                    
+                } else {
+                    cell.accessoryType = UITableViewCellAccessoryType.None
+                }
+                
             }
+            let bgv = EditorEdge()
+            bgv.backgroundColor = UIColor.whiteColor()
+            cell.backgroundView = bgv
+            
             
         }
         
@@ -130,7 +143,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             let tasks = self.taskHandler.tasksInFolder(selectedFolder)
             let task = tasks[indexPath.row]
-        self.performSegueWithIdentifier("editTask", sender: indexPath.row)
+            self.performSegueWithIdentifier("editTask", sender: indexPath.row)
         }
     }
     
@@ -151,11 +164,11 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
             {
-            if indexPath.row + 1 <= self.taskHandler.tasksInFolder(selectedFolder).count
-            {
-                println("YEP")
-                return true
-            }
+                if indexPath.row + 1 <= self.taskHandler.tasksInFolder(selectedFolder).count
+                {
+                    println("YEP")
+                    return true
+                }
             }
         }
         println("NOPE")
@@ -166,7 +179,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         println("MOVE FROM \(sourceIndexPath) TO \(destinationIndexPath)")
         if let selectedFolder = NSUserDefaults.standardUserDefaults().objectForKey("currentFolder") as String?
         {
-        self.taskHandler.moveTaskFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row, inFolder: selectedFolder)
+            self.taskHandler.moveTaskFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row, inFolder: selectedFolder)
         }
         delegate?.editorReorderTask(sourceIndexPath.row, to: destinationIndexPath.row)
     }
@@ -178,9 +191,9 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
             println("DELETE!! DELETE!!")
             if tableView == self.tasksTableView
             {
-            self.taskHandler.removeTaskAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            self.didAddTask()
+                self.taskHandler.removeTaskAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.didAddTask()
             }
             if tableView == self.foldersTableView
             {
@@ -228,7 +241,7 @@ class DNDEditorViewController: UIViewController, UITableViewDelegate, UITableVie
         } else {
             self.addTaskButton.enabled = false
         }
-
+        
     }
     @IBAction func toggleEditMode(sender: AnyObject) {
         if self.tasksTableView.editing

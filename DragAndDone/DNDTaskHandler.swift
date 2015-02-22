@@ -69,43 +69,48 @@ class DNDTaskHandler: NSObject {
             let lastResetDateComponents = calendar.components(NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitWeekOfYear | NSCalendarUnit.CalendarUnitDay, fromDate: lastResetDate!)
             let todayComponents = calendar.components(NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitWeekOfYear | NSCalendarUnit.CalendarUnitDay, fromDate: NSDate())
             
-            switch (foldersDict["frequency"] as String)
+            if let folderFrequency = (foldersDict["frequency"] as? String)
             {
-            case "Daily":
-                println("DAILY RESET")
-                if ((lastResetDateComponents.year == todayComponents.year) && (lastResetDateComponents.month == todayComponents.month) && (lastResetDateComponents.day == todayComponents.day))
+                switch folderFrequency
                 {
-                    println("SAME DAY, NO RESET")
-                    return false
-                } else {
-                    println("NEW DAY! RESET!")
-                    return true
+                case "Daily":
+                    println("DAILY RESET")
+                    if ((lastResetDateComponents.year == todayComponents.year) && (lastResetDateComponents.month == todayComponents.month) && (lastResetDateComponents.day == todayComponents.day))
+                    {
+                        println("SAME DAY, NO RESET")
+                        return false
+                    } else {
+                        println("NEW DAY! RESET!")
+                        return true
+                    }
+                case "Monthly":
+                    println("MONTHLY RESET")
+                    if ((lastResetDateComponents.year == todayComponents.year) && (lastResetDateComponents.month == todayComponents.month))
+                    {
+                        println("SAME MONTH, NO RESET")
+                        return false
+                    } else {
+                        println("NEW MONTH! RESET!")
+                        return true
+                    }
+                case "Yearly":
+                    println("YEARLY RESET")
+                    if (lastResetDateComponents.year == todayComponents.year)
+                    {
+                        println("SAME YEAR, NO RESET")
+                        return false
+                    } else {
+                        println("NEW YEAR! RESET!")
+                        return true
+                    }
+                default: break
                 }
-            case "Monthly":
-                println("MONTHLY RESET")
-                if ((lastResetDateComponents.year == todayComponents.year) && (lastResetDateComponents.month == todayComponents.month))
-                {
-                    println("SAME MONTH, NO RESET")
-                    return false
-                } else {
-                    println("NEW MONTH! RESET!")
-                    return true
-                }
-            case "Yearly":
-                println("YEARLY RESET")
-                if (lastResetDateComponents.year == todayComponents.year)
-                {
-                    println("SAME YEAR, NO RESET")
-                    return false
-                } else {
-                    println("NEW YEAR! RESET!")
-                    return true
-                }            default: break
             }
         } else {
             println("NO LAST RESET FOUND")
             self.resetFolder(folder)
         }
+        
         
         return false
     }
@@ -114,32 +119,35 @@ class DNDTaskHandler: NSObject {
     {
         println("RESET FOLDER \(folder)")
         var plist = self.plist()
+        println("PLIST BEFORE \(plist)")
         var foldersDict = plist[folder] as NSMutableDictionary
         
-//        println("FOLDERSDICT \(foldersDict)")
+        //        println("FOLDERSDICT \(foldersDict)")
         
-        let tasksArray = foldersDict["tasks"] as NSMutableArray
-        for task in tasksArray
+        if let tasksArray = foldersDict["tasks"] as? NSMutableArray
         {
-            (task as NSMutableDictionary).setValue(false, forKey: "Done")
-        }
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" // superset of OP's format
-        let dateString = dateFormatter.stringFromDate(NSDate()) as String
-        
-        foldersDict.setObject(dateString, forKey:"LastReset")
-        foldersDict.setObject(tasksArray, forKey: "tasks")
-        foldersDict.setObject([], forKey: "doneTasks")
-        plist.setObject(foldersDict, forKey: folder)
-        
-//        println("PLIST RESET \(plist)")
-        
-        if plist.writeToFile(plistLocation(), atomically: true)
-        {
-            println("YEAH RESET FOLDER SOMETHING!!")
-        } else {
-            println("NOOO DIDNT RESET FOLDER SHIT")
+            for task in tasksArray
+            {
+                (task as NSMutableDictionary).setValue(false, forKey: "Done")
+            }
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd" // superset of OP's format
+            let dateString = dateFormatter.stringFromDate(NSDate()) as String
+            
+            foldersDict.setObject(dateString, forKey:"LastReset")
+            foldersDict.setObject(tasksArray, forKey: "tasks")
+            foldersDict.setObject([], forKey: "doneTasks")
+            plist.setObject(foldersDict, forKey: folder)
+            
+            println("PLIST RESET \(plist)")
+            
+            if plist.writeToFile(plistLocation(), atomically: true)
+            {
+                println("YEAH RESET FOLDER SOMETHING!!")
+            } else {
+                println("NOOO DIDNT RESET FOLDER SHIT")
+            }
         }
     }
     

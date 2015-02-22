@@ -47,7 +47,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 64.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
         self.topBar.backgroundColor = UIColor.wisteria()
-        
+        self.topBar.layer.zPosition = 100
         self.view.addSubview(self.topBar)
         
         let hamburger = UIButton(frame: CGRectMake(8, 30, 22, 22))
@@ -107,6 +107,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 {
                     self.panOffset = CGPointMake(panPoint.x - taskView.center.x, panPoint.y - taskView.center.y)
                     grabbedTaskView = taskView
+                    grabbedTaskView.hideName()
                     grabbedTaskView.layer.zPosition = 1000
                     if !grabbedTaskView.task!.done
                     {
@@ -286,14 +287,36 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         }
     }
     
-    func handleTap(sender: UITapGestureRecognizer)
+    @IBAction func handleTap(sender: UITapGestureRecognizer)
     {
         println("HANDLE TAP \(sender)")
-        let task = sender.view as TaskView
-        if !task.task!.done
+        if let task = sender.view as? TaskView
         {
-            self.shiftDoneTasksUp()
-            self.moveTaskToDone(sender.view as TaskView)
+            //                self.shiftDoneTasksUp()
+            //                self.moveTaskToDone(sender.view as TaskView)
+            task.toggleName()
+        } else {
+            println("DIDNT TAP A TASK")
+            if self.showsEditor
+            {
+                
+            } else {
+            self.toggleTopBar()
+            }
+        }
+    }
+    
+    func toggleTopBar()
+    {
+        if self.topBar.frame.origin.y == 0
+        {
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
+                self.topBar.frame.origin.y -= self.topBar.frame.size.height
+                }, completion: nil)
+        } else {
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
+                self.topBar.frame.origin.y += self.topBar.frame.size.height
+                }, completion: nil)
         }
     }
     
@@ -376,7 +399,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     func hideLine()
     {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.separatorLine.alpha = 0.0
+//            self.separatorLine.alpha = 0.0
         })
     }
     
@@ -565,16 +588,16 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             if taskView is TaskView
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
-                    (taskView as TaskView).center = down ? CGPointMake(self.view.center.x, 1000) : CGPointMake(self.view.center.x, -self.taskViewSize)
-                }, completion: { (completed) -> Void in
-                    taskView.removeFromSuperview()
+                    (taskView as TaskView).center = down ? CGPointMake((taskView as TaskView).center.x, 1000) : CGPointMake((taskView as TaskView).center.x, -self.taskViewSize)
+                    }, completion: { (completed) -> Void in
+                        taskView.removeFromSuperview()
                 })
-//                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
-//                    (taskView as TaskView).center.y = 1000 //self.view.frame.size.height + self.taskViewSize
-//                    }, completion:{() -> Void in
-//                        taskView.removeFromSuperview()
-//                    }
-//                )
+                //                UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
+                //                    (taskView as TaskView).center.y = 1000 //self.view.frame.size.height + self.taskViewSize
+                //                    }, completion:{() -> Void in
+                //                        taskView.removeFromSuperview()
+                //                    }
+                //                )
             }
         }
     }

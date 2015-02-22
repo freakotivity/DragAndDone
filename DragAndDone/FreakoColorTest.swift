@@ -10,10 +10,17 @@ import Foundation
 
 import UIKit
 
+@IBDesignable
 class FreakoColorTest : UIView {
     
     override func drawRect(rect: CGRect) {
+        FreakoColors.drawDarkModerateBlue()
         FreakoColors.drawDarkCyanLimeGreen()
+        FreakoColors.drawModerateVieolet()
+        FreakoColors.drawStrongBlue()
+        FreakoColors.drawVividOrange()
+        FreakoColors.drawVividRed()
+        FreakoColors.drawVividYellow()
     }
 }
 

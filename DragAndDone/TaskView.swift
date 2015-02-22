@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class TaskView: UIView {
     var textLabel:UILabel!
+    var nameLabel:UILabel!
     var image:UIImage?
     var task:DNDTask?
     var taskColor:UIColor!
@@ -68,6 +69,7 @@ class TaskView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         println("TASK VIEW INIT WITH FRAME")
+        self.clipsToBounds = false
         self.textLabel = UILabel(frame: frame)
         self.textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25.0)
         self.textLabel.textColor = UIColor.whiteColor()
@@ -75,6 +77,18 @@ class TaskView: UIView {
         //        self.textLabel.text = "YEAH"
         self.textLabel.textAlignment = NSTextAlignment.Center
         self.addSubview(self.textLabel)
+        
+//        self.nameLabel = UILabel(frame: CGRectMake(bounds.origin.x, bounds.size.height * 0.8, bounds.size.width, bounds.size.height))
+        self.nameLabel = UILabel(frame: CGRectZero)
+        self.nameLabel.font = UIFont(name: "HelveticaNeue-Light", size: 19.0)
+        self.nameLabel.textColor = UIColor.blackColor()
+        self.nameLabel.backgroundColor = UIColor.clearColor()
+        //        self.textLabel.text = "YEAH"
+        self.nameLabel.textAlignment = NSTextAlignment.Center
+        self.nameLabel.text = ""
+        self.addSubview(self.nameLabel)
+        
+        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -87,4 +101,22 @@ class TaskView: UIView {
         println("DO SOME AWESOME STUFF TO THE IMAGE SO IT APPEARS BLACK N WHITE!!")
     }
 
+    func toggleName()
+    {
+        println("SHOW TASK NAME")
+        if self.nameLabel.text == ""
+        {
+        self.nameLabel.text = self.task?.name
+        self.nameLabel.sizeToFit()
+        self.nameLabel.center.x = self.bounds.size.width / 2
+        self.nameLabel.center.y = self.bounds.size.height - (self.nameLabel.bounds.size.height / 1)
+        } else {
+            self.nameLabel.text = ""
+        }
+    }
+    
+    func hideName()
+    {
+        self.nameLabel.text = ""
+    }
 }

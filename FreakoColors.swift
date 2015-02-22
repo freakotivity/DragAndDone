@@ -91,7 +91,7 @@ public class FreakoColors : NSObject {
     public class func drawDarkModerateBlue() {
 
         //// Dark Moderate Blue Disk Drawing
-        let darkModerateBlueDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
+        let darkModerateBlueDiskPath = UIBezierPath(roundedRect: CGRectMake(10, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoDarkBlue.setFill()
         darkModerateBlueDiskPath.fill()
     }
@@ -99,7 +99,7 @@ public class FreakoColors : NSObject {
     public class func drawModerateVieolet() {
 
         //// Moderate Vieolet Disk Drawing
-        let moderateVieoletDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
+        let moderateVieoletDiskPath = UIBezierPath(roundedRect: CGRectMake(20, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoViolet.setFill()
         moderateVieoletDiskPath.fill()
     }
@@ -107,7 +107,7 @@ public class FreakoColors : NSObject {
     public class func drawStrongBlue() {
 
         //// Strong Blue Disk Drawing
-        let strongBlueDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
+        let strongBlueDiskPath = UIBezierPath(roundedRect: CGRectMake(30, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoBlue.setFill()
         strongBlueDiskPath.fill()
     }
@@ -115,7 +115,7 @@ public class FreakoColors : NSObject {
     public class func drawVividOrange() {
 
         //// Vivid Orange Disk Drawing
-        let vividOrangeDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
+        let vividOrangeDiskPath = UIBezierPath(roundedRect: CGRectMake(40, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoOrange.setFill()
         vividOrangeDiskPath.fill()
     }
@@ -123,7 +123,7 @@ public class FreakoColors : NSObject {
     public class func drawVividRed() {
 
         //// Vivid Red Disk Drawing
-        let vividRedDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
+        let vividRedDiskPath = UIBezierPath(roundedRect: CGRectMake(50, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoRed.setFill()
         vividRedDiskPath.fill()
     }
@@ -131,7 +131,7 @@ public class FreakoColors : NSObject {
     public class func drawVividYellow() {
 
         //// Vivid Yellow Disk Drawing
-        let vividYellowDiskPath = UIBezierPath(roundedRect: CGRectMake(0, 0, 160, 160), cornerRadius: 80)
+        let vividYellowDiskPath = UIBezierPath(roundedRect: CGRectMake(60, 0, 160, 160), cornerRadius: 80)
         FreakoColors.freakoYellow.setFill()
         vividYellowDiskPath.fill()
     }
