@@ -24,6 +24,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     var showEditorAnimation:(() -> Void)!
     var showStatsAnimation:(() -> Void)!
     var separatorLine:UIView!
+    var slideView:UIView!
     
     var transitionAnimator:DNDTransitionAnimator!
     var transitionPresentationController:UIPresentationController!
@@ -39,10 +40,15 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     override func viewDidLoad() {
         super.viewDidLoad()
         println("YEAH")
+        
+        self.view.backgroundColor = UIColor.clearColor()
+        slideView = UIView(frame: self.view.frame)
+        self.view.addSubview(slideView)
+        
         separatorLine = SeparatorLine(frame: CGRectMake(0, 0, 1, self.view.frame.height))
         separatorLine.center = self.view.center
         separatorLine.backgroundColor = UIColor.clearColor()
-        self.view.addSubview(separatorLine)
+        self.slideView.addSubview(separatorLine)
         
         self.topBar.frame.size = CGSizeMake(self.view.bounds.size.width, 64.0)
         self.topBar.frame.origin = CGPointMake(0, 0)
@@ -81,7 +87,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         //        self.placeholder.center = CGPointMake(doneXPosition, self.view.frame.height - self.taskViewSize)
         self.placeholder.center = CGPointMake(-500, -500)
         self.placeholder.bounds.size = CGSizeMake(taskViewSize, taskViewSize)
-        self.view.addSubview(placeholder)
+        self.slideView.addSubview(placeholder)
         
         self.navigationItem.title = "Daily Stuff"
     }
@@ -258,7 +264,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             //        for (i = 0; i < self.taskViews.count; i++)
         {
             println("i \(i)")
-            if (!self.taskViews[i].task!.done)
+            if true || (!self.taskViews[i].task!.done)
             {
                 UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: nil, animations: { () -> Void in
                     //                    self.taskViews[i].center.y = self.view.frame.height - (self.taskViewSize * todoer)
@@ -511,16 +517,17 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                 //                taskView.center.y = self.view.frame.height - (CGFloat(index + 1) * taskViewSize)
                 //                taskView.center.y = self.view.frame.height - (CGFloat(taskHandler.tasksInFolder(folder).count - index) * taskViewSize)
                 taskView.center.y = fromTop ? -taskViewSize : self.view.frame.size.height + taskViewSize
-                if self.showsEditor {
-                    taskView.center.x = self.doneXPosition
-                } else {
-                    if task.done
-                    {
-                        taskView.center.x = self.doneXPosition
-                    } else {
-                        taskView.center.x = self.todoXPosition
-                    }
-                }
+//                if self.showsEditor {
+//                    taskView.center.x = self.doneXPosition
+//                } else {
+//                    if task.done
+//                    {
+//                        taskView.center.x = self.doneXPosition
+//                    } else {
+//                        taskView.center.x = self.todoXPosition
+//                    }
+//                }
+                taskView.center.x = self.todoXPosition
                 println("TASKVIEW IMAGE: \(taskView.task!.imageName!)")
                 
                 taskView.image = UIImage(contentsOfFile: taskHandler.docDir().stringByAppendingPathComponent(taskView.task!.imageName!))
@@ -543,7 +550,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                     taskView.textLabel.text = ""
                 }
                 
-                self.view.addSubview(taskView)
+                self.slideView.addSubview(taskView)
                 self.taskViews.append(taskView)
                 
                 let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
@@ -560,7 +567,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
                     {
                         if maybeDoneTask.task?.taskID == doneTask
                         {
-                            self.moveTaskToDone(maybeDoneTask)
+//                            self.moveTaskToDone(maybeDoneTask)
                         }
                     }
                 }
@@ -583,7 +590,7 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
     
     func clearTaskViews(down: Bool)
     {
-        for taskView in self.view.subviews
+        for taskView in self.slideView.subviews
         {
             if taskView is TaskView
             {

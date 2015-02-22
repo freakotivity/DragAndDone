@@ -370,20 +370,6 @@
                             <outletCollection property="gestureRecognizers" destination="75e-k3-0i4" appends="YES" id="FFv-Ee-b8y"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="dk0-7h-GYb">
-                        <barButtonItem key="leftBarButtonItem" image="menu button" id="5KS-fb-YFT">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="showEditor:" destination="BYZ-38-t0r" id="mp7-3q-dPd"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="statistics button" id="wEk-dL-Meg">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="checkStats:" destination="BYZ-38-t0r" id="8vw-FW-eHj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="iTy-z2-9cT" kind="presentation" identifier="showStats" id="u2a-vy-Xbq"/>
@@ -531,8 +517,6 @@
     </scenes>
     <resources>
         <image name="cam.png" width="206" height="154"/>
-        <image name="menu button" width="46" height="37"/>
-        <image name="statistics button" width="46" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sOH-24-xxb"/>
