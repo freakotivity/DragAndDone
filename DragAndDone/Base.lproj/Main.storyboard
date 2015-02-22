@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="top" id="rXk-uK-jeN"/>
                         <viewControllerLayoutGuide type="bottom" id="8d8-I6-ie0"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RGD-bw-b8I">
+                    <view key="view" contentMode="scaleToFill" id="RGD-bw-b8I" customClass="FreakoColorTest" customModule="DragAndDone" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.46656468531468531" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8d8-I6-ie0" firstAttribute="top" secondItem="MTK-Cz-nTH" secondAttribute="bottom" constant="20" id="V2g-hj-KIg"/>
                             <constraint firstAttribute="centerX" secondItem="MTK-Cz-nTH" secondAttribute="centerX" id="bZz-Qg-d4L"/>
@@ -220,8 +220,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="q7i-7r-LdF">
-                                <rect key="frame" x="0.0" y="57" width="600" height="224"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="q7i-7r-LdF">
+                                <rect key="frame" x="0.0" y="64" width="600" height="217"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -246,8 +246,8 @@
                                     <outlet property="delegate" destination="rTZ-k0-nCt" id="d9D-Wq-sbS"/>
                                 </connections>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z1M-po-yqK">
-                                <rect key="frame" x="0.0" y="321" width="597" height="221"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z1M-po-yqK">
+                                <rect key="frame" x="0.0" y="321" width="600" height="221"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="221" id="6Lc-iN-QPl"/>
@@ -320,21 +320,21 @@
                         <constraints>
                             <constraint firstItem="z1M-po-yqK" firstAttribute="top" secondItem="CbO-gE-uNu" secondAttribute="bottom" constant="11" id="28s-Nw-KMc"/>
                             <constraint firstItem="pxh-6c-WC1" firstAttribute="top" secondItem="z1M-po-yqK" secondAttribute="bottom" constant="8" id="4IT-FO-hdR"/>
+                            <constraint firstItem="q7i-7r-LdF" firstAttribute="top" secondItem="K6h-3t-4xc" secondAttribute="bottom" constant="23" id="54B-MO-1Od"/>
                             <constraint firstItem="cQB-sM-cU8" firstAttribute="top" secondItem="xQq-a3-6nd" secondAttribute="bottom" constant="20" id="7Hy-th-dcJ"/>
-                            <constraint firstItem="q7i-7r-LdF" firstAttribute="top" secondItem="K6h-3t-4xc" secondAttribute="bottom" constant="16" id="B9Q-BE-fUa"/>
                             <constraint firstItem="6Xi-yW-TF9" firstAttribute="trailing" secondItem="AsR-O6-Qid" secondAttribute="trailingMargin" id="Bwv-N5-aHX"/>
                             <constraint firstItem="CbO-gE-uNu" firstAttribute="top" secondItem="q7i-7r-LdF" secondAttribute="bottom" constant="8" id="HLD-wX-9dP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="q7i-7r-LdF" secondAttribute="trailing" constant="-16" id="J26-mA-2d1"/>
+                            <constraint firstAttribute="trailing" secondItem="q7i-7r-LdF" secondAttribute="trailing" id="J26-mA-2d1"/>
                             <constraint firstItem="6Xi-yW-TF9" firstAttribute="top" secondItem="btK-RP-j0t" secondAttribute="bottom" constant="-13" id="YEO-X7-SKm"/>
                             <constraint firstItem="K6h-3t-4xc" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leadingMargin" id="bls-37-vbm"/>
                             <constraint firstItem="cQB-sM-cU8" firstAttribute="top" secondItem="pxh-6c-WC1" secondAttribute="bottom" constant="20" id="boC-bF-xvP"/>
                             <constraint firstItem="CbO-gE-uNu" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leadingMargin" id="dwz-hi-BkQ"/>
                             <constraint firstItem="xQq-a3-6nd" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leadingMargin" id="hjT-4L-Wk2"/>
-                            <constraint firstItem="z1M-po-yqK" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leadingMargin" constant="-16" id="jMd-kH-dr8"/>
+                            <constraint firstItem="z1M-po-yqK" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leading" id="jMd-kH-dr8"/>
                             <constraint firstItem="pxh-6c-WC1" firstAttribute="trailing" secondItem="AsR-O6-Qid" secondAttribute="trailingMargin" id="l6A-ma-GOU"/>
-                            <constraint firstItem="q7i-7r-LdF" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leadingMargin" constant="-16" id="oPT-xQ-1VY"/>
+                            <constraint firstItem="q7i-7r-LdF" firstAttribute="leading" secondItem="AsR-O6-Qid" secondAttribute="leading" id="oPT-xQ-1VY"/>
                             <constraint firstItem="K6h-3t-4xc" firstAttribute="top" secondItem="btK-RP-j0t" secondAttribute="bottom" id="upg-zp-xzA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="z1M-po-yqK" secondAttribute="trailing" constant="-13" id="y5J-Oh-MQG"/>
+                            <constraint firstAttribute="trailing" secondItem="z1M-po-yqK" secondAttribute="trailing" id="y5J-Oh-MQG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -367,6 +367,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="oBs-V0-VJq" appends="YES" id="tRJ-WE-LBD"/>
+                            <outletCollection property="gestureRecognizers" destination="75e-k3-0i4" appends="YES" id="FFv-Ee-b8y"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="dk0-7h-GYb">
@@ -396,6 +397,11 @@
                         <action selector="handlePan:" destination="BYZ-38-t0r" id="PqY-ih-FJD"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="75e-k3-0i4">
+                    <connections>
+                        <action selector="handleTap:" destination="BYZ-38-t0r" id="oKK-U5-UIA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1159" y="276"/>
         </scene>

@@ -10,6 +10,7 @@ import UIKit
 
 class StatsTransitionAnimator: DNDTransitionAnimator {
     var taskViews = Array<TaskView>()
+    let moveFactor:CGFloat = 0.5
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         println("ANIMATE TRANSITION")
         if dismissing
@@ -20,15 +21,16 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             let duration = self.transitionDuration(transitionContext)
             
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                for tv in self.taskViews
-                {
-                    if tv.task!.done
-                    {
-                        tv.center.x = (toVC as DragAndDoneViewController).doneXPosition
-                    } else {
-                        tv.center.x = (toVC as DragAndDoneViewController).todoXPosition
-                    }
-                }
+//                for tv in self.taskViews
+//                {
+//                    if tv.task!.done
+//                    {
+//                        tv.center.x = (toVC as DragAndDoneViewController).doneXPosition
+//                    } else {
+//                        tv.center.x = (toVC as DragAndDoneViewController).todoXPosition
+//                    }
+//                }
+                toVC!.view.frame.origin.x = 0
                 fromVC!.view.frame.origin.x = containerView.bounds.size.width
                 }, completion: { (completed) -> Void in
                     UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -38,6 +40,7 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             })
             
         } else {
+            
             let toVc = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
             let fromVc = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
             
@@ -45,21 +48,22 @@ class StatsTransitionAnimator: DNDTransitionAnimator {
             
             let containerView = transitionContext.containerView()
             var frame:CGRect!
-            frame = CGRectMake(containerView.bounds.size.width, topBarHeight, containerView.bounds.size.width / 2,containerView.bounds.size.height - topBarHeight)
+            frame = CGRectMake(containerView.bounds.size.width, 0, containerView.bounds.size.width * self.moveFactor,containerView.bounds.size.height)
             toVc?.view.frame = frame
             containerView.addSubview(toVc!.view)
             let duration = self.transitionDuration(transitionContext)
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                for tv in self.taskViews
-                {
-                    if tv.task!.done
-                    {
-                        tv.center.x = (fromVc as DragAndDoneViewController).todoXPosition
-                    } else {
-                        tv.frame.origin.x = -tv.frame.size.width
-                    }
-                }
-                toVc!.view.frame.origin.x = containerView.bounds.size.width / 2
+//                for tv in self.taskViews
+//                {
+//                    if tv.task!.done
+//                    {
+//                        tv.center.x = (fromVc as DragAndDoneViewController).todoXPosition
+//                    } else {
+//                        tv.frame.origin.x = -tv.frame.size.width
+//                    }
+//                }
+                fromVc?.view.frame.origin.x -= containerView.bounds.size.width * self.moveFactor
+                toVc!.view.frame.origin.x = containerView.bounds.size.width * self.moveFactor
                 }, completion: { (completed) -> Void in
                     transitionContext.completeTransition(true)
             })
