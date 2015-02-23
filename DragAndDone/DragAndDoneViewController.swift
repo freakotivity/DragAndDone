@@ -344,8 +344,8 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         if segue.identifier == "showEditor"
         {
             self.showsEditor = true
-            let editorVC = segue.destinationViewController as DNDEditorViewController
-            editorVC.delegate = self
+            let editorVC = segue.destinationViewController as FoldersListViewController
+//            editorVC.delegate = self
             self.transitionPresentationController = EditorPresentationController()
             self.transitionAnimator = EditorTransitionAnimator()
             (self.transitionAnimator as EditorTransitionAnimator).taskViews = self.taskViews

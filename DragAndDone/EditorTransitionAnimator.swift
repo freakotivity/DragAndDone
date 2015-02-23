@@ -13,6 +13,7 @@ let topBarHeight:CGFloat = 64.0
 class EditorTransitionAnimator: DNDTransitionAnimator {
     let moveFactor:CGFloat = 0.5
     var taskViews = Array<TaskView>()
+    var editorEdge:EditorEdge!
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         println("ANIMATE TRANSITION")
@@ -23,9 +24,9 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             let containerView = transitionContext.containerView()
             let duration = self.transitionDuration(transitionContext)
             
-            let editorEdge = EditorEdge(frame: CGRectMake(-3, 0, 3, containerView.bounds.size.height))
-
-            toVC.view.addSubview(editorEdge)
+//            let editorEdge = EditorEdge(frame: CGRectMake(-3, 0, 3, containerView.bounds.size.height))
+//
+//            toVC.view.addSubview(editorEdge)
 
             UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 toVC.topBar.frame.origin.x += containerView.bounds.size.width * self.moveFactor
@@ -33,7 +34,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 }, completion: { (completed) -> Void in
                     UIView.animateWithDuration(0.5, animations: { () -> Void in
                     })
-                    editorEdge.removeFromSuperview()
+                    self.editorEdge.removeFromSuperview()
                     transitionContext.completeTransition(true)
             })
             
@@ -46,12 +47,13 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
             let containerView = transitionContext.containerView()
             var frame:CGRect!
             //            frame = CGRectMake(-containerView.bounds.size.width * self.moveFactor, 0, containerView.bounds.size.width * self.moveFactor,containerView.bounds.size.height)
-            frame = CGRectMake(0, topBarHeight, containerView.bounds.size.width * self.moveFactor,containerView.bounds.size.height - topBarHeight)
+            //            frame = CGRectMake(0, topBarHeight, containerView.bounds.size.width * self.moveFactor,containerView.bounds.size.height - topBarHeight)
+                        frame = CGRectMake(0, 0, containerView.bounds.size.width * self.moveFactor,containerView.bounds.size.height)
             toVc?.view.frame = frame
             containerView.addSubview(toVc!.view)
             
-            let editorEdge = EditorEdge(frame: CGRectMake(-3, topBarHeight, 3, containerView.bounds.size.height))
-//            fromVc.view.addSubview(editorEdge)
+            editorEdge = EditorEdge(frame: CGRectMake(-1, topBarHeight, 1, containerView.bounds.size.height))
+            fromVc.view.addSubview(editorEdge)
             
             fromVc.view.layer.zPosition = 1000
 //            containerView.addSubview(fromVc.slideView)
@@ -61,7 +63,7 @@ class EditorTransitionAnimator: DNDTransitionAnimator {
                 fromVc.topBar.frame.origin.x -= containerView.bounds.size.width * self.moveFactor
                 fromVc.view.center.x += containerView.bounds.size.width * self.moveFactor
                 }, completion: { (completed) -> Void in
-                    editorEdge.removeFromSuperview()
+//                    editorEdge.removeFromSuperview()
                     transitionContext.completeTransition(true)
             })
             

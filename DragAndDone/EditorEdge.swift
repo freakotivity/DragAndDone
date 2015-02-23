@@ -23,13 +23,13 @@ class EditorEdge: UIView {
     override init(frame: CGRect)
     {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.lightGrayColor()
     }
 
-    override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [UIColor.blackColor().CGColor, UIColor.lightGrayColor().CGColor], [0, 1])
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(rect.size.width, 1), CGPointMake(rect.size.width - 3, 1), 0)
-    }
+//    override func drawRect(rect: CGRect) {
+//        let context = UIGraphicsGetCurrentContext()
+//        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [UIColor.lightGrayColor().CGColor, UIColor.whiteColor().CGColor], [0, 1])
+//        CGContextDrawLinearGradient(context, gradient, CGPointMake(rect.size.width, 1), CGPointMake(rect.size.width - 3, 1), 0)
+//    }
 
 }

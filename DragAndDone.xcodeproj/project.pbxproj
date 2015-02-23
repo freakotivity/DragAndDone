@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F06166A1A97981F000A470A /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616691A97981F000A470A /* SeparatorLine.swift */; };
+		1F0A6C051A9B1308007B18B3 /* FoldersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0A6C041A9B1308007B18B3 /* FoldersListViewController.swift */; };
+		1F0A6C071A9B14B9007B18B3 /* FoldersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0A6C061A9B14B9007B18B3 /* FoldersListTableViewCell.swift */; };
 		1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */; };
 		1F0FB07A1A8B445A00CAA5C6 /* EditorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */; };
 		1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */; };
@@ -89,6 +91,8 @@
 
 /* Begin PBXFileReference section */
 		1F0616691A97981F000A470A /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
+		1F0A6C041A9B1308007B18B3 /* FoldersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldersListViewController.swift; sourceTree = "<group>"; };
+		1F0A6C061A9B14B9007B18B3 /* FoldersListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldersListTableViewCell.swift; sourceTree = "<group>"; };
 		1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNDEditorViewController.swift; sourceTree = "<group>"; };
 		1F0FB0791A8B445A00CAA5C6 /* EditorEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorEdge.swift; sourceTree = "<group>"; };
 		1F0FB0821A8B80E700CAA5C6 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				1F913F371A82AF7D00C91205 /* StatsViewController.swift */,
 				1FFF04961A82CDA100A346E1 /* DNDEditorFoldersTableViewController.swift */,
 				1F0FB0771A8B405C00CAA5C6 /* DNDEditorViewController.swift */,
+				1F0A6C041A9B1308007B18B3 /* FoldersListViewController.swift */,
 				1F62E5B41A83767500E7FCA6 /* NewTaskViewController.swift */,
 				1FDBE0C71A84105C00CE9E69 /* CongratulationsViewController.swift */,
 				C04F177F1A7DCC33000CCE5C /* DragAndDoneViewController.swift */,
@@ -199,6 +204,7 @@
 				1F25BAD81A854A09000D6B22 /* PurpleBackgroundGradientView.swift */,
 				1F1D63741A8FFDBF009A7C41 /* ADDProgressCircle.swift */,
 				1F0616691A97981F000A470A /* SeparatorLine.swift */,
+				1F0A6C061A9B14B9007B18B3 /* FoldersListTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				1F25BAE11A87F137000D6B22 /* UIColorExtension.swift in Sources */,
 				1F3110951A7E499C000222F3 /* TaskView.swift in Sources */,
 				1FECC2F61A951E62002CA9C2 /* AddFolderAnimator.swift in Sources */,
+				1F0A6C071A9B14B9007B18B3 /* FoldersListTableViewCell.swift in Sources */,
 				1FFF049A1A82CDA100A346E1 /* DNDTask.swift in Sources */,
 				C04F17801A7DCC33000CCE5C /* DragAndDoneViewController.swift in Sources */,
 				1F0FB0831A8B80E700CAA5C6 /* EditorPresentationController.swift in Sources */,
@@ -491,6 +498,7 @@
 				1F28B87B1A8C7B8200C56559 /* AddTaskAnimator.swift in Sources */,
 				C036B68D1A97F2550009CBA5 /* FreakoColors.swift in Sources */,
 				1F62E5B51A83767500E7FCA6 /* NewTaskViewController.swift in Sources */,
+				1F0A6C051A9B1308007B18B3 /* FoldersListViewController.swift in Sources */,
 				1F0FB0781A8B405C00CAA5C6 /* DNDEditorViewController.swift in Sources */,
 				1FECC2F81A951EE1002CA9C2 /* AddFolderViewController.swift in Sources */,
 				1FDBE0C61A840CC000CE9E69 /* DNDTransitionAnimator.swift in Sources */,
