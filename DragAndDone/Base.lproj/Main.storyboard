@@ -124,6 +124,122 @@
             </objects>
             <point key="canvasLocation" x="523" y="1720"/>
         </scene>
+        <!--Folders List View Controller-->
+        <scene sceneID="rqd-wz-aBY">
+            <objects>
+                <viewController id="tVE-qw-oK5" customClass="FoldersListViewController" customModule="DragAndDone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XGK-yl-dPY"/>
+                        <viewControllerLayoutGuide type="bottom" id="rpd-zv-Fk5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v2y-V2-CqF" customClass="PurpleBackgroundGradientView" customModule="DragAndDone" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o84-0D-jVw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="64" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="xOq-cg-g1o" customClass="FoldersListTableViewCell" customModule="DragAndDone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xOq-cg-g1o" id="dF2-3Y-4O9">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="owT-yP-ENR">
+                                                    <rect key="frame" x="15" y="11" width="524" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-yJ-chA">
+                                                    <rect key="frame" x="585" y="0.0" width="15" height="43"/>
+                                                    <color key="backgroundColor" red="1" green="0.18486214042644966" blue="0.20890499108434557" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="wbh-qp-kga"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-c7-Prb">
+                                                    <rect key="frame" x="547" y="9" width="30" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="6zH-Wl-wTJ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="edit">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editStuff:" destination="xOq-cg-g1o" eventType="touchUpInside" id="yIc-Am-9lz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="rkY-c7-Prb" secondAttribute="bottom" constant="7" id="Age-5d-o8O"/>
+                                                <constraint firstItem="rkY-c7-Prb" firstAttribute="leading" secondItem="owT-yP-ENR" secondAttribute="trailing" constant="8" id="CrL-Pa-Fcv"/>
+                                                <constraint firstItem="ULp-yJ-chA" firstAttribute="top" secondItem="dF2-3Y-4O9" secondAttribute="top" id="SRN-dY-6Bi"/>
+                                                <constraint firstAttribute="centerY" secondItem="owT-yP-ENR" secondAttribute="centerY" id="Wt7-wM-0aH"/>
+                                                <constraint firstAttribute="bottom" secondItem="ULp-yJ-chA" secondAttribute="bottom" id="dgJ-k0-nut"/>
+                                                <constraint firstItem="owT-yP-ENR" firstAttribute="leading" secondItem="dF2-3Y-4O9" secondAttribute="leading" constant="15" id="oYc-78-UuE"/>
+                                                <constraint firstAttribute="trailing" secondItem="ULp-yJ-chA" secondAttribute="trailing" id="r9K-Ba-Ilc"/>
+                                                <constraint firstItem="ULp-yJ-chA" firstAttribute="leading" secondItem="rkY-c7-Prb" secondAttribute="trailing" constant="8" id="rcz-Sx-a1C"/>
+                                                <constraint firstItem="rkY-c7-Prb" firstAttribute="top" secondItem="dF2-3Y-4O9" secondAttribute="top" constant="9" id="rga-DD-Eu3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="colorView" destination="ULp-yJ-chA" id="och-xz-GTj"/>
+                                            <outlet property="editButton" destination="rkY-c7-Prb" id="hO7-kg-8pu"/>
+                                            <outlet property="textLabel" destination="owT-yP-ENR" id="t6e-aX-yaA"/>
+                                            <outlet property="theTextLabel" destination="owT-yP-ENR" id="Lxg-fT-5wq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tVE-qw-oK5" id="XTu-xi-SSt"/>
+                                    <outlet property="delegate" destination="tVE-qw-oK5" id="hIy-Dn-JZ0"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpG-B2-27s">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQb-b8-tIj">
+                                        <rect key="frame" x="285" y="7" width="30" height="30"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="kQb-b8-tIj" secondAttribute="centerX" id="cGW-Uc-iBf"/>
+                                    <constraint firstAttribute="centerY" secondItem="kQb-b8-tIj" secondAttribute="centerY" id="jzF-fV-3dC"/>
+                                    <constraint firstAttribute="height" constant="44" id="qNd-O9-edT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rpd-zv-Fk5" firstAttribute="top" secondItem="o84-0D-jVw" secondAttribute="bottom" id="BN9-Ac-rgq"/>
+                            <constraint firstItem="o84-0D-jVw" firstAttribute="leading" secondItem="v2y-V2-CqF" secondAttribute="leading" id="GS3-cR-GH2"/>
+                            <constraint firstItem="TpG-B2-27s" firstAttribute="leading" secondItem="v2y-V2-CqF" secondAttribute="leading" id="PXG-Ts-bZV"/>
+                            <constraint firstItem="o84-0D-jVw" firstAttribute="top" secondItem="v2y-V2-CqF" secondAttribute="top" id="QBP-zQ-Ant"/>
+                            <constraint firstAttribute="trailing" secondItem="TpG-B2-27s" secondAttribute="trailing" id="QLF-K7-txn"/>
+                            <constraint firstAttribute="trailing" secondItem="o84-0D-jVw" secondAttribute="trailing" id="WBg-9p-bTc"/>
+                            <constraint firstItem="rpd-zv-Fk5" firstAttribute="top" secondItem="TpG-B2-27s" secondAttribute="bottom" id="l4v-8p-N9S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="foldersListTableView" destination="o84-0D-jVw" id="OaA-Ph-JjZ"/>
+                        <segue destination="f0d-Or-IoT" kind="presentation" identifier="addFolder" id="pzx-kL-UM9"/>
+                        <segue destination="NnK-UL-d45" kind="presentation" identifier="addTask" id="9QJ-dV-e3D"/>
+                        <segue destination="NnK-UL-d45" kind="presentation" identifier="editTask" id="82D-bZ-spL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3x-hR-yUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="539" y="1040"/>
+        </scene>
         <!--Add Folder View Controller-->
         <scene sceneID="r7d-Xe-ckG">
             <objects>
@@ -287,9 +403,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="f0d-Or-IoT" kind="presentation" identifier="Add Folder" id="kgj-2f-zci"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQq-a3-6nd">
                                 <rect key="frame" x="16" y="550" width="64" height="30"/>
@@ -343,13 +456,11 @@
                         <outlet property="foldersTableView" destination="q7i-7r-LdF" id="tVX-Z3-age"/>
                         <outlet property="tasksTableView" destination="z1M-po-yqK" id="22D-DG-DUL"/>
                         <outlet property="toggleEditoButton" destination="pxh-6c-WC1" id="Qx6-gi-LMM"/>
-                        <segue destination="NnK-UL-d45" kind="presentation" identifier="addTask" id="JNM-Pn-zub"/>
-                        <segue destination="NnK-UL-d45" kind="presentation" identifier="editTask" id="sOH-24-xxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOP-0E-eXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="523" y="1012"/>
+            <point key="canvasLocation" x="2303" y="1168"/>
         </scene>
         <!--Drag And Done View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -374,7 +485,7 @@
                     <connections>
                         <segue destination="iTy-z2-9cT" kind="presentation" identifier="showStats" id="u2a-vy-Xbq"/>
                         <segue destination="S74-4N-K2I" kind="presentation" identifier="congratulations" id="a3s-pk-L6M"/>
-                        <segue destination="rTZ-k0-nCt" kind="presentation" identifier="showEditor" id="UmB-Xb-uaZ"/>
+                        <segue destination="tVE-qw-oK5" kind="presentation" identifier="showEditor" id="DbL-4v-zA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -519,6 +630,6 @@
         <image name="cam.png" width="206" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sOH-24-xxb"/>
+        <segue reference="82D-bZ-spL"/>
     </inferredMetricsTieBreakers>
 </document>
