@@ -419,6 +419,13 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
             checkColor = self.taskHandler.colorForFolder(folder)
         }
         
+        // /////// NEW CHECK IN A CIRCLE ///////
+        
+        FreakoColors.drawCheckInACircle()
+        
+        
+        // /////// OLD CHECK ///////
+        
         //        let bezierPath = UIBezierPath(catmullRomPoints: self.pointsArray, closed: false, alpha: 0.5)
         //        let bezier:CAShapeLayer = CAShapeLayer()
         //        bezier.path = bezierPath?.CGPath
