@@ -14,13 +14,14 @@ import UIKit
 class FreakoColorTest : UIView {
     
     override func drawRect(rect: CGRect) {
-        FreakoColors.drawDarkModerateBlue()
-        FreakoColors.drawDarkCyanLimeGreen()
-        FreakoColors.drawModerateVieolet()
-        FreakoColors.drawStrongBlue()
-        FreakoColors.drawVividOrange()
-        FreakoColors.drawVividRed()
-        FreakoColors.drawVividYellow()
+        FreakoColors.drawFreakoBlueCircle()
+        FreakoColors.drawFreakoDarkBlueCircle()
+        FreakoColors.drawFreakoOrangeCircle()
+        FreakoColors.drawFreakoYellowCircle()
+        FreakoColors.drawFreakoRedCircle()
+        FreakoColors.drawFreakoVioletCircle()
+        FreakoColors.drawFreakoGreenCircle()
+        FreakoColors.drawCeckInACircle()
     }
 }
 

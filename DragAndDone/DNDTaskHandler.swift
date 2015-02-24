@@ -21,7 +21,7 @@ enum TaskFrequency: Printable {
 }
 
 class DNDTaskHandler: NSObject {
-    let taskColors = ["freakoRed", "freakoOrange", "freakoYellow", "freakoGreen", "freakoBlue", "freakoDarkBlue", "freakoViolet", "wisteria", "belizeHole", "nephritis", "greenSea", "sunFlower", "carrot", "alizarin"]
+    let taskColors = ["freakoRed", "freakoOrange", "freakoYellow", "freakoGreen", "freakoBlue", "freakoDarkBlue", "freakoViolet", "alizarin", "carrot", "sunFlower", "nephritis", "greenSea", "belizeHole", "wisteria"]
     
     func createFolder(folderName: String, frequency:TaskFrequency)
     {
