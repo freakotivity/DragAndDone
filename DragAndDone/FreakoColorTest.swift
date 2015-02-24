@@ -21,7 +21,7 @@ class FreakoColorTest : UIView {
         FreakoColors.drawFreakoRedCircle()
         FreakoColors.drawFreakoVioletCircle()
         FreakoColors.drawFreakoGreenCircle()
-        FreakoColors.drawCeckInACircle()
+        FreakoColors.drawCheckInACircle()
     }
 }
 

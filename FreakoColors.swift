@@ -24,8 +24,8 @@ public class FreakoColors : NSObject {
         static var freakoOrange: UIColor = UIColor(red: 0.973, green: 0.580, blue: 0.024, alpha: 1.000)
         static var freakoRed: UIColor = UIColor(red: 0.886, green: 0.231, blue: 0.149, alpha: 1.000)
         static var freakoYellow: UIColor = UIColor(red: 0.953, green: 0.792, blue: 0.153, alpha: 1.000)
-        static var imageOfCeckInACircle: UIImage?
-        static var ceckInACircleTargets: [AnyObject]?
+        static var imageOfCheckInACircle: UIImage?
+        static var checkInACircleTargets: [AnyObject]?
     }
 
     //// Colors
@@ -96,7 +96,7 @@ public class FreakoColors : NSObject {
         ovalPath.fill()
     }
 
-    public class func drawCeckInACircle() {
+    public class func drawCheckInACircle() {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()
 
@@ -129,28 +129,28 @@ public class FreakoColors : NSObject {
 
     //// Generated Images
 
-    public class var imageOfCeckInACircle: UIImage {
-        if Cache.imageOfCeckInACircle != nil {
-            return Cache.imageOfCeckInACircle!
+    public class var imageOfCheckInACircle: UIImage {
+        if Cache.imageOfCheckInACircle != nil {
+            return Cache.imageOfCheckInACircle!
         }
 
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(40, 40), false, 0)
-            FreakoColors.drawCeckInACircle()
+            FreakoColors.drawCheckInACircle()
 
-        Cache.imageOfCeckInACircle = UIGraphicsGetImageFromCurrentImageContext()!
+        Cache.imageOfCheckInACircle = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
-        return Cache.imageOfCeckInACircle!
+        return Cache.imageOfCheckInACircle!
     }
 
     //// Customization Infrastructure
 
-    @IBOutlet var ceckInACircleTargets: [AnyObject]! {
-        get { return Cache.ceckInACircleTargets }
+    @IBOutlet var checkInACircleTargets: [AnyObject]! {
+        get { return Cache.checkInACircleTargets }
         set {
-            Cache.ceckInACircleTargets = newValue
+            Cache.checkInACircleTargets = newValue
             for target: AnyObject in newValue {
-                target.setImage(FreakoColors.imageOfCeckInACircle)
+                target.setImage(FreakoColors.imageOfCheckInACircle)
             }
         }
     }

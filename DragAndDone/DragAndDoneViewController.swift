@@ -446,25 +446,6 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         bezLayer.path = bezPath.CGPath
         //        bezLayer.strokeColor = UIColor.purpleColor().CGColor
         
-        //// checkInACircle Drawing
-//        var checkInACirclePath = UIBezierPath()
-//        checkInACirclePath.moveToPoint(CGPointMake(3.55, 14.27))
-//        checkInACirclePath.addCurveToPoint(CGPointMake(17.5, 30.5), controlPoint1: CGPointMake(3.47, 14.46), controlPoint2: CGPointMake(17.5, 30.5))
-//        checkInACirclePath.addLineToPoint(CGPointMake(33.5, 14.5))
-//        checkInACirclePath.moveToPoint(CGPointMake(2.5, 20.5))
-//        checkInACirclePath.addCurveToPoint(CGPointMake(2, 22), controlPoint1: CGPointMake(2.27, 21.72), controlPoint2: CGPointMake(2, 20.71))
-//        checkInACirclePath.addCurveToPoint(CGPointMake(22, 42), controlPoint1: CGPointMake(2, 33.05), controlPoint2: CGPointMake(10.95, 42))
-//        checkInACirclePath.addCurveToPoint(CGPointMake(42, 22), controlPoint1: CGPointMake(33.05, 42), controlPoint2: CGPointMake(42, 33.05))
-//        checkInACirclePath.addCurveToPoint(CGPointMake(22, 2), controlPoint1: CGPointMake(42, 10.95), controlPoint2: CGPointMake(33.05, 2))
-//        checkInACirclePath.addCurveToPoint(CGPointMake(3.55, 14.27), controlPoint1: CGPointMake(13.69, 2), controlPoint2: CGPointMake(6.57, 7.06))
-//        checkInACirclePath.lineCapStyle = kCGLineCapRound;
-//        
-//        checkInACirclePath.lineJoinStyle = kCGLineJoinRound;
-        
-//        FreakoColors.freakoGreen.setStroke()
-//        checkInACirclePath.lineWidth = 3
-//        checkInACirclePath.stroke()
-        
         if task.image != nil
         {
             bezLayer.strokeColor = checkColor.CGColor
