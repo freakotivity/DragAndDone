@@ -24,6 +24,7 @@ public class FreakoColors : NSObject {
         static var freakoOrange: UIColor = UIColor(red: 0.973, green: 0.580, blue: 0.024, alpha: 1.000)
         static var freakoRed: UIColor = UIColor(red: 0.886, green: 0.231, blue: 0.149, alpha: 1.000)
         static var freakoYellow: UIColor = UIColor(red: 0.953, green: 0.792, blue: 0.153, alpha: 1.000)
+        static var menuSpaceGray: UIColor = UIColor(red: 0.941, green: 0.941, blue: 0.941, alpha: 1.000)
         static var imageOfCheckInACircle: UIImage?
         static var checkInACircleTargets: [AnyObject]?
     }
@@ -37,6 +38,7 @@ public class FreakoColors : NSObject {
     public class var freakoOrange: UIColor { return Cache.freakoOrange }
     public class var freakoRed: UIColor { return Cache.freakoRed }
     public class var freakoYellow: UIColor { return Cache.freakoYellow }
+    public class var menuSpaceGray: UIColor { return Cache.menuSpaceGray }
 
     //// Drawing Methods
 
@@ -105,6 +107,8 @@ public class FreakoColors : NSObject {
         let shadow = UIColor.blackColor().colorWithAlphaComponent(0.5)
         let shadowOffset = CGSizeMake(0.6, 0.6)
         let shadowBlurRadius: CGFloat = 2
+        
+        // DON'T SEE THE SHADOW
 
         //// Oval Drawing
         var ovalPath = UIBezierPath()
@@ -112,9 +116,9 @@ public class FreakoColors : NSObject {
         ovalPath.addCurveToPoint(CGPointMake(20, 39), controlPoint1: CGPointMake(1, 30.49), controlPoint2: CGPointMake(9.51, 39))
         ovalPath.addCurveToPoint(CGPointMake(39, 20), controlPoint1: CGPointMake(30.49, 39), controlPoint2: CGPointMake(39, 30.49))
         ovalPath.addCurveToPoint(CGPointMake(20, 1), controlPoint1: CGPointMake(39, 9.51), controlPoint2: CGPointMake(30.49, 1))
-        ovalPath.addCurveToPoint(CGPointMake(1.72, 14.79), controlPoint1: CGPointMake(11.31, 1), controlPoint2: CGPointMake(3.99, 6.83))
-        ovalPath.addCurveToPoint(CGPointMake(20, 30.23), controlPoint1: CGPointMake(1.53, 15.48), controlPoint2: CGPointMake(20, 30.23))
-        ovalPath.addLineToPoint(CGPointMake(34.13, 16.59))
+        ovalPath.addCurveToPoint(CGPointMake(4.11, 9.58), controlPoint1: CGPointMake(13.35, 1), controlPoint2: CGPointMake(7.5, 4.41))
+        ovalPath.addCurveToPoint(CGPointMake(20, 27.5), controlPoint1: CGPointMake(3.07, 11.17), controlPoint2: CGPointMake(20, 27.5))
+        ovalPath.addLineToPoint(CGPointMake(33, 12))
         ovalPath.lineCapStyle = kCGLineCapRound;
 
         ovalPath.lineJoinStyle = kCGLineJoinRound;

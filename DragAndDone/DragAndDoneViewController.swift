@@ -436,21 +436,45 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         //        bezier.strokeEnd = 1.0
         //        self.scrollView.layer.addSublayer(bezier)
         
-        let bezPath = UIBezierPath()
-        let checkFrame = CGRectInset(task.frame, 10, 10)
+        
+        
+//        let bezPath = UIBezierPath() // HERE DID GABRIEL COMMENT OUT
+//        let checkFrame = CGRectInset(task.frame, 10, 10)
         
         //        bezierPath.moveToPoint(CGPointMake(8.5, 41.5))
         //        bezierPath.addCurveToPoint(CGPointMake(20.5, 88.5), controlPoint1: CGPointMake(20.5, 85.5), controlPoint2: CGPointMake(20.5, 87.5))
         //        bezierPath.addCurveToPoint(CGPointMake(91.5, 12.5), controlPoint1: CGPointMake(20.5, 89.5), controlPoint2: CGPointMake(31.5, 7.5))
+
+// HERE TOO
+//        bezPath.moveToPoint(CGPointMake(checkFrame.size.width * 0.185, checkFrame.size.height * 0.415))
+//        bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint2: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885))
+//        
+//        bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 1.0, checkFrame.size.height * 0.125), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.895), controlPoint2: CGPointMake(checkFrame.size.width * 0.415, checkFrame.size.height * 0.075))
         
-        bezPath.moveToPoint(CGPointMake(checkFrame.size.width * 0.185, checkFrame.size.height * 0.415))
-        bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885), controlPoint2: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.885))
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()
         
-        bezPath.addCurveToPoint(CGPointMake(checkFrame.size.width * 1.0, checkFrame.size.height * 0.125), controlPoint1: CGPointMake(checkFrame.size.width * 0.305, checkFrame.size.height * 0.895), controlPoint2: CGPointMake(checkFrame.size.width * 0.415, checkFrame.size.height * 0.075))
         
+        //// Shadow Declarations
+        let shadow = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        let shadowOffset = CGSizeMake(0.6, 0.6)
+        let shadowBlurRadius: CGFloat = 2
+        
+        //// Oval Drawing
+        var ovalPath = UIBezierPath()
+        ovalPath.moveToPoint(CGPointMake(1, 20))
+        ovalPath.addCurveToPoint(CGPointMake(20, 39), controlPoint1: CGPointMake(1, 30.49), controlPoint2: CGPointMake(9.51, 39))
+        ovalPath.addCurveToPoint(CGPointMake(39, 20), controlPoint1: CGPointMake(30.49, 39), controlPoint2: CGPointMake(39, 30.49))
+        ovalPath.addCurveToPoint(CGPointMake(20, 1), controlPoint1: CGPointMake(39, 9.51), controlPoint2: CGPointMake(30.49, 1))
+        ovalPath.addCurveToPoint(CGPointMake(4.11, 9.58), controlPoint1: CGPointMake(13.35, 1), controlPoint2: CGPointMake(7.5, 4.41))
+        ovalPath.addCurveToPoint(CGPointMake(20, 27.5), controlPoint1: CGPointMake(3.07, 11.17), controlPoint2: CGPointMake(20, 27.5))
+        ovalPath.addLineToPoint(CGPointMake(33, 12))
+        ovalPath.lineCapStyle = kCGLineCapRound;
+        
+        ovalPath.lineJoinStyle = kCGLineJoinRound;
         
         let bezLayer = CAShapeLayer()
-        bezLayer.path = bezPath.CGPath
+        bezLayer.path = ovalPath.CGPath
         //        bezLayer.strokeColor = UIColor.purpleColor().CGColor
         
         if task.image != nil
@@ -459,8 +483,10 @@ class DragAndDoneViewController: UIViewController, UIViewControllerTransitioning
         } else {
             bezLayer.strokeColor = UIColor.whiteColor().CGColor
         }
+        
+        //// Attributes and Animation
         bezLayer.fillColor = UIColor.clearColor().CGColor
-        bezLayer.lineWidth = 8.0
+        bezLayer.lineWidth = 2.0
         bezLayer.strokeStart = 0.0
         bezLayer.strokeEnd = 1.0
         task.layer.addSublayer(bezLayer)
